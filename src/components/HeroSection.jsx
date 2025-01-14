@@ -10,7 +10,6 @@ const HeroSection = () => {
           justifyContent: "space-between",
           alignItems: "center",
           py: 4,
-          borderBottom: "1px solid #D0D0D0",
           px: { xs: 2, md: 4, lg: 6 },
           width: "100%",
           columnGap: {
@@ -51,7 +50,15 @@ const HeroSection = () => {
         <Box sx={{ py: 4 }}>
           <Grid container>
             {/* Left Half - Split into two rows */}
-            <Grid item xs={12} md={6} sx={{ borderRight: "1px solid #D0D0D0" }}>
+            <Grid
+              item
+              xs={12}
+              md={6}
+              sx={{
+                borderRight: "1px solid #D0D0D0",
+                borderTop: "1px solid #D0D0D0",
+              }}
+            >
               <Grid container>
                 {/* Top Row - Green Chair with Text */}
                 <Grid item xs={12} sx={{ borderBottom: "1px solid #D0D0D0" }}>
@@ -131,7 +138,11 @@ const HeroSection = () => {
                 </Grid>
 
                 {/* Bottom Row - Cream Sofa */}
-                <Grid item xs={12} sx={{ p: 3 }}>
+                <Grid
+                  item
+                  xs={12}
+                  sx={{ p: 3, borderBottom: "1px solid #D0D0D0" }}
+                >
                   <Box sx={{ position: "relative" }}>
                     <Box
                       sx={{
@@ -170,7 +181,16 @@ const HeroSection = () => {
             </Grid>
 
             {/* Right Half - Brown Chair */}
-            <Grid item xs={12} md={6} sx={{ p: 3 }}>
+            <Grid
+              item
+              xs={12}
+              md={6}
+              sx={{
+                p: 3,
+                borderBottom: "1px solid #D0D0D0",
+                borderTop: "1px solid #D0D0D0",
+              }}
+            >
               <Box
                 sx={{
                   height: "100%",
