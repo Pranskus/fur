@@ -18,7 +18,7 @@ const TimelessSection = () => {
             >
               <Box
                 component="img"
-                src="/images/green-chair.jpg" // Add your green chair image
+                src="/images/lc2-feather.jpg" // Add your green chair image
                 alt="Green Chair"
                 sx={{
                   width: "100%",
@@ -73,12 +73,12 @@ const TimelessSection = () => {
               </Box>
               <Box
                 component="img"
-                src="/images/cream-sofa.jpg" // Add your cream sofa image
+                src="/images/contemporary-cream-sofa.png" // Add your cream sofa image
                 alt="Cream Sofa"
                 sx={{
                   width: "100%",
                   height: "100%",
-                  objectFit: "cover",
+                  objectFit: "fit",
                 }}
               />
             </Box>
@@ -88,7 +88,7 @@ const TimelessSection = () => {
           <Grid item xs={12} md={4}>
             <Box
               component="img"
-              src="/images/brown-chair.jpg" // Add your brown chair image
+              src="/images/grand-confort-lc3-chair.jpg" // Add your brown chair image
               alt="Brown Chair"
               sx={{
                 width: "100%",
