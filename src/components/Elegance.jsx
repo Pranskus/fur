@@ -39,6 +39,7 @@ const Elegance = () => {
                 objectFit: "cover",
                 objectPosition: "65% center",
                 marginLeft: "-10%",
+                clipPath: "polygon(15% 0, 100% 0, 100% 100%, 0 100%, 0 15%)", // Changed to left top corner
               }}
             />
           </Grid>
@@ -135,6 +136,8 @@ const Elegance = () => {
                   display: "block",
                   objectFit: "cover",
                   objectPosition: "center 80%",
+                  clipPath:
+                    "polygon(0 0, 100% 0, 100% 85%, 85% 100%, 0 100%, 0 0)", // Added right bottom corner cut
                 }}
               />
             </Box>
