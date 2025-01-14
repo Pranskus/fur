@@ -1,4 +1,4 @@
-import { ThemeProvider, CssBaseline, Container } from "@mui/material";
+import { ThemeProvider, CssBaseline, Container, Box } from "@mui/material";
 import { theme } from "./theme";
 import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
@@ -11,14 +11,29 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Navbar />
-      <Container maxWidth="lg">
+      <Box
+        sx={{
+          margin: "0 auto",
+          maxWidth: {
+            xs: "100%",
+            sm: "600px",
+            md: "900px",
+            lg: "1200px",
+            xl: "1536px",
+            // Custom breakpoint for 4K screens
+            "@media (min-width: 2560px)": {
+              maxWidth: "2000px",
+            },
+          },
+        }}
+      >
+        <Navbar />
         <HeroSection />
         <TimelessSection />
         <ProductsGrid />
         <ShopByRoom />
-      </Container>
-      <Footer />
+        <Footer />
+      </Box>
     </ThemeProvider>
   );
 }

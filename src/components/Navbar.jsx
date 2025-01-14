@@ -16,7 +16,7 @@ const Navbar = () => {
       color="transparent"
       elevation={0}
       sx={{
-        borderBottom: "1px solid #E5E5E5",
+        borderBottom: "1px solid #D0D0D0",
         py: 1,
       }}
     >
@@ -25,12 +25,14 @@ const Navbar = () => {
           <Box sx={{ display: "flex", alignItems: "center" }}>
             <Box sx={{ mr: 2, display: "flex", alignItems: "center" }}>
               <Box
-                component="img"
-                src="/logo.png"
-                alt="LG"
-                sx={{ height: 24, mr: 1 }}
-              />
-              <Box component="span" sx={{ fontSize: "18px", fontWeight: 500 }}>
+                component="span"
+                sx={{
+                  fontSize: "18px",
+                  fontWeight: 500,
+                  fontFamily: "'Inter', sans-serif",
+                  letterSpacing: "-0.02em",
+                }}
+              >
                 luluandgeorgia
               </Box>
             </Box>

@@ -2,7 +2,7 @@ import { Box, Typography } from "@mui/material";
 
 const HeroSection = () => {
   return (
-    <Box sx={{ bgcolor: "#FFFFFF", pb: 4, width: "100%" }}>
+    <Box sx={{ bgcolor: "#FFFFFF", pb: 0, width: "100%" }}>
       {/* Main Title with Image */}
       <Box
         sx={{
@@ -10,7 +10,7 @@ const HeroSection = () => {
           justifyContent: "space-between",
           alignItems: "center",
           py: 4,
-          borderBottom: "2px solid #E5E5E5",
+          borderBottom: "1px solid #D0D0D0",
           px: { xs: 2, md: 4, lg: 6 }, // Responsive padding
           width: "100%",
         }}
@@ -37,22 +37,6 @@ const HeroSection = () => {
             objectFit: "contain",
           }}
         />
-      </Box>
-
-      {/* Subtitle */}
-      <Box sx={{ py: 3, px: { xs: 2, md: 4, lg: 6 } }}>
-        {" "}
-        {/* Matching padding */}
-        <Typography
-          variant="body1"
-          sx={{
-            color: "#333",
-            maxWidth: "450px",
-          }}
-        >
-          At Lulu and Georgia, we blend heritage with innovation to bring you
-          exclusive designer pieces and rare vintage finds.
-        </Typography>
       </Box>
     </Box>
   );
