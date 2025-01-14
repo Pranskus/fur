@@ -17,17 +17,23 @@ const Navbar = () => {
       elevation={0}
       sx={{
         borderBottom: "1px solid #D0D0D0",
-        py: 1,
+        py: "0.5rem",
       }}
     >
       <Container maxWidth="lg">
-        <Toolbar sx={{ justifyContent: "space-between", minHeight: "64px" }}>
+        <Toolbar
+          sx={{
+            justifyContent: "space-between",
+            minHeight: "4rem",
+            maxHeight: "4rem",
+          }}
+        >
           <Box sx={{ display: "flex", alignItems: "center" }}>
-            <Box sx={{ mr: 2, display: "flex", alignItems: "center" }}>
+            <Box sx={{ mr: "1rem", display: "flex", alignItems: "center" }}>
               <Box
                 component="span"
                 sx={{
-                  fontSize: "18px",
+                  fontSize: "1.125rem",
                   fontWeight: 500,
                   fontFamily: "'Inter', sans-serif",
                   letterSpacing: "-0.02em",
@@ -38,27 +44,55 @@ const Navbar = () => {
             </Box>
           </Box>
 
-          <Box sx={{ display: "flex", gap: 4 }}>
-            <Button color="inherit" sx={{ textTransform: "none" }}>
+          <Box sx={{ display: "flex", gap: "2vw" }}>
+            <Button
+              color="inherit"
+              sx={{
+                textTransform: "none",
+                fontSize: "clamp(14px, 1vw, 18px)",
+                padding: "0.5vw 1vw",
+              }}
+            >
               About Us
             </Button>
-            <Button color="inherit" sx={{ textTransform: "none" }}>
+            <Button
+              color="inherit"
+              sx={{
+                textTransform: "none",
+                fontSize: "clamp(14px, 1vw, 18px)",
+                padding: "0.5vw 1vw",
+              }}
+            >
               Our Collections
             </Button>
-            <Button color="inherit" sx={{ textTransform: "none" }}>
+            <Button
+              color="inherit"
+              sx={{
+                textTransform: "none",
+                fontSize: "clamp(14px, 1vw, 18px)",
+                padding: "0.5vw 1vw",
+              }}
+            >
               Design Inspiration
             </Button>
-            <Button color="inherit" sx={{ textTransform: "none" }}>
+            <Button
+              color="inherit"
+              sx={{
+                textTransform: "none",
+                fontSize: "clamp(14px, 1vw, 18px)",
+                padding: "0.5vw 1vw",
+              }}
+            >
               Our Projects
             </Button>
           </Box>
 
-          <Box sx={{ display: "flex", gap: 2 }}>
-            <IconButton>
-              <PhoneIcon />
+          <Box sx={{ display: "flex", gap: "1vw" }}>
+            <IconButton sx={{ padding: "0.8vw" }}>
+              <PhoneIcon sx={{ fontSize: "clamp(20px, 1.4vw, 28px)" }} />
             </IconButton>
-            <IconButton>
-              <ShoppingCartIcon />
+            <IconButton sx={{ padding: "0.8vw" }}>
+              <ShoppingCartIcon sx={{ fontSize: "clamp(20px, 1.4vw, 28px)" }} />
             </IconButton>
           </Box>
         </Toolbar>
