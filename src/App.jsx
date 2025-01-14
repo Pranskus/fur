@@ -2,7 +2,7 @@ import { ThemeProvider, CssBaseline, Box } from "@mui/material";
 import { theme } from "./theme";
 import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
-import TimelessSection from "./components/TimelessSection";
+import Elegance from "./components/Elegance";
 import ProductsGrid from "./components/ProductsGrid";
 import ShopByRoom from "./components/ShopByRoom";
 import Footer from "./components/Footer";
@@ -36,7 +36,7 @@ function App() {
         >
           <Navbar />
           <HeroSection />
-          <TimelessSection />
+          <Elegance />
           <ProductsGrid />
           <ShopByRoom />
           <Footer />
