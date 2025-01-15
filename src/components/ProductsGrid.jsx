@@ -75,7 +75,16 @@ const ProductsGrid = () => {
 
   return (
     <Box sx={{ width: "100%", bgcolor: "#FFFFFF", py: 6 }}>
-      <Container maxWidth="xxl">
+      <Container
+        maxWidth="xxl"
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          maxWidth: "1800px !important", // Force max-width on container
+          mx: "auto", // Auto margins for centering
+          px: { xs: 2, md: 2 }, // Responsive padding
+        }}
+      >
         <Box
           sx={{
             display: "grid",
@@ -188,6 +197,19 @@ const ProductsGrid = () => {
                 // Check if item starts at left edge
                 const isLeftEdge = currentPosition === 0;
 
+                // Calculate if item is in the last row
+                let totalColsSoFar = 0;
+                for (let i = 0; i < itemData.length; i++) {
+                  if (i < index) {
+                    totalColsSoFar += itemData[i].cols;
+                  }
+                }
+                const rowPosition = Math.floor(totalColsSoFar / 4);
+                const totalRows = Math.ceil(
+                  itemData.reduce((sum, item) => sum + item.cols, 0) / 4
+                );
+                const isLastRow = rowPosition === totalRows - 1;
+
                 return (
                   <ImageListItem
                     key={item.img}
@@ -199,7 +221,7 @@ const ProductsGrid = () => {
                       alignItems: "center",
                       justifyContent: "center",
                       borderRight: isRightEdge ? "none" : "1px solid #D0D0D0",
-                      borderBottom: "1px solid #D0D0D0",
+                      borderBottom: isLastRow ? "none" : "1px solid #D0D0D0",
                       borderLeft: isLeftEdge ? "none" : "none",
                       m: 0,
                       p: 0,
