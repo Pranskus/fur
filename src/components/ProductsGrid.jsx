@@ -4,154 +4,184 @@ import {
   ImageListItem,
   Typography,
   Container,
-  Divider,
+  Button,
+  Stack,
 } from "@mui/material";
 
 const ProductsGrid = () => {
+  const categories = [
+    "See All",
+    "Sofas",
+    "Sets",
+    "Accent Chairs",
+    "Sectional Sofas",
+    "Desk Chairs",
+  ];
+
   const itemData = [
     {
-      img: "https://images.pexels.com/photos/1866149/pexels-photo-1866149.jpeg",
+      img: "/images/P_sofa.jpg",
       title: "Modern Sofa",
-      category: "Featured",
+      tag: "Exclusive",
+      cols: 2, // Takes 2 columns
     },
     {
-      img: "https://images.pexels.com/photos/2762247/pexels-photo-2762247.jpeg",
-      title: "Leather Armchair",
-      price: "$899",
-      category: "Chair",
-    },
-    {
-      img: "https://images.pexels.com/photos/2647714/pexels-photo-2647714.jpeg",
-      title: "Side Table",
-      price: "$299",
-      category: "Table",
-    },
-    {
-      img: "https://images.pexels.com/photos/1571457/pexels-photo-1571457.jpeg",
-      title: "Lounge Chair",
-      price: "$599",
-      category: "Chair",
-    },
-    {
-      img: "https://images.pexels.com/photos/1668860/pexels-photo-1668860.jpeg",
+      img: "/images/P_accchair.jpg",
       title: "Accent Chair",
-      price: "$499",
-      category: "Chair",
+      tag: "New",
+      cols: 1, // Takes 2 columns
     },
     {
-      img: "https://images.pexels.com/photos/276566/pexels-photo-276566.jpeg",
+      img: "/images/P_armchair.jpg",
+      title: "Side Table",
+      tag: "New",
+      cols: 1,
+    },
+    {
+      img: "/images/P_armchair2.jpg",
+      title: "Lounge Chair",
+      cols: 1,
+    },
+    {
+      img: "/images/P_armchair3.jpg",
+      title: "Accent Chair",
+      tag: "Exclusive",
+      cols: 1, // Takes 2 columns
+    },
+    {
+      img: "/images/P_sofa2.jpg",
       title: "Modern Couch",
-      price: "$1,499",
-      category: "Sofa",
+      tag: "New",
+      cols: 2, // Takes 2 columns
     },
     {
-      img: "https://images.pexels.com/photos/1571458/pexels-photo-1571458.jpeg",
+      img: "/images/P_sofa3.jpg",
       title: "Grey Sofa",
-      price: "$1,199",
-      category: "Sofa",
+      cols: 2, // Takes 2 columns
     },
     {
-      img: "https://images.pexels.com/photos/2079249/pexels-photo-2079249.jpeg",
+      img: "/images/P_armchair4.jpg",
       title: "Rattan Chair",
-      price: "$399",
-      category: "Chair",
+      tag: "Exclusive",
+      cols: 1,
     },
     {
-      img: "https://images.pexels.com/photos/2995012/pexels-photo-2995012.jpeg",
+      img: "/images/P_armchair5.jpg",
       title: "Wooden Cabinet",
-      price: "$899",
-      category: "Storage",
+      tag: "New",
+      cols: 1,
     },
   ];
 
   return (
-    <Box sx={{ width: "100%", bgcolor: "#FFFFFF" }}>
-      <Divider />
+    <Box sx={{ width: "100%", bgcolor: "#FFFFFF", py: 6 }}>
       <Container maxWidth="lg">
-        <Box sx={{ py: 6 }}>
-          <Box
+        {/* Header Section */}
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            mb: 4,
+          }}
+        >
+          {/* Products Title */}
+          <Typography
+            variant="h1"
             sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              mb: 4,
+              fontSize: "6rem",
+              fontWeight: 500,
+              letterSpacing: "-0.02em",
             }}
           >
+            Products
+          </Typography>
+
+          {/* Categories */}
+          <Box>
             <Typography
-              variant="h3"
+              variant="h6"
               sx={{
+                mb: 2,
+                fontSize: "1.5rem",
                 fontWeight: 500,
-                fontSize: "32px",
-                letterSpacing: "-0.02em",
               }}
             >
-              Products
+              Find Your Dream Products with Ease!
             </Typography>
-            <Box sx={{ display: "flex", gap: 2 }}>
-              <Typography
-                variant="body2"
-                sx={{
-                  color: "#666",
-                  cursor: "pointer",
-                  "&:hover": { color: "#000" },
-                }}
-              >
-                Find Your Dream Products with Ease!
-              </Typography>
-            </Box>
-          </Box>
-
-          <ImageList
-            sx={{
-              width: "100%",
-              margin: 0,
-              gap: "24px !important",
-              gridTemplateColumns: "repeat(3, 1fr) !important",
-            }}
-            cols={3}
-          >
-            {itemData.map((item) => (
-              <ImageListItem
-                key={item.img}
-                sx={{
-                  overflow: "hidden",
-                  bgcolor: "#F8F8F8",
-                  borderRadius: "4px",
-                  "&:hover": {
-                    "& img": {
-                      transform: "scale(1.05)",
+            <Stack direction="row" spacing={2}>
+              {categories.map((category) => (
+                <Button
+                  key={category}
+                  sx={{
+                    bgcolor: category === "See All" ? "#E5E5E5" : "transparent",
+                    color: "#000",
+                    px: 2,
+                    py: 1,
+                    borderRadius: 1,
+                    "&:hover": {
+                      bgcolor: "#E5E5E5",
                     },
-                  },
-                }}
-              >
-                <img
-                  src={item.img}
-                  alt={item.title}
-                  loading="lazy"
-                  style={{
-                    height: 300,
-                    objectFit: "cover",
-                    transition: "transform 0.3s ease-in-out",
                   }}
-                />
-                <Box sx={{ p: 2 }}>
-                  <Typography
-                    variant="caption"
-                    sx={{
-                      color: "#666",
-                      textTransform: "uppercase",
-                      letterSpacing: "0.05em",
-                    }}
-                  >
-                    {item.category}
+                >
+                  {category}
+                </Button>
+              ))}
+            </Stack>
+          </Box>
+        </Box>
+
+        {/* Products Grid */}
+        <ImageList
+          sx={{
+            gap: 3,
+            gridTemplateColumns: "repeat(4, 1fr) !important",
+          }}
+          cols={4}
+        >
+          {itemData.map((item) => (
+            <ImageListItem
+              key={item.img}
+              sx={{
+                bgcolor: "#F8F8F8",
+                borderRadius: "4px",
+                overflow: "hidden",
+                position: "relative",
+                gridColumn: `span ${item.cols}`, // Controls how many columns this item takes
+              }}
+            >
+              {item.tag && (
+                <Box
+                  sx={{
+                    position: "absolute",
+                    top: 16,
+                    left: 16,
+                    bgcolor: "#E5E5E5",
+                    px: 2,
+                    py: 0.5,
+                    borderRadius: 1,
+                    zIndex: 1,
+                  }}
+                >
+                  <Typography variant="caption" sx={{ fontWeight: 500 }}>
+                    {item.tag}
                   </Typography>
                 </Box>
-              </ImageListItem>
-            ))}
-          </ImageList>
-        </Box>
+              )}
+              <img
+                src={item.img}
+                alt={item.title}
+                loading="lazy"
+                style={{
+                  width: "100%",
+                  height: item.cols === 2 ? "600px" : "400px", // Taller height for 2-column items
+                  objectFit: "cover",
+                }}
+              />
+            </ImageListItem>
+          ))}
+        </ImageList>
       </Container>
-      <Divider />
     </Box>
   );
 };
