@@ -246,7 +246,10 @@ const ProductsGrid = () => {
                         zIndex: 1,
                       }}
                     >
-                      <Typography variant="caption" sx={{ fontWeight: 700 }}>
+                      <Typography
+                        variant="caption"
+                        sx={{ fontWeight: 500, fontSize: "0.75rem" }}
+                      >
                         {item.tag}
                       </Typography>
                     </Box>
