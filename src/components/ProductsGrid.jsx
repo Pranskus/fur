@@ -81,7 +81,8 @@ const ProductsGrid = () => {
             display: "grid",
             gridTemplateColumns: "repeat(4, 1fr)",
             width: "100%",
-            border: "1px solid #D0D0D0",
+            borderTop: "1px solid #D0D0D0",
+            borderBottom: "1px solid #D0D0D0",
           }}
         >
           {/* Products Title */}
@@ -184,6 +185,8 @@ const ProductsGrid = () => {
 
                 // Check if item ends at right edge
                 const isRightEdge = currentPosition + item.cols === 4;
+                // Check if item starts at left edge
+                const isLeftEdge = currentPosition === 0;
 
                 return (
                   <ImageListItem
@@ -197,6 +200,7 @@ const ProductsGrid = () => {
                       justifyContent: "center",
                       borderRight: isRightEdge ? "none" : "1px solid #D0D0D0",
                       borderBottom: "1px solid #D0D0D0",
+                      borderLeft: isLeftEdge ? "none" : "none",
                       m: 0,
                       p: 0,
                       aspectRatio: item.cols === 2 ? "2/1.2" : "1/1.2",
