@@ -76,19 +76,19 @@ const ProductsGrid = () => {
   return (
     <Box sx={{ width: "100%", bgcolor: "#FFFFFF", py: 6 }}>
       <Container maxWidth="xxl">
-        {/* Combined Grid Container */}
         <Box
           sx={{
             display: "grid",
             gridTemplateColumns: "repeat(4, 1fr)",
             width: "100%",
+            border: "1px solid #D0D0D0",
           }}
         >
-          {/* Products Title - spans 2 columns */}
+          {/* Products Title */}
           <Box
             sx={{
               gridColumn: "span 2",
-              borderTop: "1px solid #D0D0D0",
+              borderRight: "1px solid #D0D0D0",
               borderBottom: "1px solid #D0D0D0",
             }}
           >
@@ -104,14 +104,12 @@ const ProductsGrid = () => {
             </Typography>
           </Box>
 
-          {/* Categories - spans 2 columns */}
+          {/* Categories */}
           <Box
             sx={{
               gridColumn: "span 2",
               p: { xs: 2, md: 3 },
               pb: { xs: 2, md: 3 },
-              borderTop: "1px solid #D0D0D0",
-              borderLeft: "1px solid #D0D0D0",
               borderBottom: "1px solid #D0D0D0",
             }}
           >
@@ -139,7 +137,6 @@ const ProductsGrid = () => {
                   sx={{
                     bgcolor: category === "See All" ? "#e1d5c7" : "#F5F5F5",
                     color: "#000",
-
                     fontSize: "0.6rem",
                     fontWeight: 400,
                     letterSpacing: "0.02em",
@@ -157,16 +154,23 @@ const ProductsGrid = () => {
             </Stack>
           </Box>
 
-          {/* Products Grid - spans all 4 columns */}
-          <Box sx={{ gridColumn: "span 4" }}>
+          {/* Products Grid */}
+          <Box
+            sx={{
+              gridColumn: "span 4",
+              position: "relative",
+            }}
+          >
             <ImageList
               sx={{
-                gridTemplateColumns: "repeat(4, 1fr) !important",
-                maxWidth: "100%",
+                width: "100%",
                 m: 0,
                 p: 0,
                 gap: 0,
+                display: "grid",
+                gridTemplateColumns: "repeat(4, 1fr)",
               }}
+              variant="quilted"
               cols={4}
               gap={0}
             >
@@ -184,11 +188,10 @@ const ProductsGrid = () => {
                 return (
                   <ImageListItem
                     key={item.img}
+                    cols={item.cols}
                     sx={{
                       overflow: "hidden",
                       position: "relative",
-                      gridColumn: `span ${item.cols}`,
-                      aspectRatio: item.cols === 2 ? "2/1.2" : "1/1.2",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
@@ -196,6 +199,7 @@ const ProductsGrid = () => {
                       borderBottom: "1px solid #D0D0D0",
                       m: 0,
                       p: 0,
+                      aspectRatio: item.cols === 2 ? "2/1.2" : "1/1.2",
                     }}
                   >
                     {item.tag && (
