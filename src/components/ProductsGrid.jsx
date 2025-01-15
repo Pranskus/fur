@@ -161,7 +161,7 @@ const ProductsGrid = () => {
         {/* Products Grid */}
         <Box
           sx={{
-            borderLeft: "1px solid #D0D0D0",
+            borderLeft: "none",
           }}
         >
           <ImageList
@@ -171,6 +171,36 @@ const ProductsGrid = () => {
               m: 0,
               p: 0,
               gap: 0,
+              "& .MuiImageListItem-root": {
+                "&[style*='grid-column: span 2']": {
+                  "&:nth-of-type(2n)": {
+                    borderRight: "none",
+                  },
+                  "&:nth-of-type(2n-1)": {
+                    borderLeft: "none",
+                  },
+                  "&:nth-child(2)": {
+                    borderRight: "none",
+                  },
+                  "&:nth-child(4)": {
+                    borderRight: "none",
+                  },
+                  "&:nth-child(6)": {
+                    borderRight: "none",
+                  },
+                  "&:nth-child(8)": {
+                    borderRight: "none",
+                  },
+                },
+                "&[style*='grid-column: span 1']": {
+                  "&:nth-of-type(4n)": {
+                    borderRight: "none",
+                  },
+                  "&:nth-of-type(4n+1)": {
+                    borderLeft: "none",
+                  },
+                },
+              },
             }}
             cols={4}
             gap={0}
@@ -186,7 +216,7 @@ const ProductsGrid = () => {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  borderRight: "1px solid #D0D0D0", // Only keep right border
+                  borderRight: "1px solid #D0D0D0",
                   borderBottom: "1px solid #D0D0D0",
                   m: 0,
                   p: 0,
