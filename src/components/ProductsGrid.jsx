@@ -205,54 +205,66 @@ const ProductsGrid = () => {
             cols={4}
             gap={0}
           >
-            {itemData.map((item) => (
-              <ImageListItem
-                key={item.img}
-                sx={{
-                  overflow: "hidden",
-                  position: "relative",
-                  gridColumn: `span ${item.cols}`,
-                  aspectRatio: item.cols === 2 ? "2/1.2" : "1/1.2",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  borderRight: "1px solid #D0D0D0",
-                  borderBottom: "1px solid #D0D0D0",
-                  m: 0,
-                  p: 0,
-                }}
-              >
-                {item.tag && (
-                  <Box
-                    sx={{
-                      position: "absolute",
-                      top: 16,
-                      left: 16,
-                      bgcolor: "#e1d5c7",
-                      px: 2,
-                      py: 0.5,
-                      borderRadius: 1,
-                      zIndex: 1,
-                    }}
-                  >
-                    <Typography variant="caption" sx={{ fontWeight: 700 }}>
-                      {item.tag}
-                    </Typography>
-                  </Box>
-                )}
-                <img
-                  src={item.img}
-                  alt={item.title}
-                  loading="lazy"
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "contain",
-                    padding: "16px",
+            {itemData.map((item, index) => {
+              // Calculate actual grid position considering previous items' column spans
+              let currentPosition = 0;
+              for (let i = 0; i < index; i++) {
+                currentPosition += itemData[i].cols;
+              }
+              currentPosition = currentPosition % 4;
+
+              // Check if item ends at right edge
+              const isRightEdge = currentPosition + item.cols === 4;
+
+              return (
+                <ImageListItem
+                  key={item.img}
+                  sx={{
+                    overflow: "hidden",
+                    position: "relative",
+                    gridColumn: `span ${item.cols}`,
+                    aspectRatio: item.cols === 2 ? "2/1.2" : "1/1.2",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    borderRight: isRightEdge ? "none" : "1px solid #D0D0D0",
+                    borderBottom: "1px solid #D0D0D0",
+                    m: 0,
+                    p: 0,
                   }}
-                />
-              </ImageListItem>
-            ))}
+                >
+                  {item.tag && (
+                    <Box
+                      sx={{
+                        position: "absolute",
+                        top: 16,
+                        left: 16,
+                        bgcolor: "#e1d5c7",
+                        px: 2,
+                        py: 0.5,
+                        borderRadius: 1,
+                        zIndex: 1,
+                      }}
+                    >
+                      <Typography variant="caption" sx={{ fontWeight: 700 }}>
+                        {item.tag}
+                      </Typography>
+                    </Box>
+                  )}
+                  <img
+                    src={item.img}
+                    alt={item.title}
+                    loading="lazy"
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "contain",
+                      padding: "16px",
+                    }}
+                  />
+                </ImageListItem>
+              );
+            })}
           </ImageList>
         </Box>
       </Container>
