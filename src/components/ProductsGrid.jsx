@@ -117,17 +117,21 @@ const ProductsGrid = () => {
                 <Button
                   key={category}
                   sx={{
-                    bgcolor: category === "See All" ? "#E5E5E5" : "transparent",
+                    bgcolor: category === "SEE ALL" ? "#E5E5E5" : "transparent",
                     color: "#000",
-                    px: 2,
-                    py: 1,
+                    px: 2.5,
+                    py: 1.2,
                     borderRadius: 1,
+                    fontSize: "0.5rem", // Reduced font size
+                    fontWeight: 400,
+                    letterSpacing: "0.02em",
+                    textTransform: "uppercase",
                     "&:hover": {
                       bgcolor: "#E5E5E5",
                     },
                   }}
                 >
-                  {category}
+                  {category.toUpperCase()}
                 </Button>
               ))}
             </Stack>
