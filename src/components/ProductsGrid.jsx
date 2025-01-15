@@ -55,15 +55,15 @@ const ProductsGrid = () => {
       cols: 2, // Takes 2 columns
     },
     {
-      img: "/images/P_sofa3.jpg",
-      title: "Grey Sofa",
-      cols: 2, // Takes 2 columns
-    },
-    {
       img: "/images/P_armchair4.jpg",
       title: "Rattan Chair",
       tag: "Exclusive",
       cols: 1,
+    },
+    {
+      img: "/images/P_sofa3.jpg",
+      title: "Grey Sofa",
+      cols: 2, // Takes 2 columns
     },
     {
       img: "/images/P_armchair5.jpg",
@@ -76,11 +76,11 @@ const ProductsGrid = () => {
   return (
     <Box sx={{ width: "100%", bgcolor: "#FFFFFF", py: 6 }}>
       <Container maxWidth="xxl">
-        {/* Header Section */}
+        {/* Combined Grid Container */}
         <Box
           sx={{
             display: "grid",
-            gridTemplateColumns: "repeat(4, 1fr)", // Create 4 columns
+            gridTemplateColumns: "repeat(4, 1fr)",
             width: "100%",
           }}
         >
@@ -156,119 +156,85 @@ const ProductsGrid = () => {
               ))}
             </Stack>
           </Box>
-        </Box>
 
-        {/* Products Grid */}
-        <Box
-          sx={{
-            borderLeft: "none",
-          }}
-        >
-          <ImageList
-            sx={{
-              gridTemplateColumns: "repeat(4, 1fr) !important",
-              maxWidth: "100%",
-              m: 0,
-              p: 0,
-              gap: 0,
-              "& .MuiImageListItem-root": {
-                "&[style*='grid-column: span 2']": {
-                  "&:nth-of-type(2n)": {
-                    borderRight: "none",
-                  },
-                  "&:nth-of-type(2n-1)": {
-                    borderLeft: "none",
-                  },
-                  "&:nth-child(2)": {
-                    borderRight: "none",
-                  },
-                  "&:nth-child(4)": {
-                    borderRight: "none",
-                  },
-                  "&:nth-child(6)": {
-                    borderRight: "none",
-                  },
-                  "&:nth-child(8)": {
-                    borderRight: "none",
-                  },
-                },
-                "&[style*='grid-column: span 1']": {
-                  "&:nth-of-type(4n)": {
-                    borderRight: "none",
-                  },
-                  "&:nth-of-type(4n+1)": {
-                    borderLeft: "none",
-                  },
-                },
-              },
-            }}
-            cols={4}
-            gap={0}
-          >
-            {itemData.map((item, index) => {
-              // Calculate actual grid position considering previous items' column spans
-              let currentPosition = 0;
-              for (let i = 0; i < index; i++) {
-                currentPosition += itemData[i].cols;
-              }
-              currentPosition = currentPosition % 4;
+          {/* Products Grid - spans all 4 columns */}
+          <Box sx={{ gridColumn: "span 4" }}>
+            <ImageList
+              sx={{
+                gridTemplateColumns: "repeat(4, 1fr) !important",
+                maxWidth: "100%",
+                m: 0,
+                p: 0,
+                gap: 0,
+              }}
+              cols={4}
+              gap={0}
+            >
+              {itemData.map((item, index) => {
+                // Calculate actual grid position considering previous items' column spans
+                let currentPosition = 0;
+                for (let i = 0; i < index; i++) {
+                  currentPosition += itemData[i].cols;
+                }
+                currentPosition = currentPosition % 4;
 
-              // Check if item ends at right edge
-              const isRightEdge = currentPosition + item.cols === 4;
+                // Check if item ends at right edge
+                const isRightEdge = currentPosition + item.cols === 4;
 
-              return (
-                <ImageListItem
-                  key={item.img}
-                  sx={{
-                    overflow: "hidden",
-                    position: "relative",
-                    gridColumn: `span ${item.cols}`,
-                    aspectRatio: item.cols === 2 ? "2/1.2" : "1/1.2",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    borderRight: isRightEdge ? "none" : "1px solid #D0D0D0",
-                    borderBottom: "1px solid #D0D0D0",
-                    m: 0,
-                    p: 0,
-                  }}
-                >
-                  {item.tag && (
-                    <Box
-                      sx={{
-                        position: "absolute",
-                        top: 16,
-                        left: 16,
-                        bgcolor: "#e1d5c7",
-                        px: 2,
-                        py: 0.5,
-                        borderRadius: 1,
-                        zIndex: 1,
-                      }}
-                    >
-                      <Typography
-                        variant="caption"
-                        sx={{ fontWeight: 500, fontSize: "0.75rem" }}
-                      >
-                        {item.tag}
-                      </Typography>
-                    </Box>
-                  )}
-                  <img
-                    src={item.img}
-                    alt={item.title}
-                    loading="lazy"
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "contain",
-                      padding: "16px",
+                return (
+                  <ImageListItem
+                    key={item.img}
+                    sx={{
+                      overflow: "hidden",
+                      position: "relative",
+                      gridColumn: `span ${item.cols}`,
+                      aspectRatio: item.cols === 2 ? "2/1.2" : "1/1.2",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      borderRight: isRightEdge ? "none" : "1px solid #D0D0D0",
+                      borderBottom: "1px solid #D0D0D0",
+                      m: 0,
+                      p: 0,
                     }}
-                  />
-                </ImageListItem>
-              );
-            })}
-          </ImageList>
+                  >
+                    {item.tag && (
+                      <Box
+                        sx={{
+                          position: "absolute",
+                          top: 16,
+                          left: 16,
+                          bgcolor: "#e1d5c7",
+                          px: 2,
+                          py: 0.5,
+                          borderRadius: 1,
+                          zIndex: 1,
+                        }}
+                      >
+                        <Typography
+                          variant="caption"
+                          sx={{ fontWeight: 500, fontSize: "0.75rem" }}
+                        >
+                          {item.tag}
+                        </Typography>
+                      </Box>
+                    )}
+                    <img
+                      src={item.img}
+                      alt={item.title}
+                      loading="lazy"
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "contain",
+                        padding: "16px",
+                      }}
+                    />
+                  </ImageListItem>
+                );
+              })}
+            </ImageList>
+          </Box>
         </Box>
       </Container>
     </Box>
