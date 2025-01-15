@@ -79,26 +79,29 @@ const ProductsGrid = () => {
         {/* Header Section */}
         <Box
           sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
+            display: "grid",
+            gridTemplateColumns: "repeat(4, 1fr)", // Create 4 columns
+            width: "100%",
             mb: 4,
+            gap: 3,
           }}
         >
-          {/* Products Title */}
-          <Typography
-            variant="h1"
-            sx={{
-              fontSize: "6rem",
-              fontWeight: 500,
-              letterSpacing: "-0.02em",
-            }}
-          >
-            Products
-          </Typography>
+          {/* Products Title - spans 2 columns */}
+          <Box sx={{ gridColumn: "span 2" }}>
+            <Typography
+              variant="h1"
+              sx={{
+                fontSize: "6rem",
+                fontWeight: 500,
+                letterSpacing: "-0.02em",
+              }}
+            >
+              Products
+            </Typography>
+          </Box>
 
-          {/* Categories */}
-          <Box>
+          {/* Categories - spans 2 columns */}
+          <Box sx={{ gridColumn: "span 2" }}>
             <Typography
               variant="h6"
               sx={{
