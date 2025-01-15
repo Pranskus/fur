@@ -75,25 +75,30 @@ const ProductsGrid = () => {
 
   return (
     <Box sx={{ width: "100%", bgcolor: "#FFFFFF", py: 6 }}>
-      <Container maxWidth="lg">
+      <Container maxWidth="xxl">
         {/* Header Section */}
         <Box
           sx={{
             display: "grid",
             gridTemplateColumns: "repeat(4, 1fr)", // Create 4 columns
             width: "100%",
-            mb: 4,
-            gap: 3,
+            mb: 10,
           }}
         >
           {/* Products Title - spans 2 columns */}
-          <Box sx={{ gridColumn: "span 2" }}>
+          <Box
+            sx={{
+              gridColumn: "span 2",
+              borderTop: "1px solid #D0D0D0",
+              borderBottom: "1px solid #D0D0D0",
+            }}
+          >
             <Typography
               variant="h1"
               sx={{
-                fontSize: "6rem",
-                fontWeight: 500,
-                letterSpacing: "-0.02em",
+                fontSize: "7rem",
+                fontWeight: 600,
+                letterSpacing: "0.05em",
               }}
             >
               Products
@@ -101,7 +106,16 @@ const ProductsGrid = () => {
           </Box>
 
           {/* Categories - spans 2 columns */}
-          <Box sx={{ gridColumn: "span 2" }}>
+          <Box
+            sx={{
+              gridColumn: "span 2",
+              p: { xs: 2, md: 3 },
+              pb: { xs: 2, md: 3 },
+              borderTop: "1px solid #D0D0D0",
+              borderLeft: "1px solid #D0D0D0",
+              borderBottom: "1px solid #D0D0D0",
+            }}
+          >
             <Typography
               variant="h6"
               sx={{
@@ -112,26 +126,34 @@ const ProductsGrid = () => {
             >
               Find Your Dream Products with Ease!
             </Typography>
-            <Stack direction="row" spacing={2}>
+            <Stack
+              direction="row"
+              spacing={2}
+              sx={{
+                flexWrap: "nowrap",
+                overflowX: "auto",
+              }}
+            >
               {categories.map((category) => (
                 <Button
                   key={category}
                   sx={{
-                    bgcolor: category === "SEE ALL" ? "#E5E5E5" : "transparent",
+                    bgcolor: category === "See All" ? "#e1d5c7" : "#F5F5F5",
                     color: "#000",
-                    px: 2.5,
-                    py: 1.2,
+
                     borderRadius: 1,
-                    fontSize: "0.5rem", // Reduced font size
+                    fontSize: "0.6rem",
                     fontWeight: 400,
                     letterSpacing: "0.02em",
-                    textTransform: "uppercase",
+                    textTransform: "capitalize",
+                    whiteSpace: "nowrap",
+                    flex: "0 0 auto",
                     "&:hover": {
                       bgcolor: "#E5E5E5",
                     },
                   }}
                 >
-                  {category.toUpperCase()}
+                  {category}
                 </Button>
               ))}
             </Stack>

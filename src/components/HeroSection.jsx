@@ -149,7 +149,7 @@ const HeroSection = () => {
                         position: "absolute",
                         top: 16,
                         left: 16,
-                        bgcolor: "#E5E5E5",
+                        bgcolor: "#e1d5c7",
                         px: 2,
                         py: 0.5,
                         borderRadius: 1,
