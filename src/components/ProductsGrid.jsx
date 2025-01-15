@@ -106,8 +106,8 @@ const ProductsGrid = () => {
               variant="h6"
               sx={{
                 mb: 2,
-                fontSize: "1.5rem",
-                fontWeight: 500,
+                fontSize: "1.7rem",
+                fontWeight: 700,
               }}
             >
               Find Your Dream Products with Ease!
@@ -166,7 +166,7 @@ const ProductsGrid = () => {
                     zIndex: 1,
                   }}
                 >
-                  <Typography variant="caption" sx={{ fontWeight: 500 }}>
+                  <Typography variant="caption" sx={{ fontWeight: 700 }}>
                     {item.tag}
                   </Typography>
                 </Box>
