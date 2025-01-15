@@ -28,7 +28,7 @@ const ProductsGrid = () => {
     {
       img: "/images/P_accchair.jpg",
       title: "Accent Chair",
-      tag: "New",
+
       cols: 1, // Takes 2 columns
     },
     {
