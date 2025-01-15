@@ -165,6 +165,8 @@ const ProductsGrid = () => {
           sx={{
             gap: 3,
             gridTemplateColumns: "repeat(4, 1fr) !important",
+            mx: "auto",
+            maxWidth: "90%", // Contains the grid width
           }}
           cols={4}
         >
@@ -176,7 +178,11 @@ const ProductsGrid = () => {
                 borderRadius: "4px",
                 overflow: "hidden",
                 position: "relative",
-                gridColumn: `span ${item.cols}`, // Controls how many columns this item takes
+                gridColumn: `span ${item.cols}`,
+                aspectRatio: item.cols === 2 ? "2/1.2" : "1/1.2",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
               }}
             >
               {item.tag && (
@@ -203,8 +209,9 @@ const ProductsGrid = () => {
                 loading="lazy"
                 style={{
                   width: "100%",
-                  height: item.cols === 2 ? "600px" : "400px", // Taller height for 2-column items
-                  objectFit: "cover",
+                  height: "100%",
+                  objectFit: "contain",
+                  padding: "16px",
                 }}
               />
             </ImageListItem>
