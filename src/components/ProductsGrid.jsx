@@ -82,7 +82,6 @@ const ProductsGrid = () => {
             display: "grid",
             gridTemplateColumns: "repeat(4, 1fr)", // Create 4 columns
             width: "100%",
-            mb: 10,
           }}
         >
           {/* Products Title - spans 2 columns */}
@@ -141,7 +140,6 @@ const ProductsGrid = () => {
                     bgcolor: category === "See All" ? "#e1d5c7" : "#F5F5F5",
                     color: "#000",
 
-                    borderRadius: 1,
                     fontSize: "0.6rem",
                     fontWeight: 400,
                     letterSpacing: "0.02em",
@@ -161,62 +159,72 @@ const ProductsGrid = () => {
         </Box>
 
         {/* Products Grid */}
-        <ImageList
+        <Box
           sx={{
-            gap: 3,
-            gridTemplateColumns: "repeat(4, 1fr) !important",
-            mx: "auto",
-            maxWidth: "90%", // Contains the grid width
+            borderLeft: "1px solid #D0D0D0",
           }}
-          cols={4}
         >
-          {itemData.map((item) => (
-            <ImageListItem
-              key={item.img}
-              sx={{
-                bgcolor: "#F8F8F8",
-                borderRadius: "4px",
-                overflow: "hidden",
-                position: "relative",
-                gridColumn: `span ${item.cols}`,
-                aspectRatio: item.cols === 2 ? "2/1.2" : "1/1.2",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              {item.tag && (
-                <Box
-                  sx={{
-                    position: "absolute",
-                    top: 16,
-                    left: 16,
-                    bgcolor: "#E5E5E5",
-                    px: 2,
-                    py: 0.5,
-                    borderRadius: 1,
-                    zIndex: 1,
-                  }}
-                >
-                  <Typography variant="caption" sx={{ fontWeight: 700 }}>
-                    {item.tag}
-                  </Typography>
-                </Box>
-              )}
-              <img
-                src={item.img}
-                alt={item.title}
-                loading="lazy"
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "contain",
-                  padding: "16px",
+          <ImageList
+            sx={{
+              gridTemplateColumns: "repeat(4, 1fr) !important",
+              maxWidth: "100%",
+              m: 0,
+              p: 0,
+              gap: 0,
+            }}
+            cols={4}
+            gap={0}
+          >
+            {itemData.map((item) => (
+              <ImageListItem
+                key={item.img}
+                sx={{
+                  overflow: "hidden",
+                  position: "relative",
+                  gridColumn: `span ${item.cols}`,
+                  aspectRatio: item.cols === 2 ? "2/1.2" : "1/1.2",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  borderRight: "1px solid #D0D0D0", // Only keep right border
+                  borderBottom: "1px solid #D0D0D0",
+                  m: 0,
+                  p: 0,
                 }}
-              />
-            </ImageListItem>
-          ))}
-        </ImageList>
+              >
+                {item.tag && (
+                  <Box
+                    sx={{
+                      position: "absolute",
+                      top: 16,
+                      left: 16,
+                      bgcolor: "#e1d5c7",
+                      px: 2,
+                      py: 0.5,
+                      borderRadius: 1,
+                      zIndex: 1,
+                    }}
+                  >
+                    <Typography variant="caption" sx={{ fontWeight: 700 }}>
+                      {item.tag}
+                    </Typography>
+                  </Box>
+                )}
+                <img
+                  src={item.img}
+                  alt={item.title}
+                  loading="lazy"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "contain",
+                    padding: "16px",
+                  }}
+                />
+              </ImageListItem>
+            ))}
+          </ImageList>
+        </Box>
       </Container>
     </Box>
   );
