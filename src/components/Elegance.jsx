@@ -9,7 +9,7 @@ const Elegance = () => {
         my: { xs: 5, sm: 7, md: 10 },
       }}
     >
-      <Container maxWidth="lg">
+      <Container>
         <Grid container spacing={0}>
           {/* Left Image */}
           <Grid
@@ -22,7 +22,8 @@ const Elegance = () => {
               borderBottom: "1px solid #D0D0D0",
               height: { xs: "300px", sm: "600px", md: "800px" },
               overflow: "hidden",
-              px: { xs: 1, sm: 4, md: 6 },
+              pl: { xs: 2, sm: 2, md: 4 },
+              pr: { xs: 4, sm: 4, md: 7 },
             }}
           >
             <Box
@@ -33,15 +34,10 @@ const Elegance = () => {
                 width: "120%",
                 height: "100%",
                 display: "block",
-                p: { xs: 1, sm: 2, md: 3 },
+                p: { xs: 2, sm: 2, md: 3 },
                 objectFit: "cover",
                 objectPosition: { xs: "80% center", md: "65% center" },
                 marginLeft: "-10%",
-                clipPath: "polygon(15% 0, 100% 0, 100% 100%, 0 100%, 0 15%)",
-                transition: "transform 0.3s ease-in-out",
-                "&:hover": {
-                  transform: "scale(1.05)",
-                },
               }}
             />
           </Grid>
@@ -61,7 +57,7 @@ const Elegance = () => {
             {/* Text Content */}
             <Box
               sx={{
-                p: { xs: 1, sm: 2, md: 3 },
+                p: { xs: 2, sm: 2, md: 3 },
                 borderBottom: "1px solid #D0D0D0",
                 borderTop: "1px solid #D0D0D0",
                 height: { xs: "40%", md: "auto" },
@@ -86,9 +82,9 @@ const Elegance = () => {
             <Box
               sx={{
                 position: "relative",
-                p: { xs: 1, sm: 2, md: 3 },
+                p: { xs: 2, sm: 2, md: 3 },
                 height: { xs: "30%", md: "auto" },
-                display: { xs: "none", sm: "block" }, // Hide on very small screens
+                display: { xs: "none", sm: "block" },
               }}
             >
               <Typography
@@ -131,8 +127,11 @@ const Elegance = () => {
                 position: "relative",
                 height: { xs: "30%", sm: "350px", md: "420px" },
                 overflow: "hidden",
-                ml: { xs: 1, sm: 3 },
+                ml: { xs: 2, sm: 2, md: 3 },
                 flex: 1,
+                display: "flex",
+                alignItems: "flex-end",
+                mb: { xs: 2, sm: 2, md: 3 },
               }}
             >
               <Box
@@ -141,19 +140,13 @@ const Elegance = () => {
                 alt="Marble Table"
                 sx={{
                   position: "absolute",
-                  top: 0,
+                  bottom: 0,
                   left: 0,
                   width: "100%",
                   height: "100%",
                   display: "block",
                   objectFit: "cover",
                   objectPosition: { xs: "center 60%", md: "center 80%" },
-                  clipPath:
-                    "polygon(0 0, 100% 0, 100% 85%, 85% 100%, 0 100%, 0 0)",
-                  transition: "transform 0.3s ease-in-out",
-                  "&:hover": {
-                    transform: "scale(1.05)",
-                  },
                 }}
               />
             </Box>
