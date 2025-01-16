@@ -22,7 +22,7 @@ const Elegance = () => {
               borderBottom: "1px solid #D0D0D0",
               height: { xs: "300px", sm: "600px", md: "800px" },
               overflow: "hidden",
-              pl: { xs: 2, sm: 2, md: 4, lg: 4, xl: 7, xxl: 12 },
+
               pr: { xs: 2, sm: 3, md: 4, lg: 6, xl: 7, xxl: 12 },
             }}
           >
