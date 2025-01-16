@@ -22,6 +22,7 @@ const Footer = () => {
           fontWeight: 400,
           py: 6,
           borderBottom: "1px solid white",
+
           textAlign: "center",
           letterSpacing: "0.05em",
         }}
@@ -228,13 +229,13 @@ const Footer = () => {
       </Container>
 
       {/* Copyright */}
-      <Box sx={{ borderTop: "2px solid #333", py: 3 }}>
+      <Box sx={{ borderTop: "1px solid #F5F5F5", py: 3 }}>
         <Container maxWidth="xxl">
           <Typography
             variant="body2"
             sx={{ color: "#999", textAlign: "center" }}
           >
-            © 2024, luluandgeorgia All rights reserved.
+            pra-code
           </Typography>
         </Container>
       </Box>
