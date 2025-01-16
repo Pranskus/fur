@@ -6,8 +6,7 @@ const Elegance = () => {
       sx={{
         width: "100%",
         bgcolor: "#FFFFFF",
-        marginTop: 10,
-        marginBottom: 10,
+        my: { xs: 5, sm: 7, md: 10 },
       }}
     >
       <Container maxWidth="lg">
@@ -15,16 +14,15 @@ const Elegance = () => {
           {/* Left Image */}
           <Grid
             item
-            xs={12}
+            xs={6}
             md={6}
             sx={{
               borderRight: "1px solid #D0D0D0",
               borderTop: "1px solid #D0D0D0",
               borderBottom: "1px solid #D0D0D0",
-              height: "800px",
+              height: { xs: "300px", sm: "600px", md: "800px" },
               overflow: "hidden",
-              paddingRight: 6,
-              paddingLeft: 6,
+              px: { xs: 1, sm: 4, md: 6 },
             }}
           >
             <Box
@@ -35,11 +33,15 @@ const Elegance = () => {
                 width: "120%",
                 height: "100%",
                 display: "block",
-                p: 3,
+                p: { xs: 1, sm: 2, md: 3 },
                 objectFit: "cover",
-                objectPosition: "65% center",
+                objectPosition: { xs: "80% center", md: "65% center" },
                 marginLeft: "-10%",
-                clipPath: "polygon(15% 0, 100% 0, 100% 100%, 0 100%, 0 15%)", // Changed to left top corner
+                clipPath: "polygon(15% 0, 100% 0, 100% 100%, 0 100%, 0 15%)",
+                transition: "transform 0.3s ease-in-out",
+                "&:hover": {
+                  transform: "scale(1.05)",
+                },
               }}
             />
           </Grid>
@@ -47,28 +49,31 @@ const Elegance = () => {
           {/* Right Content */}
           <Grid
             item
-            xs={12}
+            xs={6}
             md={6}
             sx={{
               borderBottom: "1px solid #D0D0D0",
+              display: "flex",
+              flexDirection: "column",
+              height: { xs: "300px", sm: "600px", md: "800px" },
             }}
           >
             {/* Text Content */}
             <Box
               sx={{
-                p: { xs: 2, md: 3 },
-                pb: { xs: 2, md: 3 },
+                p: { xs: 1, sm: 2, md: 3 },
                 borderBottom: "1px solid #D0D0D0",
                 borderTop: "1px solid #D0D0D0",
+                height: { xs: "40%", md: "auto" },
               }}
             >
               <Typography
                 variant="h2"
                 sx={{
-                  fontSize: { xs: "3rem", md: "5rem" },
+                  fontSize: { xs: "1.5rem", sm: "3.5rem", md: "5rem" },
                   fontWeight: 500,
                   lineHeight: 1,
-                  letterSpacing: "0.1em",
+                  letterSpacing: { xs: "0.05em", md: "0.1em" },
                 }}
               >
                 Timeless
@@ -81,15 +86,17 @@ const Elegance = () => {
             <Box
               sx={{
                 position: "relative",
-                p: { xs: 2, md: 3 },
+                p: { xs: 1, sm: 2, md: 3 },
+                height: { xs: "30%", md: "auto" },
+                display: { xs: "none", sm: "block" }, // Hide on very small screens
               }}
             >
               <Typography
                 sx={{
-                  fontSize: "0.7rem",
+                  fontSize: { xs: "0.65rem", sm: "0.7rem" },
                   lineHeight: 1.6,
                   color: "text.secondary",
-                  maxWidth: "80%",
+                  maxWidth: { xs: "95%", sm: "90%", md: "80%" },
                 }}
               >
                 Fashion Designer and Creative Director Carly Cushnie has entered
@@ -100,14 +107,18 @@ const Elegance = () => {
                 with unique materials, and textures.
               </Typography>
 
-              {/* Arrow icon in the corner */}
               <Box
                 sx={{
                   position: "absolute",
-                  right: 32,
-                  bottom: 32,
+                  right: { xs: 8, sm: 24, md: 32 },
+                  bottom: { xs: 8, sm: 24, md: 32 },
                   transform: "rotate(-45deg)",
-                  fontSize: "1.5rem",
+                  fontSize: { xs: "1rem", sm: "1.35rem", md: "1.5rem" },
+                  cursor: "pointer",
+                  transition: "transform 0.3s ease",
+                  "&:hover": {
+                    transform: "rotate(-45deg) scale(1.2)",
+                  },
                 }}
               >
                 ↗
@@ -118,9 +129,10 @@ const Elegance = () => {
             <Box
               sx={{
                 position: "relative",
-                height: "420px", // Adjust this value as needed
+                height: { xs: "30%", sm: "350px", md: "420px" },
                 overflow: "hidden",
-                ml: 3,
+                ml: { xs: 1, sm: 3 },
+                flex: 1,
               }}
             >
               <Box
@@ -135,9 +147,13 @@ const Elegance = () => {
                   height: "100%",
                   display: "block",
                   objectFit: "cover",
-                  objectPosition: "center 80%",
+                  objectPosition: { xs: "center 60%", md: "center 80%" },
                   clipPath:
-                    "polygon(0 0, 100% 0, 100% 85%, 85% 100%, 0 100%, 0 0)", // Added right bottom corner cut
+                    "polygon(0 0, 100% 0, 100% 85%, 85% 100%, 0 100%, 0 0)",
+                  transition: "transform 0.3s ease-in-out",
+                  "&:hover": {
+                    transform: "scale(1.05)",
+                  },
                 }}
               />
             </Box>

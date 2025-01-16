@@ -5,11 +5,30 @@ import {
   Button,
   IconButton,
   Container,
+  Drawer,
+  List,
+  ListItem,
+  ListItemText,
 } from "@mui/material";
 import PhoneIcon from "@mui/icons-material/Phone";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import MenuIcon from "@mui/icons-material/Menu";
+import { useState } from "react";
 
 const Navbar = () => {
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
+
+  const menuItems = [
+    "About Us",
+    "Our Collections",
+    "Design Inspiration",
+    "Our Projects",
+  ];
+
   return (
     <AppBar
       position="static"
@@ -17,23 +36,30 @@ const Navbar = () => {
       elevation={0}
       sx={{
         borderBottom: "1px solid #D0D0D0",
-        py: "0.5rem",
+        py: { xs: "0.25rem", md: "0.5rem" },
       }}
     >
       <Container maxWidth="lg">
         <Toolbar
           sx={{
             justifyContent: "space-between",
-            minHeight: "4rem",
-            maxHeight: "4rem",
+            minHeight: { xs: "3rem", md: "4rem" },
+            maxHeight: { xs: "3rem", md: "4rem" },
+            px: { xs: 1, md: 2 },
           }}
         >
           <Box sx={{ display: "flex", alignItems: "center" }}>
-            <Box sx={{ mr: "1rem", display: "flex", alignItems: "center" }}>
+            <Box
+              sx={{
+                mr: { xs: "0.5rem", md: "1rem" },
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
               <Box
                 component="span"
                 sx={{
-                  fontSize: "1.125rem",
+                  fontSize: { xs: "1rem", md: "1.125rem" },
                   fontWeight: 500,
                   fontFamily: "'Inter', sans-serif",
                   letterSpacing: "-0.02em",
@@ -44,59 +70,87 @@ const Navbar = () => {
             </Box>
           </Box>
 
-          <Box sx={{ display: "flex", gap: "2vw" }}>
-            <Button
-              color="inherit"
-              sx={{
-                textTransform: "none",
-                fontSize: "clamp(14px, 1vw, 18px)",
-                padding: "0.5vw 1vw",
-              }}
-            >
-              About Us
-            </Button>
-            <Button
-              color="inherit"
-              sx={{
-                textTransform: "none",
-                fontSize: "clamp(14px, 1vw, 18px)",
-                padding: "0.5vw 1vw",
-              }}
-            >
-              Our Collections
-            </Button>
-            <Button
-              color="inherit"
-              sx={{
-                textTransform: "none",
-                fontSize: "clamp(14px, 1vw, 18px)",
-                padding: "0.5vw 1vw",
-              }}
-            >
-              Design Inspiration
-            </Button>
-            <Button
-              color="inherit"
-              sx={{
-                textTransform: "none",
-                fontSize: "clamp(14px, 1vw, 18px)",
-                padding: "0.5vw 1vw",
-              }}
-            >
-              Our Projects
-            </Button>
+          {/* Desktop Menu */}
+          <Box sx={{ display: { xs: "none", md: "flex" }, gap: "2vw" }}>
+            {menuItems.map((item) => (
+              <Button
+                key={item}
+                color="inherit"
+                sx={{
+                  textTransform: "none",
+                  fontSize: "clamp(14px, 1vw, 18px)",
+                  padding: "0.5vw 1vw",
+                }}
+              >
+                {item}
+              </Button>
+            ))}
           </Box>
 
-          <Box sx={{ display: "flex", gap: "1vw" }}>
-            <IconButton sx={{ padding: "0.8vw" }}>
-              <PhoneIcon sx={{ fontSize: "clamp(20px, 1.4vw, 28px)" }} />
+          {/* Mobile Menu Button */}
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            edge="start"
+            onClick={handleDrawerToggle}
+            sx={{ display: { md: "none" } }}
+          >
+            <MenuIcon />
+          </IconButton>
+
+          {/* Icons */}
+          <Box sx={{ display: "flex", gap: { xs: "0.5vw", md: "1vw" } }}>
+            <IconButton sx={{ padding: { xs: "0.4vw", md: "0.8vw" } }}>
+              <PhoneIcon
+                sx={{
+                  fontSize: { xs: "1.2rem", md: "clamp(20px, 1.4vw, 28px)" },
+                }}
+              />
             </IconButton>
-            <IconButton sx={{ padding: "0.8vw" }}>
-              <ShoppingCartIcon sx={{ fontSize: "clamp(20px, 1.4vw, 28px)" }} />
+            <IconButton sx={{ padding: { xs: "0.4vw", md: "0.8vw" } }}>
+              <ShoppingCartIcon
+                sx={{
+                  fontSize: { xs: "1.2rem", md: "clamp(20px, 1.4vw, 28px)" },
+                }}
+              />
             </IconButton>
           </Box>
         </Toolbar>
       </Container>
+
+      {/* Mobile Drawer */}
+      <Drawer
+        variant="temporary"
+        anchor="right"
+        open={mobileOpen}
+        onClose={handleDrawerToggle}
+        ModalProps={{
+          keepMounted: true, // Better mobile performance
+        }}
+        sx={{
+          display: { xs: "block", md: "none" },
+          "& .MuiDrawer-paper": {
+            boxSizing: "border-box",
+            width: 240,
+          },
+        }}
+      >
+        <List>
+          {menuItems.map((item) => (
+            <ListItem button key={item} onClick={handleDrawerToggle}>
+              <ListItemText
+                primary={item}
+                sx={{
+                  "& .MuiTypography-root": {
+                    fontSize: "1rem",
+                    fontWeight: 500,
+                  },
+                }}
+              />
+            </ListItem>
+          ))}
+        </List>
+      </Drawer>
     </AppBar>
   );
 };

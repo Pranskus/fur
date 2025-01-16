@@ -7,23 +7,24 @@ const HeroSection = () => {
       <Box
         sx={{
           display: "flex",
+          flexDirection: { xs: "column", md: "row" },
           justifyContent: "space-between",
-          alignItems: "center",
-          py: 4,
+          alignItems: { xs: "flex-start", md: "center" },
+          py: { xs: 2, sm: 3, md: 4 },
           px: { xs: 2, md: 4, lg: 6 },
           width: "100%",
-          columnGap: {
-            xs: "2rem",
-            "@media (min-width: 1400px)": {
-              columnGap: "32px !important",
-            },
-          },
+          gap: { xs: 3, md: 2 },
         }}
       >
         <Typography
           variant="h1"
           sx={{
-            fontSize: "11.25rem",
+            fontSize: {
+              xs: "4rem",
+              sm: "6rem",
+              md: "8rem",
+              lg: "11.25rem",
+            },
             fontWeight: 700,
             letterSpacing: "-0.02em",
             lineHeight: 1,
@@ -37,7 +38,7 @@ const HeroSection = () => {
           src="/images/buy-barcelona-chair-vintage.jpg"
           alt="White Chair"
           sx={{
-            width: "18.75rem",
+            width: { xs: "100%", sm: "80%", md: "18.75rem" },
             height: "auto",
             objectFit: "contain",
             flex: "0 0 auto",
@@ -51,7 +52,7 @@ const HeroSection = () => {
 
       {/* Timeless Section */}
       <Container maxWidth="lg">
-        <Box sx={{ py: 4 }}>
+        <Box sx={{ py: { xs: 2, sm: 3, md: 4 } }}>
           <Grid container>
             {/* Left Half - Split into two rows */}
             <Grid
@@ -59,21 +60,22 @@ const HeroSection = () => {
               xs={12}
               md={6}
               sx={{
-                borderRight: "1px solid #D0D0D0",
+                borderRight: { xs: "none", md: "1px solid #D0D0D0" },
                 borderTop: "1px solid #D0D0D0",
               }}
             >
               <Grid container>
                 {/* Top Row - Green Chair with Text */}
                 <Grid item xs={12} sx={{ borderBottom: "1px solid #D0D0D0" }}>
-                  <Box sx={{ py: 3, px: { xs: 2, md: 4, lg: 6 } }}>
-                    {" "}
-                    {/* Matching padding */}
+                  <Box
+                    sx={{ py: { xs: 2, md: 3 }, px: { xs: 2, md: 4, lg: 6 } }}
+                  >
                     <Typography
                       variant="body1"
                       sx={{
                         color: "#333",
                         maxWidth: "450px",
+                        fontSize: { xs: "0.875rem", sm: "1rem" },
                       }}
                     >
                       At Lulu and Georgia, we blend heritage with innovation to
@@ -84,9 +86,9 @@ const HeroSection = () => {
                   <Box
                     sx={{
                       display: "flex",
+                      flexDirection: { xs: "column", sm: "row" },
                       gap: 3,
-
-                      p: 3,
+                      p: { xs: 2, sm: 3 },
                     }}
                   >
                     <Box
@@ -94,7 +96,7 @@ const HeroSection = () => {
                       src="/images/findlay-accent-armchair-speckled-stone-sustainable-boucle-p45580-2879795_image.jpg"
                       alt="Green Chair"
                       sx={{
-                        width: "50%",
+                        width: { xs: "100%", sm: "50%" },
                         height: "auto",
                         transition: "transform 0.3s ease-in-out",
                         "&:hover": {
@@ -102,13 +104,13 @@ const HeroSection = () => {
                         },
                       }}
                     />
-                    <Box sx={{ width: "50%" }}>
+                    <Box sx={{ width: { xs: "100%", sm: "50%" } }}>
                       <Typography
                         variant="h6"
                         sx={{
                           mb: 2,
                           fontWeight: 500,
-                          fontSize: "1.1rem",
+                          fontSize: { xs: "1rem", sm: "1.1rem" },
                         }}
                       >
                         Carly Cushnie X Lulu And Georgia
@@ -119,6 +121,7 @@ const HeroSection = () => {
                           color: "text.secondary",
                           mb: 2,
                           lineHeight: 1.6,
+                          fontSize: { xs: "0.875rem", sm: "1rem" },
                         }}
                       >
                         Fashion Designer and Creative Director Carly Cushnie has
@@ -133,7 +136,7 @@ const HeroSection = () => {
                           color: "inherit",
                           display: "inline-flex",
                           alignItems: "center",
-                          fontSize: "0.875rem",
+                          fontSize: { xs: "0.8rem", sm: "0.875rem" },
                           "&:hover": {
                             opacity: 0.8,
                           },
@@ -149,7 +152,10 @@ const HeroSection = () => {
                 <Grid
                   item
                   xs={12}
-                  sx={{ p: 3, borderBottom: "1px solid #D0D0D0" }}
+                  sx={{
+                    p: { xs: 2, sm: 3 },
+                    borderBottom: "1px solid #D0D0D0",
+                  }}
                 >
                   <Box sx={{ position: "relative", overflow: "hidden" }}>
                     <Box
@@ -198,9 +204,10 @@ const HeroSection = () => {
               xs={12}
               md={6}
               sx={{
-                p: 3,
+                p: { xs: 2, sm: 3 },
                 borderBottom: "1px solid #D0D0D0",
-                borderTop: "1px solid #D0D0D0",
+                borderTop: { xs: "none", md: "1px solid #D0D0D0" },
+                minHeight: { xs: "300px", sm: "400px", md: "auto" },
               }}
             >
               <Box

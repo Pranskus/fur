@@ -18,11 +18,15 @@ const Footer = () => {
       <Typography
         variant="h1"
         sx={{
-          fontSize: "9rem",
+          fontSize: {
+            xs: "3rem",
+            sm: "5rem",
+            md: "7rem",
+            lg: "9rem",
+          },
           fontWeight: 400,
-          py: 6,
+          py: { xs: 3, sm: 4, md: 6 },
           borderBottom: "1px solid white",
-
           textAlign: "center",
           letterSpacing: "0.05em",
         }}
@@ -36,7 +40,7 @@ const Footer = () => {
           <Grid
             container
             sx={{
-              py: 6,
+              py: { xs: 3, sm: 4, md: 6 },
               "& .MuiGrid-item": {
                 position: "relative",
                 "&:not(:last-child)::after": {
@@ -47,13 +51,38 @@ const Footer = () => {
                   bottom: 0,
                   width: "1px",
                   backgroundColor: "white",
+                  display: { xs: "none", md: "block" },
                 },
               },
             }}
           >
-            <Grid item xs={12} md={4} sx={{ px: 4 }}>
-              <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
-                <InventoryOutlinedIcon sx={{ fontSize: 80 }} />
+            <Grid
+              item
+              xs={12}
+              md={4}
+              sx={{
+                px: { xs: 2, sm: 3, md: 4 },
+                py: { xs: 3, md: 0 },
+                borderBottom: { xs: "1px solid white", md: "none" },
+                "&:last-child": {
+                  borderBottom: "none",
+                },
+              }}
+            >
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 2,
+                  alignItems: { xs: "center", md: "flex-start" },
+                  textAlign: { xs: "center", md: "left" },
+                }}
+              >
+                <InventoryOutlinedIcon
+                  sx={{
+                    fontSize: { xs: 60, sm: 70, md: 80 },
+                  }}
+                />
                 <Typography variant="h6" sx={{ fontSize: "1.5rem", mb: 2 }}>
                   Shipping
                 </Typography>
@@ -68,8 +97,28 @@ const Footer = () => {
               </Box>
             </Grid>
 
-            <Grid item xs={12} md={4} sx={{ px: 4 }}>
-              <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+            <Grid
+              item
+              xs={12}
+              md={4}
+              sx={{
+                px: { xs: 2, sm: 3, md: 4 },
+                py: { xs: 3, md: 0 },
+                borderBottom: { xs: "1px solid white", md: "none" },
+                "&:last-child": {
+                  borderBottom: "none",
+                },
+              }}
+            >
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 2,
+                  alignItems: { xs: "center", md: "flex-start" },
+                  textAlign: { xs: "center", md: "left" },
+                }}
+              >
                 <LocalShippingOutlinedIcon
                   sx={{ fontSize: 80, color: "#F5F5F5" }}
                 />
@@ -87,8 +136,28 @@ const Footer = () => {
               </Box>
             </Grid>
 
-            <Grid item xs={12} md={4} sx={{ px: 4 }}>
-              <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+            <Grid
+              item
+              xs={12}
+              md={4}
+              sx={{
+                px: { xs: 2, sm: 3, md: 4 },
+                py: { xs: 3, md: 0 },
+                borderBottom: { xs: "1px solid white", md: "none" },
+                "&:last-child": {
+                  borderBottom: "none",
+                },
+              }}
+            >
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 2,
+                  alignItems: { xs: "center", md: "flex-start" },
+                  textAlign: { xs: "center", md: "left" },
+                }}
+              >
                 <AssignmentReturnOutlinedIcon sx={{ fontSize: 80 }} />
                 <Typography variant="h6" sx={{ fontSize: "1.5rem", mb: 2 }}>
                   Returns
@@ -112,9 +181,8 @@ const Footer = () => {
         <Grid
           container
           sx={{
-            py: 6,
-            pl: 4,
-            pr: 4,
+            py: { xs: 3, sm: 4, md: 6 },
+            px: { xs: 2, sm: 3, md: 4 },
             "& .MuiGrid-item": {
               position: "relative",
               "&:not(:last-child)::after": {
@@ -124,15 +192,37 @@ const Footer = () => {
                 right: 0,
                 bottom: 0,
                 width: "1px",
+                display: { xs: "none", md: "block" },
               },
             },
           }}
         >
-          <Grid item xs={12} md={3}>
-            <Typography variant="h6" sx={{ mb: 3, fontSize: "1.2rem" }}>
+          <Grid
+            item
+            xs={12}
+            md={3}
+            sx={{
+              mb: { xs: 4, md: 0 },
+              textAlign: { xs: "center", md: "left" },
+            }}
+          >
+            <Typography
+              variant="h6"
+              sx={{
+                mb: 3,
+                fontSize: { xs: "1rem", sm: "1.1rem", md: "1.2rem" },
+              }}
+            >
               Social Media
             </Typography>
-            <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                gap: 2,
+                alignItems: { xs: "center", md: "flex-start" },
+              }}
+            >
               <Typography variant="body2" sx={{ color: "#999" }}>
                 Facebook
               </Typography>
@@ -148,11 +238,32 @@ const Footer = () => {
             </Box>
           </Grid>
 
-          <Grid item xs={12} md={3}>
-            <Typography variant="h6" sx={{ mb: 3, fontSize: "1.2rem" }}>
+          <Grid
+            item
+            xs={12}
+            md={3}
+            sx={{
+              mb: { xs: 4, md: 0 },
+              textAlign: { xs: "center", md: "left" },
+            }}
+          >
+            <Typography
+              variant="h6"
+              sx={{
+                mb: 3,
+                fontSize: { xs: "1rem", sm: "1.1rem", md: "1.2rem" },
+              }}
+            >
               Customer Support
             </Typography>
-            <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                gap: 2,
+                alignItems: { xs: "center", md: "flex-start" },
+              }}
+            >
               <Typography variant="body2" sx={{ color: "#999" }}>
                 Top Questions
               </Typography>
@@ -168,11 +279,32 @@ const Footer = () => {
             </Box>
           </Grid>
 
-          <Grid item xs={12} md={3}>
-            <Typography variant="h6" sx={{ mb: 3, fontSize: "1.2rem" }}>
+          <Grid
+            item
+            xs={12}
+            md={3}
+            sx={{
+              mb: { xs: 4, md: 0 },
+              textAlign: { xs: "center", md: "left" },
+            }}
+          >
+            <Typography
+              variant="h6"
+              sx={{
+                mb: 3,
+                fontSize: { xs: "1rem", sm: "1.1rem", md: "1.2rem" },
+              }}
+            >
               The Company
             </Typography>
-            <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                gap: 2,
+                alignItems: { xs: "center", md: "flex-start" },
+              }}
+            >
               <Typography variant="body2" sx={{ color: "#999" }}>
                 Careers
               </Typography>
@@ -188,14 +320,41 @@ const Footer = () => {
             </Box>
           </Grid>
 
-          <Grid item xs={12} md={3}>
-            <Typography variant="h6" sx={{ mb: 3, fontSize: "1.2rem" }}>
+          <Grid
+            item
+            xs={12}
+            md={3}
+            sx={{
+              textAlign: { xs: "center", md: "left" },
+            }}
+          >
+            <Typography
+              variant="h6"
+              sx={{
+                mb: 3,
+                fontSize: { xs: "1rem", sm: "1.1rem", md: "1.2rem" },
+              }}
+            >
               Subscribe To Us!
             </Typography>
-            <Typography variant="body2" sx={{ color: "#999", mb: 3 }}>
+            <Typography
+              variant="body2"
+              sx={{
+                color: "#999",
+                mb: 3,
+                maxWidth: { xs: "300px", md: "none" },
+                mx: { xs: "auto", md: 0 },
+              }}
+            >
               Sign Up For Our Email List And Receive 10% Off Your First Order.
             </Typography>
-            <Box sx={{ position: "relative" }}>
+            <Box
+              sx={{
+                position: "relative",
+                maxWidth: { xs: "300px", md: "none" },
+                mx: { xs: "auto", md: 0 },
+              }}
+            >
               <TextField
                 fullWidth
                 variant="standard"
@@ -229,7 +388,12 @@ const Footer = () => {
       </Container>
 
       {/* Copyright */}
-      <Box sx={{ borderTop: "1px solid #F5F5F5", py: 3 }}>
+      <Box
+        sx={{
+          borderTop: "1px solid #F5F5F5",
+          py: { xs: 2, md: 3 },
+        }}
+      >
         <Container maxWidth="xxl">
           <Typography
             variant="body2"
