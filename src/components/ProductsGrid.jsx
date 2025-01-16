@@ -92,6 +92,8 @@ const ProductsGrid = () => {
             width: "100%",
             borderTop: "1px solid #D0D0D0",
             borderBottom: "1px solid #D0D0D0",
+            borderLeft: { xs: "1px solid #D0D0D0", md: "none" },
+            borderRight: { xs: "1px solid #D0D0D0", md: "none" },
           }}
         >
           {/* Products Title */}
