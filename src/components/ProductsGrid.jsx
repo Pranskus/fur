@@ -80,9 +80,9 @@ const ProductsGrid = () => {
         sx={{
           display: "flex",
           justifyContent: "center",
-          maxWidth: "1800px !important", // Force max-width on container
-          mx: "auto", // Auto margins for centering
-          px: { xs: 2, md: 2 }, // Responsive padding
+          maxWidth: "1800px !important",
+          mx: "auto",
+          px: { xs: 2, md: 2 },
         }}
       >
         <Box
@@ -105,9 +105,11 @@ const ProductsGrid = () => {
             <Typography
               variant="h1"
               sx={{
-                fontSize: "7rem",
+                fontSize: { xs: "3.5rem", sm: "5rem", md: "7rem" },
                 fontWeight: 600,
                 letterSpacing: "0.05em",
+                textAlign: { xs: "center", md: "left" },
+                py: { xs: 2, md: 0 },
               }}
             >
               Products
@@ -119,7 +121,6 @@ const ProductsGrid = () => {
             sx={{
               gridColumn: "span 2",
               p: { xs: 2, md: 3 },
-              pb: { xs: 2, md: 3 },
               borderBottom: "1px solid #D0D0D0",
             }}
           >
@@ -127,8 +128,9 @@ const ProductsGrid = () => {
               variant="h6"
               sx={{
                 mb: 2,
-                fontSize: "1.7rem",
+                fontSize: { xs: "1.2rem", sm: "1.5rem", md: "1.7rem" },
                 fontWeight: 700,
+                textAlign: { xs: "center", md: "left" },
               }}
             >
               Find Your Dream Products with Ease!
@@ -139,6 +141,7 @@ const ProductsGrid = () => {
               sx={{
                 flexWrap: "nowrap",
                 overflowX: "auto",
+                justifyContent: { xs: "center", md: "flex-start" },
               }}
             >
               {categories.map((category) => (
@@ -147,7 +150,7 @@ const ProductsGrid = () => {
                   sx={{
                     bgcolor: category === "See All" ? "#e1d5c7" : "#F5F5F5",
                     color: "#000",
-                    fontSize: "0.6rem",
+                    fontSize: { xs: "0.5rem", sm: "0.6rem" },
                     fontWeight: 400,
                     letterSpacing: "0.02em",
                     textTransform: "capitalize",
@@ -164,11 +167,120 @@ const ProductsGrid = () => {
             </Stack>
           </Box>
 
-          {/* Products Grid */}
+          {/* Mobile Products Grid */}
           <Box
             sx={{
               gridColumn: "span 4",
               position: "relative",
+              display: { xs: "block", md: "none" }, // Mobile grid
+            }}
+          >
+            <ImageList
+              sx={{
+                width: "100%",
+                m: 0,
+                p: 0,
+                gap: 0,
+                display: "grid",
+                gridTemplateColumns: "repeat(2, 1fr)",
+              }}
+              variant="quilted"
+              cols={2}
+              gap={0}
+            >
+              {(() => {
+                // First separate chairs and sofas
+                const chairs = itemData.filter((item) => item.cols === 1);
+                const sofas = itemData.filter((item) => item.cols === 2);
+
+                // Create groups of 2 chairs + 1 sofa
+                const groupedItems = [];
+                let chairIndex = 0;
+                let sofaIndex = 0;
+
+                while (chairIndex < chairs.length || sofaIndex < sofas.length) {
+                  // Add 2 chairs if available
+                  if (chairIndex < chairs.length) {
+                    groupedItems.push(chairs[chairIndex]);
+                    chairIndex++;
+                  }
+                  if (chairIndex < chairs.length) {
+                    groupedItems.push(chairs[chairIndex]);
+                    chairIndex++;
+                  }
+                  // Add 1 sofa if available
+                  if (sofaIndex < sofas.length) {
+                    groupedItems.push(sofas[sofaIndex]);
+                    sofaIndex++;
+                  }
+                }
+
+                return groupedItems.map((item) => (
+                  <ImageListItem
+                    key={item.img}
+                    cols={item.cols === 2 ? 2 : 1}
+                    sx={{
+                      overflow: "hidden",
+                      position: "relative",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      borderBottom: "1px solid #D0D0D0",
+                      borderRight: "1px solid #D0D0D0",
+                      m: 0,
+                      p: 0,
+                      aspectRatio: item.cols === 2 ? "2/1.2" : "1/1.2",
+                      cursor: "pointer",
+                      "&:hover img": {
+                        transform: "scale(1.05) translateY(-5px)",
+                      },
+                    }}
+                  >
+                    {item.tag && (
+                      <Box
+                        sx={{
+                          position: "absolute",
+                          top: 16,
+                          left: 16,
+                          bgcolor: "#e1d5c7",
+                          px: 2,
+                          py: 0.5,
+                          borderRadius: 1,
+                          zIndex: 1,
+                        }}
+                      >
+                        <Typography
+                          variant="caption"
+                          sx={{ fontWeight: 500, fontSize: "0.75rem" }}
+                        >
+                          {item.tag}
+                        </Typography>
+                      </Box>
+                    )}
+                    <img
+                      src={item.img}
+                      alt={item.title}
+                      loading="lazy"
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "contain",
+                        padding: "16px",
+                        transition: "all 0.3s ease-in-out",
+                      }}
+                    />
+                  </ImageListItem>
+                ));
+              })()}
+            </ImageList>
+          </Box>
+
+          {/* Desktop Products Grid - Preserved exactly as is */}
+          <Box
+            sx={{
+              gridColumn: "span 4",
+              position: "relative",
+              display: { xs: "none", md: "block" }, // Only show on desktop
             }}
           >
             <ImageList
