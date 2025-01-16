@@ -88,10 +88,7 @@ const ProductsGrid = () => {
         <Box
           sx={{
             display: "grid",
-            gridTemplateColumns: {
-              xs: "repeat(1, 1fr)", // Single column on mobile
-              md: "repeat(4, 1fr)", // 4 columns on desktop
-            },
+            gridTemplateColumns: "repeat(4, 1fr)",
             width: "100%",
             borderTop: "1px solid #D0D0D0",
             borderBottom: "1px solid #D0D0D0",
@@ -100,10 +97,7 @@ const ProductsGrid = () => {
           {/* Products Title */}
           <Box
             sx={{
-              gridColumn: {
-                xs: "1 / -1", // Full width on mobile
-                md: "span 2", // 2 columns on desktop
-              },
+              gridColumn: { xs: "span 4", md: "span 2" },
               borderRight: { xs: "none", md: "1px solid #D0D0D0" },
               borderBottom: "1px solid #D0D0D0",
             }}
@@ -114,7 +108,7 @@ const ProductsGrid = () => {
                 fontSize: { xs: "3.5rem", sm: "5rem", md: "7rem" },
                 fontWeight: 600,
                 letterSpacing: "0.05em",
-                textAlign: { xs: "center", md: "left" },
+                textAlign: "center",
                 py: { xs: 2, md: 0 },
               }}
             >
@@ -125,31 +119,27 @@ const ProductsGrid = () => {
           {/* Categories */}
           <Box
             sx={{
-              gridColumn: {
-                xs: "1 / -1", // Full width on mobile
-                md: "span 2", // 2 columns on desktop
-              },
-              p: { xs: 2, md: 3 },
+              gridColumn: { xs: "span 4", md: "span 2" },
+              p: { xs: 1.5, sm: 2, md: 3 },
               borderBottom: "1px solid #D0D0D0",
             }}
           >
             <Typography
               variant="h6"
               sx={{
-                mb: 2,
-                fontSize: { xs: "1.2rem", sm: "1.5rem", md: "1.7rem" },
+                mb: { xs: 1, sm: 1.5, md: 2 },
+                fontSize: { xs: "1rem", sm: "1.2rem", md: "1.7rem" },
                 fontWeight: 700,
                 textAlign: { xs: "center", md: "left" },
               }}
             >
               Find Your Dream Products with Ease!
             </Typography>
-            <Stack
-              direction="row"
-              spacing={2}
+            <Box
               sx={{
-                flexWrap: "nowrap",
-                overflowX: "auto",
+                display: "flex",
+                flexWrap: "wrap", // Allow wrapping
+                gap: { xs: 1, sm: 1.5, md: 2 }, // Gap between buttons
                 justifyContent: { xs: "center", md: "flex-start" },
               }}
             >
@@ -159,12 +149,13 @@ const ProductsGrid = () => {
                   sx={{
                     bgcolor: category === "See All" ? "#e1d5c7" : "#F5F5F5",
                     color: "#000",
-                    fontSize: { xs: "0.5rem", sm: "0.6rem" },
+                    fontSize: { xs: "0.7rem", sm: "0.8rem", md: "0.9rem" },
+                    py: { xs: 0.5, md: 1 },
+                    px: { xs: 1.5, md: 2 },
                     fontWeight: 400,
                     letterSpacing: "0.02em",
                     textTransform: "capitalize",
                     whiteSpace: "nowrap",
-                    flex: "0 0 auto",
                     "&:hover": {
                       bgcolor: "#E5E5E5",
                     },
@@ -173,7 +164,7 @@ const ProductsGrid = () => {
                   {category}
                 </Button>
               ))}
-            </Stack>
+            </Box>
           </Box>
 
           {/* Mobile Products Grid */}

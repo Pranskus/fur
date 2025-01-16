@@ -18,14 +18,18 @@ const ShopByRoom = () => {
   ];
 
   return (
-    <Box sx={{ py: 12 }}>
+    <Box
+      sx={{
+        py: { xs: 6, md: 12 },
+      }}
+    >
       <Typography
         variant="h3"
         sx={{
           mb: 0,
           pb: 2,
           pt: 2,
-          fontSize: "4rem",
+          fontSize: { xs: "2.5rem", sm: "3rem", md: "4rem" },
           fontWeight: 600,
           borderTop: "1px solid #D0D0D0",
           borderBottom: "1px solid #D0D0D0",
@@ -41,7 +45,7 @@ const ShopByRoom = () => {
               borderBottom: 1,
               borderColor: "#D0D0D0",
               py: 2,
-              pl: 10,
+              pl: { xs: 2, sm: 4, md: 10 },
               cursor: "pointer",
               transition: "all 0.3s ease-in-out",
               "&:hover": {
@@ -67,12 +71,13 @@ const ShopByRoom = () => {
                     display: "flex",
                     justifyContent: "space-between",
                     alignItems: "center",
+                    width: "100%",
                   }}
                 >
                   <Typography
                     className="room-name"
                     sx={{
-                      fontSize: "1.25rem",
+                      fontSize: { xs: "1rem", sm: "1.125rem", md: "1.25rem" },
                       fontWeight: 500,
                       color: "#333",
                       transition: "all 0.3s ease-in-out",
