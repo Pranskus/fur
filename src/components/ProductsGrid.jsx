@@ -9,14 +9,7 @@ import {
 } from "@mui/material";
 
 const ProductsGrid = () => {
-  const categories = [
-    "See All",
-    "Sofas",
-    "Sets",
-    "Accent Chairs",
-    "Sectional Sofas",
-    "Desk Chairs",
-  ];
+  const categories = ["See All", "Sofas", "Accent Chairs", "Desk Chairs"];
 
   const itemData = [
     {
@@ -99,8 +92,12 @@ const ProductsGrid = () => {
           {/* Products Title */}
           <Box
             sx={{
-              gridColumn: { xs: "span 4", md: "span 2" },
-              borderRight: { xs: "none", md: "1px solid #D0D0D0" },
+              gridColumn: { xs: "span 4", md: "span 4", lg: "span 2" },
+              borderRight: {
+                xs: "none",
+                md: "none",
+                lg: "1px solid #D0D0D0",
+              },
               borderBottom: "1px solid #D0D0D0",
             }}
           >
@@ -121,7 +118,7 @@ const ProductsGrid = () => {
           {/* Categories */}
           <Box
             sx={{
-              gridColumn: { xs: "span 4", md: "span 2" },
+              gridColumn: { xs: "span 4", md: "span 4", lg: "span 2" },
               p: { xs: 1.5, sm: 2, md: 3 },
               borderBottom: "1px solid #D0D0D0",
             }}
@@ -132,7 +129,7 @@ const ProductsGrid = () => {
                 mb: { xs: 1, sm: 1.5, md: 2 },
                 fontSize: { xs: "1rem", sm: "1.2rem", md: "1.7rem" },
                 fontWeight: 700,
-                textAlign: { xs: "center", md: "left" },
+                textAlign: { xs: "center", md: "center", lg: "left" },
               }}
             >
               Find Your Dream Products with Ease!
@@ -142,7 +139,11 @@ const ProductsGrid = () => {
                 display: "flex",
                 flexWrap: "wrap", // Allow wrapping
                 gap: { xs: 1, sm: 1.5, md: 2 }, // Gap between buttons
-                justifyContent: { xs: "center", md: "flex-start" },
+                justifyContent: {
+                  xs: "center",
+                  md: "center",
+                  lg: "flex-start",
+                },
               }}
             >
               {categories.map((category) => (
