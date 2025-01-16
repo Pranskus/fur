@@ -20,7 +20,7 @@ const ShopByRoom = () => {
   return (
     <Box
       sx={{
-        py: { xs: 6, md: 12 },
+        my: { xs: 6, md: 6, lg: 20, xl: 10, xxl: 10 },
       }}
     >
       <Typography

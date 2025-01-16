@@ -22,8 +22,8 @@ const Elegance = () => {
               borderBottom: "1px solid #D0D0D0",
               height: { xs: "300px", sm: "600px", md: "800px" },
               overflow: "hidden",
-              pl: { xs: 2, sm: 2, md: 4 },
-              pr: { xs: 4, sm: 4, md: 7 },
+              pl: { xs: 2, sm: 2, md: 4, lg: 4, xl: 7, xxl: 12 },
+              pr: { xs: 2, sm: 3, md: 4, lg: 6, xl: 7, xxl: 12 },
             }}
           >
             <Box
@@ -83,6 +83,7 @@ const Elegance = () => {
               sx={{
                 position: "relative",
                 p: { xs: 2, sm: 2, md: 3 },
+                pb: { xs: 2, sm: 1, md: 1, lg: 1, xl: 0 },
                 height: { xs: "30%", md: "auto" },
                 display: { xs: "none", sm: "block" },
               }}
@@ -128,6 +129,7 @@ const Elegance = () => {
                 height: { xs: "30%", sm: "350px", md: "420px" },
                 overflow: "hidden",
                 ml: { xs: 2, sm: 2, md: 3 },
+                mt: { xs: 2, sm: 2, md: 3 },
                 flex: 1,
                 display: "flex",
                 alignItems: "flex-end",
