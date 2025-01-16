@@ -33,6 +33,7 @@ const ShopByRoom = () => {
           fontWeight: 600,
           borderTop: "1px solid #D0D0D0",
           borderBottom: "1px solid #D0D0D0",
+          pl: { xs: 2, md: 2 },
         }}
       >
         Shop By Room
