@@ -88,7 +88,10 @@ const ProductsGrid = () => {
         <Box
           sx={{
             display: "grid",
-            gridTemplateColumns: "repeat(4, 1fr)",
+            gridTemplateColumns: {
+              xs: "repeat(1, 1fr)", // Single column on mobile
+              md: "repeat(4, 1fr)", // 4 columns on desktop
+            },
             width: "100%",
             borderTop: "1px solid #D0D0D0",
             borderBottom: "1px solid #D0D0D0",
@@ -97,8 +100,11 @@ const ProductsGrid = () => {
           {/* Products Title */}
           <Box
             sx={{
-              gridColumn: "span 2",
-              borderRight: "1px solid #D0D0D0",
+              gridColumn: {
+                xs: "1 / -1", // Full width on mobile
+                md: "span 2", // 2 columns on desktop
+              },
+              borderRight: { xs: "none", md: "1px solid #D0D0D0" },
               borderBottom: "1px solid #D0D0D0",
             }}
           >
@@ -119,7 +125,10 @@ const ProductsGrid = () => {
           {/* Categories */}
           <Box
             sx={{
-              gridColumn: "span 2",
+              gridColumn: {
+                xs: "1 / -1", // Full width on mobile
+                md: "span 2", // 2 columns on desktop
+              },
               p: { xs: 2, md: 3 },
               borderBottom: "1px solid #D0D0D0",
             }}
