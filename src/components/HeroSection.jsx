@@ -41,6 +41,10 @@ const HeroSection = () => {
             height: "auto",
             objectFit: "contain",
             flex: "0 0 auto",
+            transition: "transform 0.3s ease-in-out",
+            "&:hover": {
+              transform: "scale(1.05) translateY(-5px)",
+            },
           }}
         />
       </Box>
@@ -92,6 +96,10 @@ const HeroSection = () => {
                       sx={{
                         width: "50%",
                         height: "auto",
+                        transition: "transform 0.3s ease-in-out",
+                        "&:hover": {
+                          transform: "scale(1.05) translateY(-5px)",
+                        },
                       }}
                     />
                     <Box sx={{ width: "50%" }}>
@@ -143,7 +151,7 @@ const HeroSection = () => {
                   xs={12}
                   sx={{ p: 3, borderBottom: "1px solid #D0D0D0" }}
                 >
-                  <Box sx={{ position: "relative" }}>
+                  <Box sx={{ position: "relative", overflow: "hidden" }}>
                     <Box
                       sx={{
                         position: "absolute",
@@ -173,6 +181,10 @@ const HeroSection = () => {
                       sx={{
                         width: "100%",
                         height: "auto",
+                        transition: "transform 0.3s ease-in-out",
+                        "&:hover": {
+                          transform: "scale(1.05) translateY(-5px)",
+                        },
                       }}
                     />
                   </Box>
@@ -214,6 +226,10 @@ const HeroSection = () => {
                     maxWidth: "90%",
                     maxHeight: "90%",
                     objectFit: "contain",
+                    transition: "transform 0.3s ease-in-out",
+                    "&:hover": {
+                      transform: "translate(-50%, -52%) scale(1.05)",
+                    },
                   }}
                 />
               </Box>

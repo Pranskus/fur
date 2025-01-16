@@ -226,6 +226,10 @@ const ProductsGrid = () => {
                       m: 0,
                       p: 0,
                       aspectRatio: item.cols === 2 ? "2/1.2" : "1/1.2",
+                      cursor: "pointer",
+                      "&:hover img": {
+                        transform: "scale(1.05) translateY(-5px)",
+                      },
                     }}
                   >
                     {item.tag && (
@@ -258,6 +262,7 @@ const ProductsGrid = () => {
                         height: "100%",
                         objectFit: "contain",
                         padding: "16px",
+                        transition: "all 0.3s ease-in-out",
                       }}
                     />
                   </ImageListItem>
