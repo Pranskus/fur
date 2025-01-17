@@ -59,20 +59,34 @@ const ProductsGrid = () => {
             display: "grid",
             gridTemplateColumns: "repeat(4, 1fr)",
             width: "100%",
-            borderTop: "1px solid #D0D0D0",
-            borderBottom: "1px solid #D0D0D0",
+            position: "relative",
+            "&::after": {
+              content: '""',
+              position: "absolute",
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              border: "1px solid #D0D0D0",
+              pointerEvents: "none",
+            },
           }}
         >
           {/* Products Title */}
           <Box
             sx={{
               gridColumn: { xs: "span 4", md: "span 4", lg: "span 2" },
-              borderRight: {
-                xs: "none",
-                md: "none",
-                lg: "1px solid #D0D0D0",
+              position: "relative",
+              "&::after": {
+                content: '""',
+                position: "absolute",
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                border: "1px solid #D0D0D0",
+                pointerEvents: "none",
               },
-              borderBottom: "1px solid #D0D0D0",
             }}
           >
             <Typography
@@ -94,7 +108,17 @@ const ProductsGrid = () => {
             sx={{
               gridColumn: { xs: "span 4", md: "span 4", lg: "span 2" },
               p: { xs: 1.5, sm: 2, md: 3 },
-              borderBottom: "1px solid #D0D0D0",
+              position: "relative",
+              "&::after": {
+                content: '""',
+                position: "absolute",
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                border: "1px solid #D0D0D0",
+                pointerEvents: "none",
+              },
             }}
           >
             <Typography
@@ -208,7 +232,16 @@ const ProductsGrid = () => {
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
-                      border: "1px solid #D0D0D0",
+                      "&::after": {
+                        content: '""',
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        border: "1px solid #D0D0D0",
+                        pointerEvents: "none",
+                      },
                       m: 0,
                       p: 0,
                       aspectRatio: item.title === "Sofa" ? "2/1.2" : "1/1.2",
@@ -273,6 +306,17 @@ const ProductsGrid = () => {
                 gap: 0,
                 display: "grid",
                 gridTemplateColumns: "repeat(4, 1fr)",
+                position: "relative",
+                "&::after": {
+                  content: '""',
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  border: "1px solid #D0D0D0",
+                  pointerEvents: "none",
+                },
               }}
               variant="quilted"
               cols={4}
@@ -315,7 +359,16 @@ const ProductsGrid = () => {
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
-                      border: "1px solid #D0D0D0",
+                      "&::after": {
+                        content: '""',
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        border: "1px solid #D0D0D0",
+                        pointerEvents: "none",
+                      },
                       m: 0,
                       p: 0,
                       aspectRatio: item.title === "Sofa" ? "2/1.2" : "1/1.2",
