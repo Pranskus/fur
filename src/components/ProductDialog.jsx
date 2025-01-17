@@ -5,9 +5,12 @@ import {
   DialogContent,
   Typography,
   IconButton,
+  Button,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { products } from "../data/products";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 const ProductDialog = ({
   open,
@@ -16,6 +19,8 @@ const ProductDialog = ({
   onMouseEnter,
   onMouseLeave,
 }) => {
+  const [isFavorite, setIsFavorite] = React.useState(false);
+
   if (!product) return null;
 
   return (
@@ -144,25 +149,73 @@ const ProductDialog = ({
             }}
           >
             <Box sx={{ mb: 2 }}>
-              <Typography variant="h4" sx={{ mb: 2, fontWeight: 500 }}>
-                {product.title}
-              </Typography>
-              {product.tag && (
-                <Box
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 2,
+                  mb: 2,
+                }}
+              >
+                <Typography variant="h4" sx={{ fontWeight: 500 }}>
+                  {product.title}
+                </Typography>
+                {product.tag && (
+                  <Box
+                    sx={{
+                      display: "inline-flex",
+                      bgcolor: "#e1d5c7",
+                      px: 2,
+                      py: 0.5,
+                      borderRadius: 1,
+                      alignItems: "center",
+                    }}
+                  >
+                    <Typography variant="caption" sx={{ fontWeight: 500 }}>
+                      {product.tag}
+                    </Typography>
+                  </Box>
+                )}
+              </Box>
+
+              <Box sx={{ display: "flex", gap: 2, mb: 2 }}>
+                <Button
+                  variant="text"
                   sx={{
-                    display: "inline-block",
-                    bgcolor: "#e1d5c7",
-                    px: 2,
-                    py: 0.5,
-                    borderRadius: 1,
-                    mb: 2,
+                    bgcolor: "#F5F5F5",
+                    color: "#000",
+                    fontSize: { xs: "0.7rem", sm: "0.8rem", md: "0.9rem" },
+                    py: { xs: 0.5, md: 1 },
+                    px: { xs: 1.5, md: 2 },
+                    fontWeight: 400,
+                    letterSpacing: "0.02em",
+                    textTransform: "capitalize",
+                    whiteSpace: "nowrap",
+                    "&:hover": {
+                      bgcolor: "#E5E5E5",
+                    },
                   }}
                 >
-                  <Typography variant="caption" sx={{ fontWeight: 500 }}>
-                    {product.tag}
-                  </Typography>
-                </Box>
-              )}
+                  Add to Cart
+                </Button>
+
+                <IconButton
+                  onClick={() => setIsFavorite(!isFavorite)}
+                  sx={{
+                    borderRadius: 1,
+                    p: 1,
+                    "&:hover": {
+                      bgcolor: "#f5f5f5",
+                    },
+                  }}
+                >
+                  {isFavorite ? (
+                    <FavoriteIcon sx={{ color: "red" }} />
+                  ) : (
+                    <FavoriteBorderIcon />
+                  )}
+                </IconButton>
+              </Box>
             </Box>
 
             <Box
