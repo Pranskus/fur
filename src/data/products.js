@@ -29,8 +29,9 @@ export const products = {
     ],
     images: [
       "/images/P_sofa.jpg",
-      "/images/P_sofa2.jpg",
-      "/images/P_sofa3.jpg",
+      "/images/P_sofa_2.jpg",
+      "/images/P_sofa_3.jpg",
+      "/images/P_sofa_4.jpg",
     ],
   },
   "Accent Chair 1": {
@@ -59,8 +60,9 @@ export const products = {
     ],
     images: [
       "/images/P_accchair.jpg",
-      "/images/P_armchair.jpg",
-      "/images/P_armchair2.jpg",
+      "/images/P_accchair_1.jpg",
+      "/images/P_accchair_2.jpg",
+      "/images/P_accchair_3.jpg",
     ],
   },
   "Accent Chair 2": {
@@ -90,8 +92,9 @@ export const products = {
     ],
     images: [
       "/images/P_armchair.jpg",
-      "/images/P_armchair2.jpg",
-      "/images/P_accchair.jpg",
+      "/images/P_armchair_1.jpg",
+      "/images/P_armchair_2.jpg",
+      "/images/P_armchair_3.jpg",
     ],
   },
   "Desk Chair 1": {
@@ -117,8 +120,9 @@ export const products = {
     ],
     images: [
       "/images/P_armchair2.jpg",
-      "/images/P_armchair3.jpg",
-      "/images/P_armchair4.jpg",
+      "/images/P_armchair2_1.jpg",
+      "/images/P_armchair2_2.jpg",
+      "/images/P_armchair2_3.jpg",
     ],
   },
   "Desk Chair 2": {
@@ -145,8 +149,9 @@ export const products = {
     ],
     images: [
       "/images/P_armchair3.jpg",
-      "/images/P_armchair4.jpg",
-      "/images/P_armchair5.jpg",
+      "/images/P_armchair3_1.jpg",
+      "/images/P_armchair3_2.jpg",
+      "/images/P_armchair3_3.jpg",
     ],
   },
   "Contemporary Sofa": {
@@ -179,8 +184,9 @@ export const products = {
     ],
     images: [
       "/images/P_sofa2.jpg",
-      "/images/P_sofa3.jpg",
-      "/images/P_sofa4.jpg",
+      "/images/P_sofa2_1.jpg",
+      "/images/P_sofa2_2.jpg",
+      "/images/P_sofa2_3.jpg",
     ],
   },
   "Accent Chair 3": {
@@ -210,8 +216,9 @@ export const products = {
     ],
     images: [
       "/images/P_armchair4.jpg",
-      "/images/P_armchair5.jpg",
-      "/images/P_armchair2.jpg",
+      "/images/P_armchair4_1.jpg",
+      "/images/P_armchair4_2.jpg",
+      "/images/P_armchair4_3.jpg",
     ],
   },
   "Classic Sofa": {
@@ -243,8 +250,9 @@ export const products = {
     ],
     images: [
       "/images/P_sofa3.jpg",
-      "/images/P_sofa4.jpg",
-      "/images/P_sofa2.jpg",
+      "/images/P_sofa3_1.jpg",
+      "/images/P_sofa3_2.jpg",
+      "/images/P_sofa3_3.jpg",
     ],
   },
   "Desk Chair 3": {
@@ -271,8 +279,9 @@ export const products = {
     ],
     images: [
       "/images/P_armchair5.jpg",
-      "/images/P_armchair3.jpg",
-      "/images/P_armchair4.jpg",
+      "/images/P_armchair5_1.jpg",
+      "/images/P_armchair5_2.jpg",
+      "/images/P_armchair5_3.jpg",
     ],
   },
 };

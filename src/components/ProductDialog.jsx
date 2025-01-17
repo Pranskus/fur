@@ -24,8 +24,6 @@ const ProductDialog = ({
 
   if (!product) return null;
 
-  const productImages = products[product.title]?.images || [product.img];
-
   return (
     <Dialog
       open={open}
@@ -93,17 +91,31 @@ const ProductDialog = ({
                 alignItems: "center",
                 justifyContent: "center",
                 mb: 2,
-                height: "calc(100% - 80px)", // Reserve space for thumbnails
+                height: "calc(100% - 80px)",
+                position: "relative",
               }}
             >
-              <img
-                src={productImages[selectedImage]}
+              <Box
+                component="img"
+                src={product.images[selectedImage]}
                 alt={product.title}
-                style={{
+                sx={{
+                  position: "absolute",
                   width: "100%",
                   height: "100%",
                   objectFit: "contain",
                   maxHeight: "500px",
+                  opacity: 1,
+                  transition: "all 0.5s ease-in-out",
+                  transform: "scale(1)",
+                  "&.fade-enter": {
+                    opacity: 0,
+                    transform: "scale(0.95)",
+                  },
+                  "&.fade-enter-active": {
+                    opacity: 1,
+                    transform: "scale(1)",
+                  },
                 }}
               />
             </Box>
@@ -117,7 +129,7 @@ const ProductDialog = ({
                 justifyContent: "center",
               }}
             >
-              {productImages.map((img, index) => (
+              {product.images.map((img, index) => (
                 <Box
                   key={index}
                   component="img"
@@ -132,9 +144,13 @@ const ProductDialog = ({
                     p: 1,
                     objectFit: "contain",
                     opacity: selectedImage === index ? 1 : 0.7,
+                    transform:
+                      selectedImage === index ? "scale(1.05)" : "scale(1)",
+                    transition: "all 0.3s ease-in-out",
                     "&:hover": {
                       borderColor: "#000",
                       opacity: 1,
+                      transform: "scale(1.05)",
                     },
                   }}
                 />
