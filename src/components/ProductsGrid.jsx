@@ -14,25 +14,24 @@ const ProductsGrid = () => {
   const itemData = [
     {
       img: "/images/P_sofa.jpg",
-      title: "Modern Sofa",
+      title: "Sofa",
       tag: "Exclusive",
       cols: 2, // Takes 2 columns
     },
     {
       img: "/images/P_accchair.jpg",
       title: "Accent Chair",
-
       cols: 1, // Takes 2 columns
     },
     {
       img: "/images/P_armchair.jpg",
-      title: "Side Table",
+      title: "Chair",
       tag: "New",
       cols: 1,
     },
     {
       img: "/images/P_armchair2.jpg",
-      title: "Lounge Chair",
+      title: "Chair",
       cols: 1,
     },
     {
@@ -43,24 +42,24 @@ const ProductsGrid = () => {
     },
     {
       img: "/images/P_sofa2.jpg",
-      title: "Modern Couch",
+      title: "Sofa",
       tag: "New",
       cols: 2, // Takes 2 columns
     },
     {
       img: "/images/P_armchair4.jpg",
-      title: "Rattan Chair",
+      title: "Chair",
       tag: "Exclusive",
       cols: 1,
     },
     {
       img: "/images/P_sofa3.jpg",
-      title: "Grey Sofa",
+      title: "Sofa",
       cols: 2, // Takes 2 columns
     },
     {
       img: "/images/P_armchair5.jpg",
-      title: "Wooden Cabinet",
+      title: "Chair",
       tag: "New",
       cols: 1,
     },
