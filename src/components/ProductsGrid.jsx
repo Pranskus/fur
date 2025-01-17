@@ -9,6 +9,7 @@ import {
   Stack,
 } from "@mui/material";
 import ProductDialog from "./ProductDialog";
+import { products, getProductsByCategory } from "../data/products";
 
 const ProductsGrid = () => {
   // Add state for active category
@@ -22,70 +23,18 @@ const ProductsGrid = () => {
 
   const categories = ["See All", "Sofas", "Accent Chairs", "Desk Chairs"];
 
-  const itemData = [
-    {
-      img: "/images/P_sofa.jpg",
-      title: "Sofa",
-      tag: "Exclusive",
-      cols: 2, // Takes 2 columns
-    },
-    {
-      img: "/images/P_accchair.jpg",
-      title: "Accent Chair",
-      cols: 1, // Takes 2 columns
-    },
-    {
-      img: "/images/P_armchair.jpg",
-      title: "Accent Chair",
-      tag: "New",
-      cols: 1,
-    },
-    {
-      img: "/images/P_armchair2.jpg",
-      title: "Chair",
-      cols: 1,
-    },
-    {
-      img: "/images/P_armchair3.jpg",
-      title: "Chair",
-      tag: "Exclusive",
-      cols: 1, // Takes 2 columns
-    },
-    {
-      img: "/images/P_sofa2.jpg",
-      title: "Sofa",
-      tag: "New",
-      cols: 2, // Takes 2 columns
-    },
-    {
-      img: "/images/P_armchair4.jpg",
-      title: "Accent Chair",
-      tag: "Exclusive",
-      cols: 1,
-    },
-    {
-      img: "/images/P_sofa3.jpg",
-      title: "Sofa",
-      cols: 2, // Takes 2 columns
-    },
-    {
-      img: "/images/P_armchair5.jpg",
-      title: "Chair",
-      tag: "New",
-      cols: 1,
-    },
-  ];
-
-  // Filter items based on active category
+  // Get filtered items based on active category
   const getFilteredItems = () => {
-    if (activeCategory === "See All") return itemData;
+    if (activeCategory === "See All") return Object.values(products);
     if (activeCategory === "Sofas")
-      return itemData.filter((item) => item.title === "Sofa");
+      return Object.values(products).filter((item) => item.title === "Sofa");
     if (activeCategory === "Accent Chairs")
-      return itemData.filter((item) => item.title === "Accent Chair");
+      return Object.values(products).filter(
+        (item) => item.title === "Accent Chair"
+      );
     if (activeCategory === "Desk Chairs")
-      return itemData.filter((item) => item.title === "Chair");
-    return itemData;
+      return Object.values(products).filter((item) => item.title === "Chair");
+    return Object.values(products);
   };
 
   const filteredItems = getFilteredItems();
@@ -254,8 +203,12 @@ const ProductsGrid = () => {
             >
               {(() => {
                 // First separate chairs and sofas from filtered items
-                const chairs = filteredItems.filter((item) => item.cols === 1);
-                const sofas = filteredItems.filter((item) => item.cols === 2);
+                const chairs = filteredItems.filter(
+                  (item) => item.title === "Chair"
+                );
+                const sofas = filteredItems.filter(
+                  (item) => item.title === "Sofa"
+                );
 
                 // Create groups of 2 chairs + 1 sofa
                 const groupedItems = [];
@@ -281,8 +234,8 @@ const ProductsGrid = () => {
 
                 return groupedItems.map((item) => (
                   <ImageListItem
-                    key={item.img}
-                    cols={item.cols === 2 ? 2 : 1}
+                    key={item.id}
+                    cols={item.title === "Sofa" ? 2 : 1}
                     sx={{
                       overflow: "hidden",
                       position: "relative",
@@ -293,7 +246,7 @@ const ProductsGrid = () => {
                       borderRight: "1px solid #D0D0D0",
                       m: 0,
                       p: 0,
-                      aspectRatio: item.cols === 2 ? "2/1.2" : "1/1.2",
+                      aspectRatio: item.title === "Sofa" ? "2/1.2" : "1/1.2",
                       cursor: "pointer",
                       "&:hover img": {
                         transform: "scale(1.05) translateY(-5px)",
@@ -322,8 +275,8 @@ const ProductsGrid = () => {
                       </Box>
                     )}
                     <img
-                      src={item.img}
-                      alt={item.title}
+                      src={item.images[0]}
+                      alt={item.id}
                       loading="lazy"
                       style={{
                         width: "100%",
@@ -388,8 +341,8 @@ const ProductsGrid = () => {
 
                 return (
                   <ImageListItem
-                    key={item.img}
-                    cols={item.cols}
+                    key={item.id}
+                    cols={item.title === "Sofa" ? 2 : 1}
                     onMouseEnter={() => handleMouseEnter(item)}
                     onMouseLeave={handleMouseLeave}
                     sx={{
@@ -403,7 +356,7 @@ const ProductsGrid = () => {
                       borderLeft: isLeftEdge ? "none" : "none",
                       m: 0,
                       p: 0,
-                      aspectRatio: item.cols === 2 ? "2/1.2" : "1/1.2",
+                      aspectRatio: item.title === "Sofa" ? "2/1.2" : "1/1.2",
                       cursor: "pointer",
                       "&:hover img": {
                         transform: "scale(1.05) translateY(-5px)",
@@ -432,8 +385,8 @@ const ProductsGrid = () => {
                       </Box>
                     )}
                     <img
-                      src={item.img}
-                      alt={item.title}
+                      src={item.images[0]}
+                      alt={item.id}
                       loading="lazy"
                       style={{
                         width: "100%",

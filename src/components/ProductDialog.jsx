@@ -19,9 +19,12 @@ const ProductDialog = ({
   onMouseEnter,
   onMouseLeave,
 }) => {
+  const [selectedImage, setSelectedImage] = React.useState(0);
   const [isFavorite, setIsFavorite] = React.useState(false);
 
   if (!product) return null;
+
+  const productImages = products[product.title]?.images || [product.img];
 
   return (
     <Dialog
@@ -94,7 +97,7 @@ const ProductDialog = ({
               }}
             >
               <img
-                src={product.img}
+                src={productImages[selectedImage]}
                 alt={product.title}
                 style={{
                   width: "100%",
@@ -114,12 +117,13 @@ const ProductDialog = ({
                 justifyContent: "center",
               }}
             >
-              {[product.img, product.img, product.img].map((img, index) => (
+              {productImages.map((img, index) => (
                 <Box
                   key={index}
                   component="img"
                   src={img}
                   alt={`View ${index + 1}`}
+                  onClick={() => setSelectedImage(index)}
                   sx={{
                     width: "70px",
                     height: "70px",
@@ -127,8 +131,10 @@ const ProductDialog = ({
                     border: "1px solid #D0D0D0",
                     p: 1,
                     objectFit: "contain",
+                    opacity: selectedImage === index ? 1 : 0.7,
                     "&:hover": {
                       borderColor: "#000",
+                      opacity: 1,
                     },
                   }}
                 />
@@ -234,7 +240,7 @@ const ProductDialog = ({
                 },
               }}
             >
-              {products[product.title]?.description.map((line, index) => (
+              {product.description.map((line, index) => (
                 <Typography
                   key={index}
                   variant="body1"
