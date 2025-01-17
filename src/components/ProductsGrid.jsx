@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Box,
   ImageList,
@@ -9,6 +10,9 @@ import {
 } from "@mui/material";
 
 const ProductsGrid = () => {
+  // Add state for active category
+  const [activeCategory, setActiveCategory] = React.useState("See All");
+
   const categories = ["See All", "Sofas", "Accent Chairs", "Desk Chairs"];
 
   const itemData = [
@@ -25,7 +29,7 @@ const ProductsGrid = () => {
     },
     {
       img: "/images/P_armchair.jpg",
-      title: "Chair",
+      title: "Accent Chair",
       tag: "New",
       cols: 1,
     },
@@ -36,7 +40,7 @@ const ProductsGrid = () => {
     },
     {
       img: "/images/P_armchair3.jpg",
-      title: "Accent Chair",
+      title: "Chair",
       tag: "Exclusive",
       cols: 1, // Takes 2 columns
     },
@@ -48,7 +52,7 @@ const ProductsGrid = () => {
     },
     {
       img: "/images/P_armchair4.jpg",
-      title: "Chair",
+      title: "Accent Chair",
       tag: "Exclusive",
       cols: 1,
     },
@@ -64,6 +68,20 @@ const ProductsGrid = () => {
       cols: 1,
     },
   ];
+
+  // Filter items based on active category
+  const getFilteredItems = () => {
+    if (activeCategory === "See All") return itemData;
+    if (activeCategory === "Sofas")
+      return itemData.filter((item) => item.title === "Sofa");
+    if (activeCategory === "Accent Chairs")
+      return itemData.filter((item) => item.title === "Accent Chair");
+    if (activeCategory === "Desk Chairs")
+      return itemData.filter((item) => item.title === "Chair");
+    return itemData;
+  };
+
+  const filteredItems = getFilteredItems();
 
   return (
     <Box sx={{ width: "100%", bgcolor: "#FFFFFF", py: 6 }}>
@@ -136,8 +154,8 @@ const ProductsGrid = () => {
             <Box
               sx={{
                 display: "flex",
-                flexWrap: "wrap", // Allow wrapping
-                gap: { xs: 1, sm: 1.5, md: 2 }, // Gap between buttons
+                flexWrap: "wrap",
+                gap: { xs: 1, sm: 1.5, md: 2 },
                 justifyContent: {
                   xs: "center",
                   md: "center",
@@ -148,8 +166,10 @@ const ProductsGrid = () => {
               {categories.map((category) => (
                 <Button
                   key={category}
+                  onClick={() => setActiveCategory(category)}
                   sx={{
-                    bgcolor: category === "See All" ? "#e1d5c7" : "#F5F5F5",
+                    bgcolor:
+                      category === activeCategory ? "#e1d5c7" : "#F5F5F5",
                     color: "#000",
                     fontSize: { xs: "0.7rem", sm: "0.8rem", md: "0.9rem" },
                     py: { xs: 0.5, md: 1 },
@@ -191,9 +211,9 @@ const ProductsGrid = () => {
               gap={0}
             >
               {(() => {
-                // First separate chairs and sofas
-                const chairs = itemData.filter((item) => item.cols === 1);
-                const sofas = itemData.filter((item) => item.cols === 2);
+                // First separate chairs and sofas from filtered items
+                const chairs = filteredItems.filter((item) => item.cols === 1);
+                const sofas = filteredItems.filter((item) => item.cols === 2);
 
                 // Create groups of 2 chairs + 1 sofa
                 const groupedItems = [];
@@ -298,11 +318,11 @@ const ProductsGrid = () => {
               cols={4}
               gap={0}
             >
-              {itemData.map((item, index) => {
-                // Calculate actual grid position considering previous items' column spans
+              {filteredItems.map((item, index) => {
+                // Calculate positions using filteredItems instead of itemData
                 let currentPosition = 0;
                 for (let i = 0; i < index; i++) {
-                  currentPosition += itemData[i].cols;
+                  currentPosition += filteredItems[i].cols;
                 }
                 currentPosition = currentPosition % 4;
 
@@ -313,14 +333,14 @@ const ProductsGrid = () => {
 
                 // Calculate if item is in the last row
                 let totalColsSoFar = 0;
-                for (let i = 0; i < itemData.length; i++) {
+                for (let i = 0; i < filteredItems.length; i++) {
                   if (i < index) {
-                    totalColsSoFar += itemData[i].cols;
+                    totalColsSoFar += filteredItems[i].cols;
                   }
                 }
                 const rowPosition = Math.floor(totalColsSoFar / 4);
                 const totalRows = Math.ceil(
-                  itemData.reduce((sum, item) => sum + item.cols, 0) / 4
+                  filteredItems.reduce((sum, item) => sum + item.cols, 0) / 4
                 );
                 const isLastRow = rowPosition === totalRows - 1;
 
