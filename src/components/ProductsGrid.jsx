@@ -127,7 +127,7 @@ const ProductsGrid = () => {
                 mb: { xs: 1, sm: 1.5, md: 2 },
                 fontSize: { xs: "1rem", sm: "1.2rem", md: "1.7rem" },
                 fontWeight: 700,
-                textAlign: { xs: "center", md: "center", lg: "left" },
+                textAlign: { xs: "center", md: "center", lg: "center" },
               }}
             >
               Find Your Dream Products with Ease!
@@ -140,7 +140,7 @@ const ProductsGrid = () => {
                 justifyContent: {
                   xs: "center",
                   md: "center",
-                  lg: "flex-start",
+                  lg: "center",
                 },
               }}
             >
