@@ -7,28 +7,32 @@ const HeroSection = () => {
       <Box
         sx={{
           display: "flex",
-          flexDirection: { xs: "column", md: "row" },
-          justifyContent: "space-between",
-          alignItems: { xs: "flex-start", md: "center" },
-          py: { xs: 2, sm: 3, md: 4 },
+          flexDirection: "row",
+          justifyContent: "center",
+          alignItems: "center",
+          py: { xs: 2, sm: 3, md: 2 },
           px: { xs: 2, md: 4, lg: 6 },
+          mt: { xs: 2, sm: 2, md: 4 },
           width: "100%",
-          gap: { xs: 3, md: 2 },
+          gap: { xs: 3, sm: 4, md: 6, lg: 8 },
+          overflow: "hidden",
         }}
       >
         <Typography
           variant="h1"
           sx={{
             fontSize: {
-              xs: "4rem",
-              sm: "6rem",
-              md: "8rem",
-              lg: "11.25rem",
+              xs: "3rem",
+              sm: "5rem",
+              md: "7rem",
+              lg: "10rem",
+              xl: "11.25rem",
             },
             fontWeight: 700,
             letterSpacing: "-0.02em",
             lineHeight: 1,
-            flex: "0 1 auto",
+            flex: "0 0 auto",
+            whiteSpace: "nowrap",
           }}
         >
           Furniture
@@ -38,7 +42,8 @@ const HeroSection = () => {
           src="/images/buy-barcelona-chair-vintage.jpg"
           alt="White Chair"
           sx={{
-            width: { xs: "100%", sm: "80%", md: "18.75rem" },
+            display: { xs: "none", md: "block" },
+            width: { md: "16rem", lg: "18.75rem" },
             height: "auto",
             objectFit: "contain",
             flex: "0 0 auto",
