@@ -17,9 +17,6 @@ const ProductsGrid = () => {
   // Add state for dialog
   const [dialogOpen, setDialogOpen] = React.useState(false);
   const [selectedProduct, setSelectedProduct] = React.useState(null);
-  const [hoverTimeout, setHoverTimeout] = React.useState(null);
-  const [isHovering, setIsHovering] = React.useState(false);
-  const [isDialogHovering, setIsDialogHovering] = React.useState(false);
 
   const categories = ["See All", "Sofas", "Accent Chairs", "Desk Chairs"];
 
@@ -39,39 +36,10 @@ const ProductsGrid = () => {
 
   const filteredItems = getFilteredItems();
 
-  // Handle mouse enter for product
-  const handleMouseEnter = (product) => {
-    setIsHovering(true);
-    const timeout = setTimeout(() => {
-      setSelectedProduct(product);
-      setDialogOpen(true);
-    }, 1000);
-    setHoverTimeout(timeout);
-  };
-
-  // Handle mouse leave for product
-  const handleMouseLeave = () => {
-    setIsHovering(false);
-    if (hoverTimeout) {
-      clearTimeout(hoverTimeout);
-      setHoverTimeout(null);
-    }
-    // Only close if dialog is not being hovered
-    if (!isDialogHovering) {
-      setDialogOpen(false);
-    }
-  };
-
-  // Handle dialog hover
-  const handleDialogMouseEnter = () => {
-    setIsDialogHovering(true);
-  };
-
-  const handleDialogMouseLeave = () => {
-    setIsDialogHovering(false);
-    if (!isHovering) {
-      setDialogOpen(false);
-    }
+  // Add click handler
+  const handleProductClick = (product) => {
+    setSelectedProduct(product);
+    setDialogOpen(true);
   };
 
   return (
@@ -93,8 +61,6 @@ const ProductsGrid = () => {
             width: "100%",
             borderTop: "1px solid #D0D0D0",
             borderBottom: "1px solid #D0D0D0",
-            borderLeft: { xs: "1px solid #D0D0D0", md: "none" },
-            borderRight: { xs: "1px solid #D0D0D0", md: "none" },
           }}
         >
           {/* Products Title */}
@@ -185,7 +151,7 @@ const ProductsGrid = () => {
             sx={{
               gridColumn: "span 4",
               position: "relative",
-              display: { xs: "block", md: "none" }, // Mobile grid
+              display: { xs: "block", md: "none" },
             }}
           >
             <ImageList
@@ -202,48 +168,47 @@ const ProductsGrid = () => {
               gap={0}
             >
               {(() => {
-                // First separate chairs and sofas from filtered items
-                const chairs = filteredItems.filter(
-                  (item) => item.title === "Chair"
-                );
+                // Separate sofas and chairs
                 const sofas = filteredItems.filter(
                   (item) => item.title === "Sofa"
                 );
+                const chairs = filteredItems.filter(
+                  (item) => item.title !== "Sofa"
+                );
 
-                // Create groups of 2 chairs + 1 sofa
-                const groupedItems = [];
-                let chairIndex = 0;
-                let sofaIndex = 0;
+                // Interleave sofas and chairs
+                const arrangedItems = [];
+                const maxLength = Math.max(
+                  sofas.length,
+                  Math.ceil(chairs.length / 2)
+                );
 
-                while (chairIndex < chairs.length || sofaIndex < sofas.length) {
-                  // Add 2 chairs if available
-                  if (chairIndex < chairs.length) {
-                    groupedItems.push(chairs[chairIndex]);
-                    chairIndex++;
+                for (let i = 0; i < maxLength; i++) {
+                  // Add sofa if available
+                  if (i < sofas.length) {
+                    arrangedItems.push(sofas[i]);
                   }
-                  if (chairIndex < chairs.length) {
-                    groupedItems.push(chairs[chairIndex]);
-                    chairIndex++;
-                  }
-                  // Add 1 sofa if available
-                  if (sofaIndex < sofas.length) {
-                    groupedItems.push(sofas[sofaIndex]);
-                    sofaIndex++;
+                  // Add up to 2 chairs if available
+                  for (let j = 0; j < 2; j++) {
+                    const chairIndex = i * 2 + j;
+                    if (chairIndex < chairs.length) {
+                      arrangedItems.push(chairs[chairIndex]);
+                    }
                   }
                 }
 
-                return groupedItems.map((item) => (
+                return arrangedItems.map((item) => (
                   <ImageListItem
                     key={item.id}
                     cols={item.title === "Sofa" ? 2 : 1}
+                    onClick={() => handleProductClick(item)}
                     sx={{
                       overflow: "hidden",
                       position: "relative",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
-                      borderBottom: "1px solid #D0D0D0",
-                      borderRight: "1px solid #D0D0D0",
+                      border: "1px solid #D0D0D0",
                       m: 0,
                       p: 0,
                       aspectRatio: item.title === "Sofa" ? "2/1.2" : "1/1.2",
@@ -292,12 +257,12 @@ const ProductsGrid = () => {
             </ImageList>
           </Box>
 
-          {/* Desktop Products Grid - Preserved exactly as is */}
+          {/* Desktop Products Grid */}
           <Box
             sx={{
               gridColumn: "span 4",
               position: "relative",
-              display: { xs: "none", md: "block" }, // Only show on desktop
+              display: { xs: "none", md: "block" },
             }}
           >
             <ImageList
@@ -343,17 +308,14 @@ const ProductsGrid = () => {
                   <ImageListItem
                     key={item.id}
                     cols={item.title === "Sofa" ? 2 : 1}
-                    onMouseEnter={() => handleMouseEnter(item)}
-                    onMouseLeave={handleMouseLeave}
+                    onClick={() => handleProductClick(item)}
                     sx={{
                       overflow: "hidden",
                       position: "relative",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
-                      borderRight: isRightEdge ? "none" : "1px solid #D0D0D0",
-                      borderBottom: isLastRow ? "none" : "1px solid #D0D0D0",
-                      borderLeft: isLeftEdge ? "none" : "none",
+                      border: "1px solid #D0D0D0",
                       m: 0,
                       p: 0,
                       aspectRatio: item.title === "Sofa" ? "2/1.2" : "1/1.2",
@@ -409,8 +371,6 @@ const ProductsGrid = () => {
         open={dialogOpen}
         onClose={() => setDialogOpen(false)}
         product={selectedProduct}
-        onMouseEnter={handleDialogMouseEnter}
-        onMouseLeave={handleDialogMouseLeave}
       />
     </Box>
   );
