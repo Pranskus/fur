@@ -8,10 +8,17 @@ import {
   Button,
   Stack,
 } from "@mui/material";
+import ProductDialog from "./ProductDialog";
 
 const ProductsGrid = () => {
   // Add state for active category
   const [activeCategory, setActiveCategory] = React.useState("See All");
+  // Add state for dialog
+  const [dialogOpen, setDialogOpen] = React.useState(false);
+  const [selectedProduct, setSelectedProduct] = React.useState(null);
+  const [hoverTimeout, setHoverTimeout] = React.useState(null);
+  const [isHovering, setIsHovering] = React.useState(false);
+  const [isDialogHovering, setIsDialogHovering] = React.useState(false);
 
   const categories = ["See All", "Sofas", "Accent Chairs", "Desk Chairs"];
 
@@ -82,6 +89,41 @@ const ProductsGrid = () => {
   };
 
   const filteredItems = getFilteredItems();
+
+  // Handle mouse enter for product
+  const handleMouseEnter = (product) => {
+    setIsHovering(true);
+    const timeout = setTimeout(() => {
+      setSelectedProduct(product);
+      setDialogOpen(true);
+    }, 1000);
+    setHoverTimeout(timeout);
+  };
+
+  // Handle mouse leave for product
+  const handleMouseLeave = () => {
+    setIsHovering(false);
+    if (hoverTimeout) {
+      clearTimeout(hoverTimeout);
+      setHoverTimeout(null);
+    }
+    // Only close if dialog is not being hovered
+    if (!isDialogHovering) {
+      setDialogOpen(false);
+    }
+  };
+
+  // Handle dialog hover
+  const handleDialogMouseEnter = () => {
+    setIsDialogHovering(true);
+  };
+
+  const handleDialogMouseLeave = () => {
+    setIsDialogHovering(false);
+    if (!isHovering) {
+      setDialogOpen(false);
+    }
+  };
 
   return (
     <Box sx={{ width: "100%", bgcolor: "#FFFFFF", py: 6 }}>
@@ -348,6 +390,8 @@ const ProductsGrid = () => {
                   <ImageListItem
                     key={item.img}
                     cols={item.cols}
+                    onMouseEnter={() => handleMouseEnter(item)}
+                    onMouseLeave={handleMouseLeave}
                     sx={{
                       overflow: "hidden",
                       position: "relative",
@@ -406,6 +450,15 @@ const ProductsGrid = () => {
           </Box>
         </Box>
       </Container>
+
+      {/* Add Dialog with hover handlers */}
+      <ProductDialog
+        open={dialogOpen}
+        onClose={() => setDialogOpen(false)}
+        product={selectedProduct}
+        onMouseEnter={handleDialogMouseEnter}
+        onMouseLeave={handleDialogMouseLeave}
+      />
     </Box>
   );
 };
