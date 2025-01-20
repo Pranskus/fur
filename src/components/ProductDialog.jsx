@@ -122,17 +122,8 @@ const ProductDialog = ({
                   height: "100%",
                   objectFit: "contain",
                   maxHeight: "500px",
-                  opacity: 1,
-                  transition: "all 0.5s ease-in-out",
+                  transition: "all 0.3s ease-in-out",
                   transform: "scale(1)",
-                  "&.fade-enter": {
-                    opacity: 0,
-                    transform: "scale(0.95)",
-                  },
-                  "&.fade-enter-active": {
-                    opacity: 1,
-                    transform: "scale(1)",
-                  },
                 }}
               />
             </Box>

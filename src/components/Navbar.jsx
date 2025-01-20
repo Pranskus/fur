@@ -26,6 +26,22 @@ const Navbar = () => {
     setMobileOpen(!mobileOpen);
   };
 
+  const handleScroll = (item) => {
+    if (item === "Our Projects") {
+      const productsSection = document.getElementById("products-section");
+      if (productsSection) {
+        productsSection.scrollIntoView({ behavior: "smooth" });
+      }
+      setMobileOpen(false);
+    } else if (item === "Our Collections") {
+      const collectionsSection = document.getElementById("collections-section");
+      if (collectionsSection) {
+        collectionsSection.scrollIntoView({ behavior: "smooth" });
+      }
+      setMobileOpen(false);
+    }
+  };
+
   const menuItems = ["About Us", "Our Projects", "Our Collections"];
 
   return (
@@ -76,6 +92,7 @@ const Navbar = () => {
                 <Button
                   key={item}
                   color="inherit"
+                  onClick={() => handleScroll(item)}
                   sx={{
                     textTransform: "none",
                     fontSize: "clamp(14px, 1vw, 18px)",
@@ -145,7 +162,14 @@ const Navbar = () => {
         >
           <List>
             {menuItems.map((item) => (
-              <ListItem button key={item} onClick={handleDrawerToggle}>
+              <ListItem
+                button
+                key={item}
+                onClick={() => {
+                  handleScroll(item);
+                  handleDrawerToggle();
+                }}
+              >
                 <ListItemText
                   primary={item}
                   sx={{

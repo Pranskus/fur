@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import {
   Box,
   ImageList,
@@ -12,6 +12,7 @@ import ProductDialog from "./ProductDialog";
 import { products, getProductsByCategory } from "../data/products";
 
 const ProductsGrid = () => {
+  const productsRef = useRef(null);
   // Add state for active category
   const [activeCategory, setActiveCategory] = React.useState("See All");
   // Add state for dialog
@@ -43,7 +44,11 @@ const ProductsGrid = () => {
   };
 
   return (
-    <Box sx={{ width: "100%", bgcolor: "#FFFFFF", py: 6 }}>
+    <Box
+      id="products-section"
+      ref={productsRef}
+      sx={{ width: "100%", bgcolor: "#FFFFFF", py: 6 }}
+    >
       <Container
         maxWidth="xxl"
         sx={{
@@ -283,6 +288,11 @@ const ProductsGrid = () => {
                         padding: "16px",
                         transition: "all 0.3s ease-in-out",
                       }}
+                      sx={{
+                        "&:hover": {
+                          transform: "scale(1.1)",
+                        },
+                      }}
                     />
                   </ImageListItem>
                 ));
@@ -409,6 +419,11 @@ const ProductsGrid = () => {
                         objectFit: "contain",
                         padding: "16px",
                         transition: "all 0.3s ease-in-out",
+                      }}
+                      sx={{
+                        "&:hover": {
+                          transform: "scale(1.1)",
+                        },
                       }}
                     />
                   </ImageListItem>

@@ -11,4 +11,13 @@ export const theme = createTheme({
       xxl: 2560,
     },
   },
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        html: {
+          scrollBehavior: "smooth",
+        },
+      },
+    },
+  },
 });

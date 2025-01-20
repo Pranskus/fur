@@ -1,4 +1,4 @@
-import { ThemeProvider, CssBaseline, Box } from "@mui/material";
+import { ThemeProvider, CssBaseline, Box, Fab, Zoom } from "@mui/material";
 import { theme } from "./theme";
 import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
@@ -7,8 +7,25 @@ import ProductsGrid from "./components/ProductsGrid";
 import ShopByRoom from "./components/ShopByRoom";
 import Footer from "./components/Footer";
 import { CartProvider } from "./context/CartContext";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import React from "react";
 
 function App() {
+  const [showBackToTop, setShowBackToTop] = React.useState(false);
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setShowBackToTop(window.scrollY > 500);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0 });
+  };
+
   return (
     <CartProvider>
       <ThemeProvider theme={theme}>
@@ -44,6 +61,24 @@ function App() {
             <Footer />
           </Box>
         </Box>
+
+        {/* Back to Top Button */}
+        <Zoom in={showBackToTop}>
+          <Fab
+            onClick={scrollToTop}
+            sx={{
+              position: "fixed",
+              bottom: 32,
+              right: 32,
+              bgcolor: "#e1d5c7",
+              "&:hover": {
+                bgcolor: "#d4c4b3",
+              },
+            }}
+          >
+            <KeyboardArrowUpIcon />
+          </Fab>
+        </Zoom>
       </ThemeProvider>
     </CartProvider>
   );

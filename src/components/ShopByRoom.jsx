@@ -19,9 +19,8 @@ const ShopByRoom = () => {
 
   return (
     <Box
-      sx={{
-        my: { xs: 6, md: 6, lg: 6, xl: 10, xxl: 10 },
-      }}
+      id="collections-section"
+      sx={{ width: "100%", bgcolor: "#FFFFFF", py: 6 }}
     >
       <Typography
         variant="h3"
