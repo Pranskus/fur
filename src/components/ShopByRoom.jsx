@@ -173,33 +173,59 @@ const ShopByRoom = () => {
             <Collapse in={selectedCategory === room.name}>
               <Box
                 sx={{
-                  display: "flex",
-                  justifyContent: "center",
-                  gap: 2,
-                  py: 2,
-                  bgcolor: "none",
+                  position: "relative",
+                  width: "100%",
                   borderBottom: "1px solid #D0D0D0",
                 }}
               >
-                {room.images.map((image, index) => (
-                  <Box
-                    key={index}
-                    component="img"
-                    src={image}
-                    alt={`${room.name} ${index + 1}`}
-                    sx={{
-                      height: 120,
-                      width: "auto",
-                      maxWidth: 200,
-                      objectFit: "contain",
-                      borderRadius: 1,
-                      transition: "transform 0.3s ease",
+                <Box
+                  sx={{
+                    display: "flex",
+                    gap: 2,
+                    py: 2,
+                    overflowX: "auto",
+                    overflowY: "hidden",
+                    px: { xs: 2, sm: 4, md: 10 },
+                    justifyContent: { xs: "flex-start", md: "center" },
+                    "&::-webkit-scrollbar": {
+                      height: "8px",
+                    },
+                    "&::-webkit-scrollbar-track": {
+                      background: "#f1f1f1",
+                      borderRadius: "4px",
+                    },
+                    "&::-webkit-scrollbar-thumb": {
+                      background: "#888",
+                      borderRadius: "4px",
                       "&:hover": {
-                        transform: "scale(1.05)",
+                        background: "#666",
                       },
-                    }}
-                  />
-                ))}
+                    },
+                    msOverflowStyle: "auto",
+                    scrollbarWidth: "auto",
+                  }}
+                >
+                  {room.images.map((image, index) => (
+                    <Box
+                      key={index}
+                      component="img"
+                      src={image}
+                      alt={`${room.name} ${index + 1}`}
+                      sx={{
+                        height: 120,
+                        width: "auto",
+                        maxWidth: 200,
+                        objectFit: "contain",
+                        borderRadius: 1,
+                        transition: "transform 0.3s ease",
+                        flexShrink: 0,
+                        "&:hover": {
+                          transform: "scale(1.05)",
+                        },
+                      }}
+                    />
+                  ))}
+                </Box>
               </Box>
             </Collapse>
           </Box>
