@@ -17,11 +17,13 @@ import { CartProvider, useCart } from "./context/CartContext";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import React from "react";
+import CompanyInfoDialog from "./components/CompanyInfoDialog";
 
 // Create AppContent component that uses useCart
 const AppContent = () => {
   const [showBackToTop, setShowBackToTop] = React.useState(false);
   const [showFloatingCart, setShowFloatingCart] = React.useState(false);
+  const [isCompanyDialogOpen, setIsCompanyDialogOpen] = React.useState(false);
   const { setIsCartOpen, cartItems } = useCart();
 
   React.useEffect(() => {
@@ -66,8 +68,8 @@ const AppContent = () => {
             },
           }}
         >
-          <Navbar />
-          <HeroSection />
+          <Navbar onAboutClick={() => setIsCompanyDialogOpen(true)} />
+          <HeroSection onAboutClick={() => setIsCompanyDialogOpen(true)} />
           <Elegance />
           <ProductsGrid />
           <ShopByRoom />
@@ -118,6 +120,10 @@ const AppContent = () => {
           </Fab>
         </Zoom>
       </Box>
+      <CompanyInfoDialog
+        open={isCompanyDialogOpen}
+        onClose={() => setIsCompanyDialogOpen(false)}
+      />
     </ThemeProvider>
   );
 };

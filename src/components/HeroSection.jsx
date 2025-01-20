@@ -1,6 +1,7 @@
+import React, { useState } from "react";
 import { Box, Typography, Grid, Container } from "@mui/material";
 
-const HeroSection = () => {
+const HeroSection = ({ onAboutClick }) => {
   return (
     <Box sx={{ width: "100%", bgcolor: "#FFFFFF" }}>
       {/* Hero Title */}
@@ -73,7 +74,16 @@ const HeroSection = () => {
                 {/* Top Row - Green Chair with Text */}
                 <Grid item xs={12} sx={{ borderBottom: "1px solid #D0D0D0" }}>
                   <Box
-                    sx={{ py: { xs: 2, md: 3 }, px: { xs: 2, md: 4, lg: 6 } }}
+                    onClick={onAboutClick}
+                    sx={{
+                      py: { xs: 2, md: 3 },
+                      px: { xs: 2, md: 4, lg: 6 },
+                      cursor: "pointer",
+                      transition: "background-color 0.2s",
+                      "&:hover": {
+                        bgcolor: "rgba(0, 0, 0, 0.02)",
+                      },
+                    }}
                   >
                     <Typography
                       variant="body1"
@@ -135,13 +145,17 @@ const HeroSection = () => {
                       </Typography>
                       <Box
                         component="a"
-                        href="#"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          onAboutClick();
+                        }}
                         sx={{
                           textDecoration: "underline",
                           color: "inherit",
                           display: "inline-flex",
                           alignItems: "center",
                           fontSize: { xs: "0.8rem", sm: "0.875rem" },
+                          cursor: "pointer",
                           "&:hover": {
                             opacity: 0.8,
                           },

@@ -18,7 +18,7 @@ import { useState } from "react";
 import { useCart } from "../context/CartContext";
 import Cart from "./Cart";
 
-const Navbar = () => {
+const Navbar = ({ onAboutClick }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const { isCartOpen, setIsCartOpen, cartItems } = useCart();
 
@@ -27,7 +27,10 @@ const Navbar = () => {
   };
 
   const handleScroll = (item) => {
-    if (item === "Our Projects") {
+    if (item === "About Us") {
+      onAboutClick();
+      setMobileOpen(false);
+    } else if (item === "Our Projects") {
       const productsSection = document.getElementById("products-section");
       if (productsSection) {
         productsSection.scrollIntoView({ behavior: "smooth" });
