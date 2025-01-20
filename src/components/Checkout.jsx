@@ -157,9 +157,21 @@ const Checkout = ({ open, onClose }) => {
           onClick={fillExampleData}
           size="small"
           sx={{
-            color: "text.secondary",
+            animation: "pulse 2s infinite",
             "&:hover": {
               bgcolor: "rgba(0, 0, 0, 0.04)",
+              animation: "none",
+            },
+            "@keyframes pulse": {
+              "0%": {
+                opacity: 0.6,
+              },
+              "50%": {
+                opacity: 1,
+              },
+              "100%": {
+                opacity: 0.6,
+              },
             },
           }}
         >
