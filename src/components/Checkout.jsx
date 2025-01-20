@@ -36,6 +36,15 @@ const paymentMethods = [
   },
 ];
 
+const EXAMPLE_DATA = {
+  fullName: "John Smith",
+  email: "john.smith@example.com",
+  phone: "+46761234567",
+  address: "Street of the city",
+  city: "Vilnius",
+  postalCode: "10001",
+};
+
 const Checkout = ({ open, onClose }) => {
   const { cartItems, clearCart } = useCart();
   const [step, setStep] = useState("details"); // 'details', 'payment', 'confirmation'
@@ -128,8 +137,35 @@ const Checkout = ({ open, onClose }) => {
     onClose();
   };
 
+  const fillExampleData = () => {
+    formRef.current = { ...EXAMPLE_DATA };
+    // Force re-render of form fields
+    const event = new Event("input", { bubbles: true });
+    Object.keys(EXAMPLE_DATA).forEach((name) => {
+      const element = document.querySelector(`input[name="${name}"]`);
+      if (element) {
+        element.value = EXAMPLE_DATA[name];
+        element.dispatchEvent(event);
+      }
+    });
+  };
+
   const DetailsForm = () => (
     <Stack spacing={2} sx={{ flex: 1, overflowY: "auto", mb: 2 }}>
+      <Box sx={{ display: "flex", justifyContent: "flex-end", mb: 1 }}>
+        <Button
+          onClick={fillExampleData}
+          size="small"
+          sx={{
+            color: "text.secondary",
+            "&:hover": {
+              bgcolor: "rgba(0, 0, 0, 0.04)",
+            },
+          }}
+        >
+          Fill Example Data
+        </Button>
+      </Box>
       <TextField
         required
         fullWidth
@@ -140,6 +176,9 @@ const Checkout = ({ open, onClose }) => {
         error={!!errors.fullName}
         helperText={errors.fullName}
         variant="outlined"
+        InputLabelProps={{
+          shrink: true,
+        }}
       />
       <TextField
         required
@@ -152,6 +191,9 @@ const Checkout = ({ open, onClose }) => {
         error={!!errors.email}
         helperText={errors.email}
         variant="outlined"
+        InputLabelProps={{
+          shrink: true,
+        }}
       />
       <TextField
         required
@@ -163,6 +205,9 @@ const Checkout = ({ open, onClose }) => {
         error={!!errors.phone}
         helperText={errors.phone}
         variant="outlined"
+        InputLabelProps={{
+          shrink: true,
+        }}
       />
       <TextField
         required
@@ -174,6 +219,9 @@ const Checkout = ({ open, onClose }) => {
         error={!!errors.address}
         helperText={errors.address}
         variant="outlined"
+        InputLabelProps={{
+          shrink: true,
+        }}
       />
       <TextField
         required
@@ -185,6 +233,9 @@ const Checkout = ({ open, onClose }) => {
         error={!!errors.city}
         helperText={errors.city}
         variant="outlined"
+        InputLabelProps={{
+          shrink: true,
+        }}
       />
       <TextField
         required
@@ -196,6 +247,9 @@ const Checkout = ({ open, onClose }) => {
         error={!!errors.postalCode}
         helperText={errors.postalCode}
         variant="outlined"
+        InputLabelProps={{
+          shrink: true,
+        }}
       />
     </Stack>
   );
