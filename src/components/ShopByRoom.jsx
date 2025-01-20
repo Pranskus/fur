@@ -7,7 +7,7 @@ import {
   IconButton,
   Collapse,
 } from "@mui/material";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { useState } from "react";
 
 const categories = [
@@ -16,34 +16,37 @@ const categories = [
     name: "Living Room",
     images: [
       "/images/P_sofa.jpg",
-      "/images/findlay-accent-armchair-speckled-stone-sustainable-boucle-p45580-2879795_image.jpg",
-      "/images/emile-swivel-armchair-speckled-stone-sustainable-boucle-p43504-2862193_image.jpg",
+      "/images/P_sofa2.jpg",
+      "/images/P_sofa3.jpg",
+      "/images/P_armchair2.jpg",
     ],
   },
   {
     id: "02",
     name: "Bedroom",
     images: [
-      "/images/buy-barcelona-chair-vintage.jpg",
-      "/images/contemporary-cream-sofa.png",
-      "/images/findlay-accent-armchair-speckled-stone-sustainable-boucle-p45580-2879795_image.jpg",
+      "/images/P_armchair.jpg",
+      "/images/P_armchair2.jpg",
+      "/images/P_accchair.jpg",
     ],
   },
   {
     id: "03",
     name: "Dining Room",
     images: [
-      "/images/emile-swivel-armchair-speckled-stone-sustainable-boucle-p43504-2862193_image.jpg",
-      "/images/buy-barcelona-chair-vintage.jpg",
-      "/images/contemporary-cream-sofa.png",
+      "/images/P_armchair3.jpg",
+      "/images/P_armchair4.jpg",
+      "/images/P_accchair.jpg",
+      "/images/P_sofa.jpg",
+      "/images/P_armchair5.jpg",
     ],
   },
   {
     id: "04",
     name: "Office Room",
     images: [
-      "/images/findlay-accent-armchair-speckled-stone-sustainable-boucle-p45580-2879795_image.jpg",
-      "/images/emile-swivel-armchair-speckled-stone-sustainable-boucle-p43504-2862193_image.jpg",
+      "/images/P_armchair3.jpg",
+      "/images/P_armchair5.jpg",
       "/images/buy-barcelona-chair-vintage.jpg",
     ],
   },
@@ -51,9 +54,10 @@ const categories = [
     id: "05",
     name: "Kitchen",
     images: [
-      "/images/contemporary-cream-sofa.png",
-      "/images/buy-barcelona-chair-vintage.jpg",
-      "/images/findlay-accent-armchair-speckled-stone-sustainable-boucle-p45580-2879795_image.jpg",
+      "/images/P_armchair3.jpg",
+      "/images/P_armchair5.jpg",
+      "/images/P_armchair2.jpg",
+      "/images/P_accchair.jpg",
     ],
   },
 ];
@@ -153,9 +157,13 @@ const ShopByRoom = () => {
                           p: 0,
                           opacity: 0,
                           transition: "all 0.3s ease-in-out",
+                          transform:
+                            selectedCategory === room.name
+                              ? "rotate(180deg)"
+                              : "none",
                         }}
                       >
-                        <ArrowForwardIcon sx={{ fontSize: "1.2rem" }} />
+                        <KeyboardArrowDownIcon sx={{ fontSize: "1.2rem" }} />
                       </IconButton>
                     </Box>
                   </Box>
