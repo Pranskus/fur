@@ -188,21 +188,21 @@ const ShopByRoom = () => {
                     px: { xs: 2, sm: 4, md: 10 },
                     justifyContent: { xs: "flex-start", md: "center" },
                     "&::-webkit-scrollbar": {
-                      height: "8px",
+                      height: "4px",
                     },
                     "&::-webkit-scrollbar-track": {
-                      background: "#f1f1f1",
-                      borderRadius: "4px",
+                      background: "#f8f8f8",
+                      borderRadius: "2px",
                     },
                     "&::-webkit-scrollbar-thumb": {
-                      background: "#888",
-                      borderRadius: "4px",
+                      background: "#ddd",
+                      borderRadius: "2px",
                       "&:hover": {
-                        background: "#666",
+                        background: "#ccc",
                       },
                     },
                     msOverflowStyle: "auto",
-                    scrollbarWidth: "auto",
+                    scrollbarWidth: "thin",
                   }}
                 >
                   {room.images.map((image, index) => (
