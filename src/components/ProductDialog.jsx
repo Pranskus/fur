@@ -11,6 +11,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import { products } from "../data/products";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import { useCart } from "../context/CartContext";
 
 const ProductDialog = ({
   open,
@@ -19,8 +20,24 @@ const ProductDialog = ({
   onMouseEnter,
   onMouseLeave,
 }) => {
+  const { addToCart } = useCart();
   const [selectedImage, setSelectedImage] = React.useState(0);
   const [isFavorite, setIsFavorite] = React.useState(false);
+  const [quantity, setQuantity] = React.useState(1);
+  const [isInCart, setIsInCart] = React.useState(false);
+
+  const handleAddToCart = () => {
+    addToCart(product, quantity);
+    setIsInCart(true);
+  };
+
+  // Reset states when dialog opens with new product
+  React.useEffect(() => {
+    if (open) {
+      setIsInCart(false);
+      setQuantity(1);
+    }
+  }, [open, product]);
 
   if (!product) return null;
 
@@ -203,8 +220,9 @@ const ProductDialog = ({
               <Box sx={{ display: "flex", gap: 2, mb: 2 }}>
                 <Button
                   variant="text"
+                  onClick={handleAddToCart}
                   sx={{
-                    bgcolor: "#F5F5F5",
+                    bgcolor: isInCart ? "#e1d5c7" : "#F5F5F5",
                     color: "#000",
                     fontSize: { xs: "0.7rem", sm: "0.8rem", md: "0.9rem" },
                     py: { xs: 0.5, md: 1 },
@@ -214,11 +232,11 @@ const ProductDialog = ({
                     textTransform: "capitalize",
                     whiteSpace: "nowrap",
                     "&:hover": {
-                      bgcolor: "#E5E5E5",
+                      bgcolor: isInCart ? "#d4c4b3" : "#E5E5E5",
                     },
                   }}
                 >
-                  Add to Cart
+                  {isInCart ? "Added to Cart" : "Add to Cart"}
                 </Button>
 
                 <IconButton
