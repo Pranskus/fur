@@ -93,7 +93,7 @@ const ShopByRoom = () => {
             <ListItem
               onClick={() => handleCategoryClick(room.name)}
               sx={{
-                borderBottom: 1,
+                borderBottom: selectedCategory === room.name ? 0 : 1,
                 borderColor: "#D0D0D0",
                 py: 2,
                 pl: { xs: 2, sm: 4, md: 10 },
@@ -169,7 +169,8 @@ const ShopByRoom = () => {
                   justifyContent: "center",
                   gap: 2,
                   py: 2,
-                  bgcolor: "rgba(0, 0, 0, 0.02)",
+                  bgcolor: "none",
+                  borderBottom: "1px solid #D0D0D0",
                 }}
               >
                 {room.images.map((image, index) => (
