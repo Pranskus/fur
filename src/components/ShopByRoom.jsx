@@ -74,9 +74,7 @@ const ShopByRoom = () => {
   const [isHovered, setIsHovered] = useState(false);
 
   const handleCategoryClick = (categoryName) => {
-    setSelectedCategory(
-      selectedCategory === categoryName ? null : categoryName
-    );
+    setSelectedCategory(categoryName);
   };
 
   const handleImageClick = (image) => {
@@ -124,7 +122,11 @@ const ShopByRoom = () => {
         {categories.map((room) => (
           <Box key={room.id}>
             <ListItem
-              onClick={() => handleCategoryClick(room.name)}
+              onClick={() =>
+                handleCategoryClick(
+                  room.name === selectedCategory ? null : room.name
+                )
+              }
               sx={{
                 borderBottom: selectedCategory === room.name ? 0 : 1,
                 borderColor: "#D0D0D0",
@@ -146,6 +148,8 @@ const ShopByRoom = () => {
                     opacity: 0.7,
                   },
                 },
+                WebkitTapHighlightColor: "transparent",
+                touchAction: "manipulation",
               }}
             >
               <ListItemText
