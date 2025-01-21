@@ -9,6 +9,8 @@ import {
 } from "@mui/material";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { useState } from "react";
+import { products } from "../data/products.js";
+import ProductDialog from "./ProductDialog";
 
 const categories = [
   {
@@ -62,13 +64,39 @@ const categories = [
   },
 ];
 
+// Add console.log to debug the products data
+console.log("Products:", products);
+
 const ShopByRoom = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [isHovered, setIsHovered] = useState(false);
 
   const handleCategoryClick = (categoryName) => {
     setSelectedCategory(
       selectedCategory === categoryName ? null : categoryName
     );
+  };
+
+  const handleImageClick = (image) => {
+    // Find product by checking each product's images array
+    const product = Object.values(products).find((product) =>
+      product.images.includes(image)
+    );
+
+    if (product) {
+      setSelectedProduct(product);
+    } else {
+      console.log("No product found for image:", image);
+    }
+  };
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
   };
 
   return (
@@ -211,6 +239,7 @@ const ShopByRoom = () => {
                       component="img"
                       src={image}
                       alt={`${room.name} ${index + 1}`}
+                      onClick={() => handleImageClick(image)}
                       sx={{
                         height: 120,
                         width: "auto",
@@ -219,6 +248,7 @@ const ShopByRoom = () => {
                         borderRadius: 1,
                         transition: "transform 0.3s ease",
                         flexShrink: 0,
+                        cursor: "pointer",
                         "&:hover": {
                           transform: "scale(1.05)",
                         },
@@ -231,6 +261,17 @@ const ShopByRoom = () => {
           </Box>
         ))}
       </List>
+
+      {selectedProduct && (
+        <ProductDialog
+          product={selectedProduct}
+          open={!!selectedProduct}
+          onClose={() => setSelectedProduct(null)}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          isHovered={isHovered}
+        />
+      )}
     </Box>
   );
 };
