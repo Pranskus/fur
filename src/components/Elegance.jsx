@@ -1,4 +1,5 @@
 import { Box, Typography, Grid, Container } from "@mui/material";
+import { getImagePath } from "../utils/imagePath";
 
 const Elegance = () => {
   return (
@@ -27,7 +28,9 @@ const Elegance = () => {
           >
             <Box
               component="img"
-              src="/images/paulo-accent-chair-speckled-stone-sustainable-boucle-p46054-2885000_image.jpg"
+              src={getImagePath(
+                "/images/paulo-accent-chair-speckled-stone-sustainable-boucle-p46054-2885000_image.jpg"
+              )}
               alt="Designer Portrait"
               sx={{
                 width: "120%",
@@ -137,7 +140,9 @@ const Elegance = () => {
             >
               <Box
                 component="img"
-                src="/images/mika-coffee-table-oak-black-p45991-2882031_image.jpg"
+                src={getImagePath(
+                  "/images/mika-coffee-table-oak-black-p45991-2882031_image.jpg"
+                )}
                 alt="Marble Table"
                 sx={{
                   position: "absolute",
