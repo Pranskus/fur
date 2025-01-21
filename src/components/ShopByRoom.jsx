@@ -11,6 +11,7 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { useState } from "react";
 import { products } from "../data/products.js";
 import ProductDialog from "./ProductDialog";
+import { getImagePath } from "../utils/imagePath";
 
 const categories = [
   {
@@ -237,7 +238,7 @@ const ShopByRoom = () => {
                     <Box
                       key={index}
                       component="img"
-                      src={image}
+                      src={getImagePath(image)}
                       alt={`${room.name} ${index + 1}`}
                       onClick={() => handleImageClick(image)}
                       sx={{

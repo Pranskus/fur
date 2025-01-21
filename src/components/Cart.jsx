@@ -14,6 +14,7 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import Checkout from "./Checkout";
+import { getImagePath } from "../utils/imagePath";
 
 const Cart = ({ open, onClose }) => {
   const { cartItems, removeFromCart, updateQuantity } = useCart();
@@ -78,7 +79,7 @@ const Cart = ({ open, onClose }) => {
                 >
                   <Box
                     component="img"
-                    src={item.images[0]}
+                    src={getImagePath(item.images[0])}
                     alt={item.title}
                     sx={{
                       width: 80,

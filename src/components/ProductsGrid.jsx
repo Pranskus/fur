@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import ProductDialog from "./ProductDialog";
 import { products, getProductsByCategory } from "../data/products";
+import { getImagePath } from "../utils/imagePath";
 
 const ProductsGrid = () => {
   const productsRef = useRef(null);
@@ -278,7 +279,7 @@ const ProductsGrid = () => {
                       </Box>
                     )}
                     <img
-                      src={item.images[0]}
+                      src={getImagePath(item.images[0])}
                       alt={item.id}
                       loading="lazy"
                       style={{
@@ -410,7 +411,7 @@ const ProductsGrid = () => {
                       </Box>
                     )}
                     <img
-                      src={item.images[0]}
+                      src={getImagePath(item.images[0])}
                       alt={item.id}
                       loading="lazy"
                       style={{

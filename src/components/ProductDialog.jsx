@@ -12,6 +12,7 @@ import { products } from "../data/products";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useCart } from "../context/CartContext";
+import { getImagePath } from "../utils/imagePath";
 
 const ProductDialog = ({
   open,
@@ -114,7 +115,7 @@ const ProductDialog = ({
             >
               <Box
                 component="img"
-                src={product.images[selectedImage]}
+                src={getImagePath(product.images[selectedImage])}
                 alt={product.title}
                 sx={{
                   position: "absolute",
@@ -141,7 +142,7 @@ const ProductDialog = ({
                 <Box
                   key={index}
                   component="img"
-                  src={img}
+                  src={getImagePath(img)}
                   alt={`View ${index + 1}`}
                   onClick={() => setSelectedImage(index)}
                   sx={{

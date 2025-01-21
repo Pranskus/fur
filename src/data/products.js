@@ -29,9 +29,9 @@ export const products = {
     ],
     images: [
       "/images/P_sofa.jpg",
-      "/images/P_sofa_2.jpg",
-      "/images/P_sofa_3.jpg",
-      "/images/P_sofa_4.jpg",
+      "/images/P_sofa2.jpg",
+      "/images/P_sofa3.jpg",
+      "/images/P_sofa4.jpg",
     ],
   },
   "Accent Chair 1": {
