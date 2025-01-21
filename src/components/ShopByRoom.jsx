@@ -217,6 +217,36 @@ const ShopByRoom = () => {
                   borderBottom: "1px solid #D0D0D0",
                 }}
               >
+                {/* Add scroll indicators for mobile */}
+                <Box
+                  sx={{
+                    display: { xs: "block", md: "none" },
+                    position: "absolute",
+                    right: 0,
+                    top: 0,
+                    bottom: 0,
+                    width: 40,
+                    background:
+                      "linear-gradient(to right, transparent, rgba(255,255,255,0.9))",
+                    pointerEvents: "none",
+                    zIndex: 1,
+                  }}
+                />
+                <Box
+                  sx={{
+                    display: { xs: "block", md: "none" },
+                    position: "absolute",
+                    left: 0,
+                    top: 0,
+                    bottom: 0,
+                    width: 40,
+                    background:
+                      "linear-gradient(to left, transparent, rgba(255,255,255,0.9))",
+                    pointerEvents: "none",
+                    zIndex: 1,
+                  }}
+                />
+
                 <Box
                   sx={{
                     display: "flex",
@@ -242,6 +272,13 @@ const ShopByRoom = () => {
                     },
                     msOverflowStyle: "auto",
                     scrollbarWidth: "thin",
+                    WebkitOverflowScrolling: "touch",
+                    scrollBehavior: "smooth",
+                    touchAction: "pan-x",
+                    "&::after": {
+                      content: '""',
+                      minWidth: { xs: "10px", md: 0 },
+                    },
                   }}
                 >
                   {room.images.map((image, index) => (
