@@ -73,8 +73,15 @@ const ShopByRoom = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isHovered, setIsHovered] = useState(false);
 
-  const handleCategoryClick = (categoryName) => {
-    setSelectedCategory(categoryName);
+  const handleCategoryClick = (categoryName, event) => {
+    // Prevent any default behavior
+    event.preventDefault();
+
+    if (selectedCategory === categoryName) {
+      setSelectedCategory(null);
+    } else {
+      setSelectedCategory(categoryName);
+    }
   };
 
   const handleImageClick = (image) => {
@@ -122,11 +129,9 @@ const ShopByRoom = () => {
         {categories.map((room) => (
           <Box key={room.id}>
             <ListItem
-              onClick={() =>
-                handleCategoryClick(
-                  room.name === selectedCategory ? null : room.name
-                )
-              }
+              component="div"
+              onTouchStart={(e) => handleCategoryClick(room.name, e)}
+              onClick={(e) => handleCategoryClick(room.name, e)}
               sx={{
                 borderBottom: selectedCategory === room.name ? 0 : 1,
                 borderColor: "#D0D0D0",
@@ -134,6 +139,9 @@ const ShopByRoom = () => {
                 pl: { xs: 2, sm: 4, md: 10 },
                 cursor: "pointer",
                 transition: "all 0.3s ease-in-out",
+                WebkitTapHighlightColor: "transparent",
+                touchAction: "manipulation",
+                userSelect: "none",
                 "&:hover": {
                   bgcolor: "#f5f5f5",
                   "& .arrow-icon": {
@@ -148,8 +156,6 @@ const ShopByRoom = () => {
                     opacity: 0.7,
                   },
                 },
-                WebkitTapHighlightColor: "transparent",
-                touchAction: "manipulation",
               }}
             >
               <ListItemText
