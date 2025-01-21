@@ -95,7 +95,7 @@ const Elegance = () => {
                   fontSize: { xs: "0.65rem", sm: "0.7rem" },
                   lineHeight: 1.6,
                   color: "text.secondary",
-                  maxWidth: { xs: "95%", sm: "90%", md: "80%" },
+                  maxWidth: { xs: "95%", sm: "90%", md: "90%" },
                 }}
               >
                 Fashion Designer and Creative Director Carly Cushnie has entered
@@ -105,23 +105,6 @@ const Elegance = () => {
                 Every piece in the collection has a distinctive round quality
                 with unique materials, and textures.
               </Typography>
-
-              <Box
-                sx={{
-                  position: "absolute",
-                  right: { xs: 8, sm: 24, md: 32 },
-                  bottom: { xs: 8, sm: 24, md: 32 },
-                  transform: "rotate(-45deg)",
-                  fontSize: { xs: "1rem", sm: "1.35rem", md: "1.5rem" },
-                  cursor: "pointer",
-                  transition: "transform 0.3s ease",
-                  "&:hover": {
-                    transform: "rotate(-45deg) scale(1.2)",
-                  },
-                }}
-              >
-                ↗
-              </Box>
             </Box>
 
             {/* Bottom Image Container */}
