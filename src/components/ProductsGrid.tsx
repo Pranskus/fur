@@ -9,7 +9,7 @@ import {
   Stack,
 } from "@mui/material";
 import ProductDialog from "./ProductDialog";
-import { products, getProductsByCategory } from "../data/products";
+import { products } from "../data/products";
 import { getImagePath } from "../utils/imagePath";
 import { Product } from "../types/product";
 

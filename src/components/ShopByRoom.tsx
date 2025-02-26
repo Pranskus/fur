@@ -98,8 +98,9 @@ const ShopByRoom = () => {
   };
 
   const handleImageClick = (image: string) => {
-    const product = Object.values(products).find((product) =>
-      product.images.includes(image)
+    const product = Object.values(products).find(
+      (product): product is Product =>
+        product.images.includes(image) && "description" in product
     );
 
     if (product) {
