@@ -9,7 +9,7 @@ interface HeroSectionProps {
 const HeroSection: React.FC<HeroSectionProps> = ({ onAboutClick }) => {
   return (
     <Box sx={{ width: "100%", bgcolor: "#FFFFFF" }}>
-      {/* Hero Title */}
+      {}
       <Box
         sx={{
           display: "flex",
@@ -61,11 +61,11 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onAboutClick }) => {
         />
       </Box>
 
-      {/* Timeless Section */}
+      {}
       <Container maxWidth="lg">
         <Box sx={{ py: { xs: 2, sm: 3, md: 4 } }}>
           <Grid container>
-            {/* Left Half - Split into two rows */}
+            {}
             <Grid
               item
               xs={12}
@@ -76,7 +76,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onAboutClick }) => {
               }}
             >
               <Grid container>
-                {/* Top Row - Green Chair with Text */}
+                {}
                 <Grid item xs={12} sx={{ borderBottom: "1px solid #D0D0D0" }}>
                   <Box
                     onClick={onAboutClick}
@@ -174,7 +174,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onAboutClick }) => {
                   </Box>
                 </Grid>
 
-                {/* Bottom Row - Cream Sofa */}
+                {}
                 <Grid
                   item
                   xs={12}
@@ -224,7 +224,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onAboutClick }) => {
               </Grid>
             </Grid>
 
-            {/* Right Half - Brown Chair */}
+            {}
             <Grid
               item
               xs={12}

@@ -55,7 +55,7 @@ const Cart: React.FC<CartProps> = ({ open, onClose }) => {
           },
         }}
       >
-        {/* Header */}
+        {}
         <Box sx={{ display: "flex", justifyContent: "space-between", mb: 3 }}>
           <Typography variant="h6" sx={{ fontWeight: 600 }}>
             Shopping Cart
@@ -67,7 +67,7 @@ const Cart: React.FC<CartProps> = ({ open, onClose }) => {
 
         <Divider sx={{ mb: 2 }} />
 
-        {/* Cart Items */}
+        {}
         <Box sx={{ flex: 1, overflowY: "auto", mb: 2 }}>
           {cartItems.length === 0 ? (
             <Box sx={{ textAlign: "center", py: 8 }}>
@@ -148,7 +148,7 @@ const Cart: React.FC<CartProps> = ({ open, onClose }) => {
 
         <Divider sx={{ mb: 2 }} />
 
-        {/* Footer */}
+        {}
         <Box>
           <Box sx={{ display: "flex", justifyContent: "space-between", mb: 2 }}>
             <Typography variant="subtitle1">Subtotal</Typography>

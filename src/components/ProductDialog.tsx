@@ -44,7 +44,6 @@ const ProductDialog: React.FC<ProductDialogProps> = ({
     }
   };
 
-  // Reset states when dialog opens with new product
   useEffect(() => {
     if (open) {
       setIsInCart(false);
@@ -103,7 +102,7 @@ const ProductDialog: React.FC<ProductDialogProps> = ({
             height: "100%",
           }}
         >
-          {/* Left side - Main Image and Thumbnails */}
+          {}
           <Box
             sx={{
               flex: "1 1 60%",
@@ -113,7 +112,7 @@ const ProductDialog: React.FC<ProductDialogProps> = ({
               height: { xs: "50%", md: "100%" },
             }}
           >
-            {/* Main Image */}
+            {}
             <Box
               sx={{
                 flex: 1,
@@ -141,7 +140,7 @@ const ProductDialog: React.FC<ProductDialogProps> = ({
               />
             </Box>
 
-            {/* Thumbnails */}
+            {}
             <Box
               sx={{
                 display: "flex",
@@ -179,7 +178,7 @@ const ProductDialog: React.FC<ProductDialogProps> = ({
             </Box>
           </Box>
 
-          {/* Right side - Product Info */}
+          {}
           <Box
             sx={{
               flex: "1 1 40%",

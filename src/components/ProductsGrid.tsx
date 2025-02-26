@@ -46,7 +46,6 @@ const ProductsGrid: React.FC = () => {
     setDialogOpen(true);
   };
 
-  // Update the type guard
   const hasRequiredCols = (
     item: Product | undefined
   ): item is Product & { cols: number } => {
@@ -87,7 +86,7 @@ const ProductsGrid: React.FC = () => {
             },
           }}
         >
-          {/* Products Title */}
+          {}
           <Box
             sx={{
               gridColumn: { xs: "span 4", md: "span 4", lg: "span 2" },
@@ -118,7 +117,7 @@ const ProductsGrid: React.FC = () => {
             </Typography>
           </Box>
 
-          {/* Categories */}
+          {}
           <Box
             sx={{
               gridColumn: { xs: "span 4", md: "span 4", lg: "span 2" },
@@ -185,7 +184,7 @@ const ProductsGrid: React.FC = () => {
             </Box>
           </Box>
 
-          {/* Mobile Products Grid */}
+          {}
           <Box
             sx={{
               gridColumn: "span 4",
@@ -207,7 +206,6 @@ const ProductsGrid: React.FC = () => {
               gap={0}
             >
               {(() => {
-                // Separate sofas and chairs
                 const sofas = filteredItems.filter(
                   (item) => item.title === "Sofa"
                 );
@@ -215,7 +213,6 @@ const ProductsGrid: React.FC = () => {
                   (item) => item.title !== "Sofa"
                 );
 
-                // Interleave sofas and chairs
                 const arrangedItems = [];
                 const maxLength = Math.max(
                   sofas.length,
@@ -223,11 +220,10 @@ const ProductsGrid: React.FC = () => {
                 );
 
                 for (let i = 0; i < maxLength; i++) {
-                  // Add sofa if available
                   if (i < sofas.length) {
                     arrangedItems.push(sofas[i]);
                   }
-                  // Add up to 2 chairs if available
+
                   for (let j = 0; j < 2; j++) {
                     const chairIndex = i * 2 + j;
                     if (chairIndex < chairs.length) {
@@ -309,7 +305,7 @@ const ProductsGrid: React.FC = () => {
             </ImageList>
           </Box>
 
-          {/* Desktop Products Grid */}
+          {}
           <Box
             sx={{
               gridColumn: "span 4",
@@ -342,7 +338,6 @@ const ProductsGrid: React.FC = () => {
               gap={0}
             >
               {filteredItems.map((item, index) => {
-                // Update the calculations
                 let currentPosition = 0;
                 for (let i = 0; i < index; i++) {
                   const item = filteredItems[i];
@@ -351,13 +346,11 @@ const ProductsGrid: React.FC = () => {
                   }
                 }
 
-                // Update the edge checks
                 const isRightEdge =
                   hasRequiredCols(item) && currentPosition + item.cols === 4;
-                // Check if item starts at left edge
+
                 const isLeftEdge = currentPosition === 0;
 
-                // Update the total cols calculation
                 let totalColsSoFar = 0;
                 for (let i = 0; i < filteredItems.length; i++) {
                   if (i < index) {
@@ -452,7 +445,7 @@ const ProductsGrid: React.FC = () => {
         </Box>
       </Container>
 
-      {/* Add Dialog with hover handlers */}
+      {}
       <ProductDialog
         open={dialogOpen}
         onClose={() => setDialogOpen(false)}

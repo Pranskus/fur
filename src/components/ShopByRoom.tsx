@@ -80,7 +80,6 @@ const categories: Category[] = [
   },
 ];
 
-// Add console.log to debug the products data
 console.log("Products:", products);
 
 const ShopByRoom = () => {
@@ -234,7 +233,7 @@ const ShopByRoom = () => {
                   borderBottom: "1px solid #D0D0D0",
                 }}
               >
-                {/* Add scroll indicators for mobile */}
+                {}
                 <Box
                   sx={{
                     display: { xs: "block", md: "none" },

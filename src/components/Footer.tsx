@@ -15,7 +15,6 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 const Footer: React.FC = () => {
   return (
     <Box sx={{ bgcolor: "#1C1C1C", color: "white" }}>
-      {/* GET IN TOUCH Title */}
       <Typography
         variant="h1"
         sx={{
@@ -388,7 +387,6 @@ const Footer: React.FC = () => {
         </Grid>
       </Container>
 
-      {/* Copyright */}
       <Box
         sx={{
           borderTop: "1px solid #F5F5F5",
@@ -400,7 +398,7 @@ const Footer: React.FC = () => {
             variant="body2"
             sx={{ color: "#999", textAlign: "center" }}
           >
-            pra-code
+            Lulu and Georgia
           </Typography>
         </Container>
       </Box>

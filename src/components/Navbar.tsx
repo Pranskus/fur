@@ -99,7 +99,6 @@ const Navbar: React.FC<NavbarProps> = ({ onAboutClick }) => {
               </Box>
             </Box>
 
-            {/* Desktop Menu */}
             <Box sx={{ display: { xs: "none", md: "flex" }, gap: "2vw" }}>
               {menuItems.map((item) => (
                 <Button
@@ -117,7 +116,6 @@ const Navbar: React.FC<NavbarProps> = ({ onAboutClick }) => {
               ))}
             </Box>
 
-            {/* Mobile Menu Button */}
             <IconButton
               onClick={handleDrawerToggle}
               sx={{
@@ -131,7 +129,7 @@ const Navbar: React.FC<NavbarProps> = ({ onAboutClick }) => {
               <MenuIcon />
             </IconButton>
 
-            {/* Icons */}
+            {}
             <Box sx={{ display: "flex", gap: { xs: "0.5vw", md: "1vw" } }}>
               <IconButton sx={{ padding: { xs: "0.4vw", md: "0.8vw" } }}>
                 <PhoneIcon
@@ -165,7 +163,7 @@ const Navbar: React.FC<NavbarProps> = ({ onAboutClick }) => {
           </Toolbar>
         </Container>
 
-        {/* Mobile Drawer */}
+        {}
         <Drawer
           variant="temporary"
           anchor="right"
@@ -223,7 +221,7 @@ const Navbar: React.FC<NavbarProps> = ({ onAboutClick }) => {
         </Drawer>
       </AppBar>
 
-      {/* Add Cart component */}
+      {}
       <Cart open={isCartOpen} onClose={() => setIsCartOpen(false)} />
     </>
   );

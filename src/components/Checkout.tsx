@@ -83,7 +83,6 @@ const Checkout: React.FC<CheckoutProps> = ({ open, onClose }) => {
   const [errors, setErrors] = useState<FormErrors>({});
   const [orderPlaced, setOrderPlaced] = useState(false);
 
-  // Use refs instead of state for form inputs
   const formRef = React.useRef<FormData>({
     fullName: "",
     email: "",
@@ -105,7 +104,6 @@ const Checkout: React.FC<CheckoutProps> = ({ open, onClose }) => {
     const { name, value } = e.target;
     formRef.current[name as keyof FormData] = value;
 
-    // Clear error if exists
     if (errors[name]) {
       setErrors((prev) => ({
         ...prev,
@@ -149,7 +147,6 @@ const Checkout: React.FC<CheckoutProps> = ({ open, onClose }) => {
     setStep("confirmation");
     setOrderPlaced(true);
     clearCart();
-    // You would typically send the order to your backend here
   };
 
   const handleClose = () => {
@@ -170,7 +167,7 @@ const Checkout: React.FC<CheckoutProps> = ({ open, onClose }) => {
 
   const fillExampleData = () => {
     formRef.current = { ...EXAMPLE_DATA };
-    // Force re-render of form fields
+
     const event = new Event("input", { bubbles: true });
     Object.keys(EXAMPLE_DATA).forEach((name) => {
       const element = document.querySelector(
@@ -369,7 +366,7 @@ const Checkout: React.FC<CheckoutProps> = ({ open, onClose }) => {
     >
       <Fade in={true}>
         <Box>
-          {/* Header */}
+          {}
           <Box sx={{ display: "flex", justifyContent: "space-between", mb: 3 }}>
             <Typography variant="h6" sx={{ fontWeight: 600 }}>
               {step === "confirmation"
@@ -385,14 +382,14 @@ const Checkout: React.FC<CheckoutProps> = ({ open, onClose }) => {
 
           <Divider sx={{ mb: 2 }} />
 
-          {/* Content */}
+          {}
           <Box sx={{ mb: 4 }}>
             {step === "details" && <DetailsForm />}
             {step === "payment" && <PaymentForm />}
             {step === "confirmation" && <Confirmation />}
           </Box>
 
-          {/* Order Summary */}
+          {}
           {step !== "confirmation" && (
             <>
               <Divider sx={{ mb: 2 }} />
