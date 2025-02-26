@@ -13,7 +13,7 @@ const Elegance: React.FC = () => {
     >
       <Container>
         <Grid container spacing={0}>
-          {/* Left Image */}
+          {}
           <Grid
             item
             xs={6}
@@ -45,7 +45,7 @@ const Elegance: React.FC = () => {
             />
           </Grid>
 
-          {/* Right Content */}
+          {}
           <Grid
             item
             xs={6}
@@ -57,7 +57,7 @@ const Elegance: React.FC = () => {
               height: { xs: "300px", sm: "600px", md: "800px" },
             }}
           >
-            {/* Text Content */}
+            {}
             <Box
               sx={{
                 p: { xs: 2, sm: 2, md: 3 },
@@ -81,7 +81,7 @@ const Elegance: React.FC = () => {
               </Typography>
             </Box>
 
-            {/* Text and Arrow Section */}
+            {}
             <Box
               sx={{
                 position: "relative",
@@ -108,7 +108,7 @@ const Elegance: React.FC = () => {
               </Typography>
             </Box>
 
-            {/* Bottom Image Container */}
+            {}
             <Box
               sx={{
                 position: "relative",

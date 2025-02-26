@@ -1,13 +1,13 @@
 import React from "react";
-import { BrowserRouter } from "react-router-dom";
+import ReactDOM from "react-dom/client";
 import App from "./App";
 
-const AppWrapper: React.FC = () => {
-  return (
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
-      <App />
-    </BrowserRouter>
-  );
-};
+const root = ReactDOM.createRoot(
+  document.getElementById("root") as HTMLElement
+);
 
-export default AppWrapper;
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
