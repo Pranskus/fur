@@ -11,6 +11,7 @@ import {
   ListItem,
   ListItemText,
   Badge,
+  Typography,
 } from "@mui/material";
 import PhoneIcon from "@mui/icons-material/Phone";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
@@ -118,11 +119,14 @@ const Navbar: React.FC<NavbarProps> = ({ onAboutClick }) => {
 
             {/* Mobile Menu Button */}
             <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              edge="start"
               onClick={handleDrawerToggle}
-              sx={{ display: { md: "none" } }}
+              sx={{
+                display: { xs: "block", md: "none" },
+                cursor: "pointer",
+                "&:hover": {
+                  backgroundColor: "rgba(0, 0, 0, 0.04)",
+                },
+              }}
             >
               <MenuIcon />
             </IconButton>
@@ -162,36 +166,51 @@ const Navbar: React.FC<NavbarProps> = ({ onAboutClick }) => {
           open={mobileOpen}
           onClose={handleDrawerToggle}
           ModalProps={{
-            keepMounted: true, // Better mobile performance
+            keepMounted: true,
           }}
           sx={{
             display: { xs: "block", md: "none" },
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: 240,
+              backgroundColor: "#FFFFFF",
+              pt: 2,
             },
           }}
         >
-          <List>
+          <List sx={{ pt: 0 }}>
             {menuItems.map((item) => (
               <ListItem
-                disablePadding
-                component="div"
-                onClick={() => {
-                  handleScroll(item);
-                  handleDrawerToggle();
-                }}
                 key={item}
+                disablePadding
+                sx={{
+                  "&:hover": {
+                    backgroundColor: "rgba(0, 0, 0, 0.04)",
+                  },
+                }}
               >
-                <ListItemText
-                  primary={item}
+                <Box
+                  onClick={() => {
+                    handleScroll(item);
+                    handleDrawerToggle();
+                  }}
                   sx={{
-                    "& .MuiTypography-root": {
+                    width: "100%",
+                    px: 3,
+                    py: 2,
+                    cursor: "pointer",
+                  }}
+                >
+                  <Typography
+                    sx={{
                       fontSize: "1rem",
                       fontWeight: 500,
-                    },
-                  }}
-                />
+                      color: "text.primary",
+                    }}
+                  >
+                    {item}
+                  </Typography>
+                </Box>
               </ListItem>
             ))}
           </List>
