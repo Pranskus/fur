@@ -18,10 +18,7 @@ import { CartProvider, useCart } from "./context/CartContext";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import CompanyInfoDialog from "./components/CompanyInfoDialog";
-
-interface CartItem {
-  id: number;
-}
+import { CartItem } from "./types/product";
 
 const AppContent: React.FC = () => {
   const [showBackToTop, setShowBackToTop] = useState(false);
@@ -106,7 +103,13 @@ const AppContent: React.FC = () => {
               },
             }}
           >
-            <Badge badgeContent={cartItems.length} color="primary">
+            <Badge
+              badgeContent={cartItems.reduce(
+                (total, item) => total + item.quantity,
+                0
+              )}
+              color="primary"
+            >
               <ShoppingCartIcon />
             </Badge>
           </Fab>

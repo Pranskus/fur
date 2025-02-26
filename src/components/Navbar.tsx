@@ -144,7 +144,13 @@ const Navbar: React.FC<NavbarProps> = ({ onAboutClick }) => {
                 onClick={() => setIsCartOpen(true)}
                 sx={{ color: "black" }}
               >
-                <Badge badgeContent={cartItems.length} color="primary">
+                <Badge
+                  badgeContent={cartItems.reduce(
+                    (total, item) => total + item.quantity,
+                    0
+                  )}
+                  color="primary"
+                >
                   <ShoppingCartIcon
                     sx={{
                       fontSize: {
