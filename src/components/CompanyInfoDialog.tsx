@@ -16,8 +16,22 @@ import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
 import StarIcon from "@mui/icons-material/Star";
 import PhoneIcon from "@mui/icons-material/Phone";
 
-const CompanyInfoDialog = ({ open, onClose }) => {
-  const sections = [
+interface CompanyInfoDialogProps {
+  open: boolean;
+  onClose: () => void;
+}
+
+interface Section {
+  title: string;
+  icon: React.ReactNode;
+  content: string;
+}
+
+const CompanyInfoDialog: React.FC<CompanyInfoDialogProps> = ({
+  open,
+  onClose,
+}) => {
+  const sections: Section[] = [
     {
       title: "Our Design Philosophy",
       icon: (

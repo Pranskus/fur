@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   Box,
   Dialog,
@@ -8,32 +8,44 @@ import {
   Button,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import { products } from "../data/products";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useCart } from "../context/CartContext";
 import { getImagePath } from "../utils/imagePath";
+import { Product } from "../types/product";
 
-const ProductDialog = ({
+interface ProductDialogProps {
+  open: boolean;
+  onClose: () => void;
+  product: Product | null;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
+}
+
+const ProductDialog: React.FC<ProductDialogProps> = ({
   open,
   onClose,
   product,
   onMouseEnter,
   onMouseLeave,
 }) => {
-  const { addToCart } = useCart();
-  const [selectedImage, setSelectedImage] = React.useState(0);
-  const [isFavorite, setIsFavorite] = React.useState(false);
-  const [quantity, setQuantity] = React.useState(1);
-  const [isInCart, setIsInCart] = React.useState(false);
+  const { addToCart } = useCart() as {
+    addToCart: (product: Product, quantity: number) => void;
+  };
+  const [selectedImage, setSelectedImage] = useState(0);
+  const [isFavorite, setIsFavorite] = useState(false);
+  const [quantity, setQuantity] = useState(1);
+  const [isInCart, setIsInCart] = useState(false);
 
   const handleAddToCart = () => {
-    addToCart(product, quantity);
-    setIsInCart(true);
+    if (product) {
+      addToCart(product, quantity);
+      setIsInCart(true);
+    }
   };
 
   // Reset states when dialog opens with new product
-  React.useEffect(() => {
+  useEffect(() => {
     if (open) {
       setIsInCart(false);
       setQuantity(1);
@@ -272,7 +284,6 @@ const ProductDialog = ({
                   variant="body1"
                   component="div"
                   sx={{
-                    color: "text.secondary",
                     mb: line === "" ? 2 : 1,
                     fontSize: { xs: "0.875rem", sm: "1rem" },
                     fontWeight:

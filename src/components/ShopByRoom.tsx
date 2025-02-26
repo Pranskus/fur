@@ -11,9 +11,24 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { useState } from "react";
 import { products } from "../data/products.js";
 import ProductDialog from "./ProductDialog";
-import { getImagePath } from "../utils/imagePath";
+import { getImagePath } from "../utils/imagePath.js";
 
-const categories = [
+interface Category {
+  id: string;
+  name: string;
+  images: string[];
+}
+
+interface Product {
+  id: string;
+  title: string;
+  tag?: string;
+  description: string[];
+  images: string[];
+  price?: number;
+}
+
+const categories: Category[] = [
   {
     id: "01",
     name: "Living Room",
@@ -69,23 +84,21 @@ const categories = [
 console.log("Products:", products);
 
 const ShopByRoom = () => {
-  const [selectedCategory, setSelectedCategory] = useState(null);
-  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [isHovered, setIsHovered] = useState(false);
 
-  const handleCategoryClick = (categoryName, event) => {
-    // Prevent any default behavior
+  const handleCategoryClick = (
+    categoryName: string,
+    event: React.MouseEvent | React.TouchEvent
+  ) => {
     event.preventDefault();
-
-    if (selectedCategory === categoryName) {
-      setSelectedCategory(null);
-    } else {
-      setSelectedCategory(categoryName);
-    }
+    setSelectedCategory(
+      selectedCategory === categoryName ? null : categoryName
+    );
   };
 
-  const handleImageClick = (image) => {
-    // Find product by checking each product's images array
+  const handleImageClick = (image: string) => {
     const product = Object.values(products).find((product) =>
       product.images.includes(image)
     );
@@ -103,6 +116,10 @@ const ShopByRoom = () => {
 
   const handleMouseLeave = () => {
     setIsHovered(false);
+  };
+
+  const handleClose = () => {
+    setSelectedProduct(null);
   };
 
   return (
@@ -313,11 +330,10 @@ const ShopByRoom = () => {
       {selectedProduct && (
         <ProductDialog
           product={selectedProduct}
-          open={!!selectedProduct}
-          onClose={() => setSelectedProduct(null)}
+          open={true}
+          onClose={handleClose}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
-          isHovered={isHovered}
         />
       )}
     </Box>

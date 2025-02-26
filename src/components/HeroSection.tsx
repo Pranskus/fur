@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import { Box, Typography, Grid, Container } from "@mui/material";
 import { getImagePath } from "../utils/imagePath";
 
-const HeroSection = ({ onAboutClick }) => {
+interface HeroSectionProps {
+  onAboutClick: () => void;
+}
+
+const HeroSection: React.FC<HeroSectionProps> = ({ onAboutClick }) => {
   return (
     <Box sx={{ width: "100%", bgcolor: "#FFFFFF" }}>
       {/* Hero Title */}

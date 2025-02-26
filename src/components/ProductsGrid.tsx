@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import {
   Box,
   ImageList,
@@ -11,19 +11,22 @@ import {
 import ProductDialog from "./ProductDialog";
 import { products, getProductsByCategory } from "../data/products";
 import { getImagePath } from "../utils/imagePath";
+import { Product } from "../types/product";
 
-const ProductsGrid = () => {
-  const productsRef = useRef(null);
-  // Add state for active category
-  const [activeCategory, setActiveCategory] = React.useState("See All");
-  // Add state for dialog
-  const [dialogOpen, setDialogOpen] = React.useState(false);
-  const [selectedProduct, setSelectedProduct] = React.useState(null);
+const ProductsGrid: React.FC = () => {
+  const productsRef = useRef<HTMLDivElement>(null);
+  const [activeCategory, setActiveCategory] = useState<string>("See All");
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
-  const categories = ["See All", "Sofas", "Accent Chairs", "Desk Chairs"];
+  const categories: string[] = [
+    "See All",
+    "Sofas",
+    "Accent Chairs",
+    "Desk Chairs",
+  ];
 
-  // Get filtered items based on active category
-  const getFilteredItems = () => {
+  const getFilteredItems = (): Product[] => {
     if (activeCategory === "See All") return Object.values(products);
     if (activeCategory === "Sofas")
       return Object.values(products).filter((item) => item.title === "Sofa");
@@ -38,10 +41,16 @@ const ProductsGrid = () => {
 
   const filteredItems = getFilteredItems();
 
-  // Add click handler
-  const handleProductClick = (product) => {
+  const handleProductClick = (product: Product) => {
     setSelectedProduct(product);
     setDialogOpen(true);
+  };
+
+  // Update the type guard
+  const hasRequiredCols = (
+    item: Product | undefined
+  ): item is Product & { cols: number } => {
+    return item !== undefined && typeof item.cols === "number";
   };
 
   return (
@@ -278,18 +287,17 @@ const ProductsGrid = () => {
                         </Typography>
                       </Box>
                     )}
-                    <img
+                    <Box
+                      component="img"
                       src={getImagePath(item.images[0])}
                       alt={item.id}
                       loading="lazy"
-                      style={{
+                      sx={{
                         width: "100%",
                         height: "100%",
                         objectFit: "contain",
                         padding: "16px",
                         transition: "all 0.3s ease-in-out",
-                      }}
-                      sx={{
                         "&:hover": {
                           transform: "scale(1.1)",
                         },
@@ -334,28 +342,38 @@ const ProductsGrid = () => {
               gap={0}
             >
               {filteredItems.map((item, index) => {
-                // Calculate positions using filteredItems instead of itemData
+                // Update the calculations
                 let currentPosition = 0;
                 for (let i = 0; i < index; i++) {
-                  currentPosition += filteredItems[i].cols;
+                  const item = filteredItems[i];
+                  if (hasRequiredCols(item)) {
+                    currentPosition += item.cols;
+                  }
                 }
-                currentPosition = currentPosition % 4;
 
-                // Check if item ends at right edge
-                const isRightEdge = currentPosition + item.cols === 4;
+                // Update the edge checks
+                const isRightEdge =
+                  hasRequiredCols(item) && currentPosition + item.cols === 4;
                 // Check if item starts at left edge
                 const isLeftEdge = currentPosition === 0;
 
-                // Calculate if item is in the last row
+                // Update the total cols calculation
                 let totalColsSoFar = 0;
                 for (let i = 0; i < filteredItems.length; i++) {
                   if (i < index) {
-                    totalColsSoFar += filteredItems[i].cols;
+                    const item = filteredItems[i];
+                    if (hasRequiredCols(item)) {
+                      totalColsSoFar += item.cols;
+                    }
                   }
                 }
                 const rowPosition = Math.floor(totalColsSoFar / 4);
                 const totalRows = Math.ceil(
-                  filteredItems.reduce((sum, item) => sum + item.cols, 0) / 4
+                  filteredItems.reduce(
+                    (sum, item) =>
+                      sum + (hasRequiredCols(item) ? item.cols : 0),
+                    0
+                  ) / 4
                 );
                 const isLastRow = rowPosition === totalRows - 1;
 
@@ -410,18 +428,17 @@ const ProductsGrid = () => {
                         </Typography>
                       </Box>
                     )}
-                    <img
+                    <Box
+                      component="img"
                       src={getImagePath(item.images[0])}
                       alt={item.id}
                       loading="lazy"
-                      style={{
+                      sx={{
                         width: "100%",
                         height: "100%",
                         objectFit: "contain",
                         padding: "16px",
                         transition: "all 0.3s ease-in-out",
-                      }}
-                      sx={{
                         "&:hover": {
                           transform: "scale(1.1)",
                         },
@@ -440,6 +457,8 @@ const ProductsGrid = () => {
         open={dialogOpen}
         onClose={() => setDialogOpen(false)}
         product={selectedProduct}
+        onMouseEnter={() => {}}
+        onMouseLeave={() => {}}
       />
     </Box>
   );

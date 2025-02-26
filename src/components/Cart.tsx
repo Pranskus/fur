@@ -15,13 +15,24 @@ import AddIcon from "@mui/icons-material/Add";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import Checkout from "./Checkout";
 import { getImagePath } from "../utils/imagePath";
+import { CartItem } from "../types/product";
 
-const Cart = ({ open, onClose }) => {
-  const { cartItems, removeFromCart, updateQuantity } = useCart();
+interface CartProps {
+  open: boolean;
+  onClose: () => void;
+}
+
+const Cart: React.FC<CartProps> = ({ open, onClose }) => {
+  const { cartItems, removeFromCart, updateQuantity } =
+    useCart() as unknown as {
+      cartItems: CartItem[];
+      removeFromCart: (id: string) => void;
+      updateQuantity: (id: string, quantity: number) => void;
+    };
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
 
   const subtotal = cartItems.reduce(
-    (sum, item) => sum + item.price * item.quantity,
+    (sum, item) => sum + (item.price ?? 0) * item.quantity,
     0
   );
 
@@ -105,7 +116,7 @@ const Cart = ({ open, onClose }) => {
                         size="small"
                         onClick={() =>
                           updateQuantity(
-                            item.id,
+                            item.id.toString(),
                             Math.max(0, item.quantity - 1)
                           )
                         }
@@ -116,7 +127,7 @@ const Cart = ({ open, onClose }) => {
                       <IconButton
                         size="small"
                         onClick={() =>
-                          updateQuantity(item.id, item.quantity + 1)
+                          updateQuantity(item.id.toString(), item.quantity + 1)
                         }
                       >
                         <AddIcon fontSize="small" />
@@ -124,7 +135,7 @@ const Cart = ({ open, onClose }) => {
                     </Box>
                   </Box>
                   <IconButton
-                    onClick={() => removeFromCart(item.id)}
+                    onClick={() => removeFromCart(item.id.toString())}
                     sx={{ alignSelf: "flex-start" }}
                   >
                     <DeleteOutlineIcon />

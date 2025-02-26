@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import {
   ThemeProvider,
   CssBaseline,
@@ -16,20 +17,26 @@ import Footer from "./components/Footer";
 import { CartProvider, useCart } from "./context/CartContext";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import React from "react";
 import CompanyInfoDialog from "./components/CompanyInfoDialog";
 
-// Create AppContent component that uses useCart
-const AppContent = () => {
-  const [showBackToTop, setShowBackToTop] = React.useState(false);
-  const [showFloatingCart, setShowFloatingCart] = React.useState(false);
-  const [isCompanyDialogOpen, setIsCompanyDialogOpen] = React.useState(false);
-  const { setIsCartOpen, cartItems } = useCart();
+interface CartItem {
+  id: number;
+}
 
-  React.useEffect(() => {
+const AppContent: React.FC = () => {
+  const [showBackToTop, setShowBackToTop] = useState(false);
+  const [showFloatingCart, setShowFloatingCart] = useState(false);
+  const [isCompanyDialogOpen, setIsCompanyDialogOpen] = useState(false);
+  const { setIsCartOpen, cartItems } = useCart() as unknown as {
+    setIsCartOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    cartItems: CartItem[];
+  };
+
+  useEffect(() => {
     const handleScroll = () => {
+      const navbarElement = document.querySelector(".MuiAppBar-root");
       const navbarHeight =
-        document.querySelector(".MuiAppBar-root")?.offsetHeight || 0;
+        navbarElement instanceof HTMLElement ? navbarElement.offsetHeight : 0;
       setShowBackToTop(window.scrollY > 500);
       setShowFloatingCart(window.scrollY > navbarHeight);
     };
@@ -128,13 +135,12 @@ const AppContent = () => {
   );
 };
 
-// Main App component that provides CartProvider
-function App() {
+const App: React.FC = () => {
   return (
     <CartProvider>
       <AppContent />
     </CartProvider>
   );
-}
+};
 
 export default App;

@@ -36,7 +36,33 @@ const paymentMethods = [
   },
 ];
 
-const EXAMPLE_DATA = {
+interface CheckoutProps {
+  open: boolean;
+  onClose: () => void;
+}
+
+interface FormData {
+  fullName: string;
+  email: string;
+  phone: string;
+  address: string;
+  city: string;
+  postalCode: string;
+}
+
+interface FormErrors {
+  [key: string]: string;
+}
+
+interface CartItem {
+  id: number;
+  title: string;
+  price: number;
+  quantity: number;
+  images: string[];
+}
+
+const EXAMPLE_DATA: FormData = {
   fullName: "John Smith",
   email: "john.smith@example.com",
   phone: "+46761234567",
@@ -45,15 +71,20 @@ const EXAMPLE_DATA = {
   postalCode: "10001",
 };
 
-const Checkout = ({ open, onClose }) => {
-  const { cartItems, clearCart } = useCart();
-  const [step, setStep] = useState("details"); // 'details', 'payment', 'confirmation'
-  const [paymentMethod, setPaymentMethod] = useState("credit");
-  const [errors, setErrors] = useState({});
+const Checkout: React.FC<CheckoutProps> = ({ open, onClose }) => {
+  const { cartItems, clearCart } = useCart() as unknown as {
+    cartItems: CartItem[];
+    clearCart: () => void;
+  };
+  const [step, setStep] = useState<"details" | "payment" | "confirmation">(
+    "details"
+  );
+  const [paymentMethod, setPaymentMethod] = useState<string>("credit");
+  const [errors, setErrors] = useState<FormErrors>({});
   const [orderPlaced, setOrderPlaced] = useState(false);
 
   // Use refs instead of state for form inputs
-  const formRef = React.useRef({
+  const formRef = React.useRef<FormData>({
     fullName: "",
     email: "",
     phone: "",
@@ -70,9 +101,9 @@ const Checkout = ({ open, onClose }) => {
   const tax = subtotal * 0.1;
   const total = subtotal + shipping + tax;
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    formRef.current[name] = value;
+    formRef.current[name as keyof FormData] = value;
 
     // Clear error if exists
     if (errors[name]) {
@@ -84,7 +115,7 @@ const Checkout = ({ open, onClose }) => {
   };
 
   const validateForm = () => {
-    const newErrors = {};
+    const newErrors: FormErrors = {};
     const form = formRef.current;
 
     if (!form.fullName) newErrors.fullName = "Name is required";
@@ -142,9 +173,11 @@ const Checkout = ({ open, onClose }) => {
     // Force re-render of form fields
     const event = new Event("input", { bubbles: true });
     Object.keys(EXAMPLE_DATA).forEach((name) => {
-      const element = document.querySelector(`input[name="${name}"]`);
+      const element = document.querySelector(
+        `input[name="${name}"]`
+      ) as HTMLInputElement | null;
       if (element) {
-        element.value = EXAMPLE_DATA[name];
+        element.value = EXAMPLE_DATA[name as keyof FormData];
         element.dispatchEvent(event);
       }
     });

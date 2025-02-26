@@ -1,7 +1,8 @@
+import React from "react";
 import { Box, Typography, Grid, Container } from "@mui/material";
 import { getImagePath } from "../utils/imagePath";
 
-const Elegance = () => {
+const Elegance: React.FC = () => {
   return (
     <Box
       sx={{

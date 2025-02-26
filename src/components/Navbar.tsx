@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import {
   AppBar,
   Toolbar,
@@ -14,19 +15,27 @@ import {
 import PhoneIcon from "@mui/icons-material/Phone";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import MenuIcon from "@mui/icons-material/Menu";
-import { useState } from "react";
 import { useCart } from "../context/CartContext";
 import Cart from "./Cart";
+import { CartItem } from "../types/product";
 
-const Navbar = ({ onAboutClick }) => {
+interface NavbarProps {
+  onAboutClick: () => void;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ onAboutClick }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const { isCartOpen, setIsCartOpen, cartItems } = useCart();
+  const { isCartOpen, setIsCartOpen, cartItems } = useCart() as unknown as {
+    isCartOpen: boolean;
+    setIsCartOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    cartItems: CartItem[];
+  };
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
 
-  const handleScroll = (item) => {
+  const handleScroll = (item: string) => {
     if (item === "About Us") {
       onAboutClick();
       setMobileOpen(false);
@@ -45,7 +54,7 @@ const Navbar = ({ onAboutClick }) => {
     }
   };
 
-  const menuItems = ["About Us", "Our Projects", "Our Collections"];
+  const menuItems: string[] = ["About Us", "Our Projects", "Our Collections"];
 
   return (
     <>
@@ -166,12 +175,13 @@ const Navbar = ({ onAboutClick }) => {
           <List>
             {menuItems.map((item) => (
               <ListItem
-                button
-                key={item}
+                disablePadding
+                component="div"
                 onClick={() => {
                   handleScroll(item);
                   handleDrawerToggle();
                 }}
+                key={item}
               >
                 <ListItemText
                   primary={item}

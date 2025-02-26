@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Box,
   Grid,
@@ -11,7 +12,7 @@ import InventoryOutlinedIcon from "@mui/icons-material/InventoryOutlined";
 import AssignmentReturnOutlinedIcon from "@mui/icons-material/AssignmentReturnOutlined";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
-const Footer = () => {
+const Footer: React.FC = () => {
   return (
     <Box sx={{ bgcolor: "#1C1C1C", color: "white" }}>
       {/* GET IN TOUCH Title */}
