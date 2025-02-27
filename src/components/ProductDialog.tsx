@@ -102,7 +102,6 @@ const ProductDialog: React.FC<ProductDialogProps> = ({
             height: "100%",
           }}
         >
-          {}
           <Box
             sx={{
               flex: "1 1 60%",
@@ -112,7 +111,6 @@ const ProductDialog: React.FC<ProductDialogProps> = ({
               height: { xs: "50%", md: "100%" },
             }}
           >
-            {}
             <Box
               sx={{
                 flex: 1,
@@ -140,7 +138,6 @@ const ProductDialog: React.FC<ProductDialogProps> = ({
               />
             </Box>
 
-            {}
             <Box
               sx={{
                 display: "flex",
@@ -178,7 +175,6 @@ const ProductDialog: React.FC<ProductDialogProps> = ({
             </Box>
           </Box>
 
-          {}
           <Box
             sx={{
               flex: "1 1 40%",

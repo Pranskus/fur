@@ -30,7 +30,7 @@ const Elegance: React.FC = () => {
             <Box
               component="img"
               src={getImagePath(
-                "/images/paulo-accent-chair-speckled-stone-sustainable-boucle-p46054-2885000_image.jpg"
+                "images/paulo-accent-chair-speckled-stone-sustainable-boucle-p46054-2885000_image.jpg"
               )}
               alt="Designer Portrait"
               sx={{
@@ -125,7 +125,7 @@ const Elegance: React.FC = () => {
               <Box
                 component="img"
                 src={getImagePath(
-                  "/images/mika-coffee-table-oak-black-p45991-2882031_image.jpg"
+                  "images/mika-coffee-table-oak-black-p45991-2882031_image.jpg"
                 )}
                 alt="Marble Table"
                 sx={{

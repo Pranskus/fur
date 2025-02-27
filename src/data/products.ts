@@ -1,9 +1,10 @@
 import { Product } from "../types/product";
 
 export const products: Record<string, Product> = {
-  sofa1: {
-    id: "1",
+  "sofa-1": {
+    id: "sofa-1",
     title: "Sofa",
+    tag: "Exclusive",
     description: [
       "Product Summary",
       "Modern and comfortable sofa",
@@ -13,14 +14,19 @@ export const products: Record<string, Product> = {
       "Height: 85cm",
       "Depth: 95cm",
     ],
-    images: ["images/P_sofa.jpg", "images/P_sofa2.jpg"],
-    price: 999,
+    images: [
+      "images/contemporary-cream-sofa.png",
+      "images/P_sofa2.jpg",
+      "images/P_sofa3.jpg",
+      "images/P_sofa.jpg",
+    ],
+    price: 2499,
     cols: 2,
-    tag: "New",
   },
-  sofa2: {
-    id: "2",
+  "sofa-2": {
+    id: "sofa-2",
     title: "Sofa",
+    tag: "New",
     description: [
       "Product Summary",
       "Elegant living room sofa",
@@ -30,12 +36,17 @@ export const products: Record<string, Product> = {
       "Height: 90cm",
       "Depth: 100cm",
     ],
-    images: ["images/P_sofa2.jpg", "images/P_sofa3.jpg"],
-    price: 1299,
+    images: [
+      "images/contemporary-cream-sofa.png",
+      "images/P_sofa2.jpg",
+      "images/P_sofa3.jpg",
+      "images/P_sofa.jpg",
+    ],
+    price: 1899,
     cols: 2,
   },
-  chair1: {
-    id: "3",
+  "accent-chair-1": {
+    id: "accent-chair-1",
     title: "Accent Chair",
     description: [
       "Product Summary",
@@ -46,13 +57,39 @@ export const products: Record<string, Product> = {
       "Height: 85cm",
       "Depth: 80cm",
     ],
-    images: ["images/P_armchair.jpg", "images/P_armchair2.jpg"],
-    price: 499,
+    images: [
+      "images/findlay-accent-armchair-speckled-stone-sustainable-boucle-p45580-2879795_image.jpg",
+      "images/paulo-accent-chair-speckled-stone-sustainable-boucle-p46054-2885000_image.jpg",
+      "images/emile-swivel-armchair-speckled-stone-sustainable-boucle-p43504-2862193_image.jpg",
+      "images/buy-barcelona-chair-vintage.jpg",
+    ],
+    price: 899,
     cols: 1,
-    tag: "Sale",
   },
-  chair2: {
-    id: "4",
+  "accent-chair-2": {
+    id: "accent-chair-2",
+    title: "Accent Chair",
+    tag: "New",
+    description: [
+      "Product Summary",
+      "Comfortable desk chair",
+      "",
+      "Dimensions",
+      "Width: 65cm",
+      "Height: 110cm",
+      "Depth: 70cm",
+    ],
+    images: [
+      "images/paulo-accent-chair-speckled-stone-sustainable-boucle-p46054-2885000_image.jpg",
+      "images/findlay-accent-armchair-speckled-stone-sustainable-boucle-p45580-2879795_image.jpg",
+      "images/emile-swivel-armchair-speckled-stone-sustainable-boucle-p43504-2862193_image.jpg",
+      "images/buy-barcelona-chair-vintage.jpg",
+    ],
+    price: 799,
+    cols: 1,
+  },
+  "chair-1": {
+    id: "chair-1",
     title: "Chair",
     description: [
       "Product Summary",
@@ -63,8 +100,13 @@ export const products: Record<string, Product> = {
       "Height: 110cm",
       "Depth: 70cm",
     ],
-    images: ["images/P_armchair3.jpg", "images/P_armchair4.jpg"],
-    price: 299,
+    images: [
+      "images/emile-swivel-armchair-speckled-stone-sustainable-boucle-p43504-2862193_image.jpg",
+      "images/paulo-accent-chair-speckled-stone-sustainable-boucle-p46054-2885000_image.jpg",
+      "images/findlay-accent-armchair-speckled-stone-sustainable-boucle-p45580-2879795_image.jpg",
+      "images/buy-barcelona-chair-vintage.jpg",
+    ],
+    price: 599,
     cols: 1,
   },
 };

@@ -33,49 +33,49 @@ const categories: Category[] = [
     id: "01",
     name: "Living Room",
     images: [
-      "/images/P_sofa.jpg",
-      "/images/P_sofa2.jpg",
-      "/images/P_sofa3.jpg",
-      "/images/P_armchair2.jpg",
+      "images/P_sofa.jpg",
+      "images/P_sofa2.jpg",
+      "images/P_sofa3.jpg",
+      "images/P_armchair2.jpg",
     ],
   },
   {
     id: "02",
     name: "Bedroom",
     images: [
-      "/images/P_armchair.jpg",
-      "/images/P_armchair2.jpg",
-      "/images/P_accchair.jpg",
+      "images/P_armchair.jpg",
+      "images/P_armchair2.jpg",
+      "images/P_accchair.jpg",
     ],
   },
   {
     id: "03",
     name: "Dining Room",
     images: [
-      "/images/P_armchair3.jpg",
-      "/images/P_armchair4.jpg",
-      "/images/P_accchair.jpg",
-      "/images/P_sofa.jpg",
-      "/images/P_armchair5.jpg",
+      "images/P_armchair3.jpg",
+      "images/P_armchair4.jpg",
+      "images/P_accchair.jpg",
+      "images/P_sofa.jpg",
+      "images/P_armchair5.jpg",
     ],
   },
   {
     id: "04",
     name: "Office Room",
     images: [
-      "/images/P_armchair3.jpg",
-      "/images/P_armchair5.jpg",
-      "/images/buy-barcelona-chair-vintage.jpg",
+      "images/P_armchair3.jpg",
+      "images/P_armchair5.jpg",
+      "images/buy-barcelona-chair-vintage.jpg",
     ],
   },
   {
     id: "05",
     name: "Kitchen",
     images: [
-      "/images/P_armchair3.jpg",
-      "/images/P_armchair5.jpg",
-      "/images/P_armchair2.jpg",
-      "/images/P_accchair.jpg",
+      "images/P_armchair3.jpg",
+      "images/P_armchair5.jpg",
+      "images/P_armchair2.jpg",
+      "images/P_accchair.jpg",
     ],
   },
 ];
@@ -98,9 +98,17 @@ const ShopByRoom = () => {
   };
 
   const handleImageClick = (image: string) => {
-    const product = Object.values(products).find(
-      (product): product is Product =>
-        product.images.includes(image) && "description" in product
+    // Clean up the image path to match product image paths
+    const cleanImagePath = image.startsWith("/") ? image.slice(1) : image;
+
+    // Find the product that contains this image
+    const product = Object.values(products).find((product) =>
+      product.images.some((productImage) => {
+        const cleanProductImage = productImage.startsWith("/")
+          ? productImage.slice(1)
+          : productImage;
+        return cleanProductImage === cleanImagePath;
+      })
     );
 
     if (product) {

@@ -41,6 +41,14 @@ const ProductsGrid: React.FC = () => {
 
   const filteredItems = getFilteredItems();
 
+  // Add debug logging
+  console.log("Filtered Items:", filteredItems);
+  console.log("Sample Image Path:", filteredItems[0]?.images[0]);
+  console.log(
+    "Processed Path:",
+    getImagePath(filteredItems[0]?.images[0] || "")
+  );
+
   const handleProductClick = (product: Product) => {
     setSelectedProduct(product);
     setDialogOpen(true);
