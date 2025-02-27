@@ -45,7 +45,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onAboutClick }) => {
         </Typography>
         <Box
           component="img"
-          src={getImagePath("/images/buy-barcelona-chair-vintage.jpg")}
+          src={getImagePath("images/buy-barcelona-chair-vintage.jpg")}
           alt="White Chair"
           sx={{
             display: { xs: "none", md: "block" },
@@ -114,7 +114,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onAboutClick }) => {
                     <Box
                       component="img"
                       src={getImagePath(
-                        "/images/findlay-accent-armchair-speckled-stone-sustainable-boucle-p45580-2879795_image.jpg"
+                        "images/findlay-accent-armchair-speckled-stone-sustainable-boucle-p45580-2879795_image.jpg"
                       )}
                       alt="Green Chair"
                       sx={{
@@ -208,7 +208,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onAboutClick }) => {
                     </Box>
                     <Box
                       component="img"
-                      src={getImagePath("/images/contemporary-cream-sofa.png")}
+                      src={getImagePath("images/contemporary-cream-sofa.png")}
                       alt="Cream Sofa"
                       sx={{
                         width: "100%",
@@ -248,7 +248,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onAboutClick }) => {
                 <Box
                   component="img"
                   src={getImagePath(
-                    "/images/emile-swivel-armchair-speckled-stone-sustainable-boucle-p43504-2862193_image.jpg"
+                    "images/emile-swivel-armchair-speckled-stone-sustainable-boucle-p43504-2862193_image.jpg"
                   )}
                   alt="Brown Chair"
                   sx={{
