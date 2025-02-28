@@ -6,7 +6,6 @@ import {
   Typography,
   Container,
   Button,
-  Stack,
 } from "@mui/material";
 import ProductDialog from "./ProductDialog";
 import { products } from "../data/products";
