@@ -16,9 +16,9 @@ export const products: Record<string, Product> = {
     ],
     images: [
       "images/contemporary-cream-sofa.png",
-      "images/P_sofa2.jpg",
-      "images/P_sofa3.jpg",
-      "images/P_sofa.jpg",
+      "images/contemporary-cream-sofa.png",
+      "images/contemporary-cream-sofa.png",
+      "images/contemporary-cream-sofa.png",
     ],
     price: 2499,
     cols: 2,
@@ -38,9 +38,9 @@ export const products: Record<string, Product> = {
     ],
     images: [
       "images/contemporary-cream-sofa.png",
-      "images/P_sofa2.jpg",
-      "images/P_sofa3.jpg",
-      "images/P_sofa.jpg",
+      "images/contemporary-cream-sofa.png",
+      "images/contemporary-cream-sofa.png",
+      "images/contemporary-cream-sofa.png",
     ],
     price: 1899,
     cols: 2,
@@ -110,5 +110,3 @@ export const products: Record<string, Product> = {
     cols: 1,
   },
 };
-
-// Remove getProductsByCategory since it's not being used
